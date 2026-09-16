@@ -1,0 +1,3272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Natural Resources, Agriculture & Rural Development | SEDC
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+
+        /* =====================================================
+           GENERAL
+        ===================================================== */
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================================
+           FRAMER MOTION-LIKE REVEAL ANIMATIONS
+        ===================================================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(45px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-55px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(55px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(.88);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .is-visible {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+
+        /* =====================================================
+           STAGGERED CARDS
+        ===================================================== */
+
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(35px);
+
+            transition:
+                opacity .7s ease,
+                transform .7s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .stagger-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero-section {
+            min-height: 680px;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(255, 193, 7, .18),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 10% 90%,
+                    rgba(0, 0, 0, .18),
+                    transparent 35%
+                );
+
+            pointer-events: none;
+        }
+
+        .hero-content,
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image-wrap {
+            transition:
+                transform .4s ease,
+                box-shadow .4s ease;
+        }
+
+        .hero-image-wrap:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 1.5rem 3rem rgba(0, 0, 0, .22) !important;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            transition:
+                box-shadow .3s ease,
+                background-color .3s ease;
+        }
+
+        .navbar.navbar-scrolled {
+            box-shadow:
+                0 .5rem 1.5rem rgba(0, 0, 0, .12) !important;
+        }
+
+        .navbar .nav-link {
+            position: relative;
+
+            transition:
+                color .25s ease;
+        }
+
+        .navbar .nav-link::after {
+            content: "";
+
+            position: absolute;
+
+            left: .5rem;
+            right: .5rem;
+            bottom: .2rem;
+
+            height: 2px;
+
+            background: #198754;
+
+            transform: scaleX(0);
+
+            transform-origin: center;
+
+            transition:
+                transform .25s ease;
+        }
+
+        .navbar .nav-link:hover::after,
+        .navbar .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+
+        /* =====================================================
+           CARDS
+        ===================================================== */
+
+        .feature-card,
+        .programme-card,
+        .activity-card,
+        .opportunity-card,
+        .resource-card {
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease;
+        }
+
+        .feature-card:hover,
+        .programme-card:hover,
+        .activity-card:hover,
+        .opportunity-card:hover,
+        .resource-card:hover {
+
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 1rem 2.5rem rgba(0, 0, 0, .12) !important;
+        }
+
+        .programme-card .card-img-top,
+        .activity-card .card-img-top {
+
+            transition:
+                transform .5s ease;
+        }
+
+        .programme-card:hover .card-img-top,
+        .activity-card:hover .card-img-top {
+
+            transform: scale(1.04);
+        }
+
+
+        /* =====================================================
+           STATISTICS
+        ===================================================== */
+
+        .stat-number {
+            min-height: 1.2em;
+        }
+
+
+        /* =====================================================
+           BACK TO TOP
+        ===================================================== */
+
+        .back-to-top {
+
+            position: fixed;
+
+            right: 1.25rem;
+            bottom: 1.25rem;
+
+            width: 48px;
+            height: 48px;
+
+            border: 0;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #198754;
+            color: #fff;
+
+            box-shadow:
+                0 .5rem 1.5rem rgba(0, 0, 0, .2);
+
+            z-index: 1050;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform: translateY(15px);
+
+            transition: all .3s ease;
+        }
+
+        .back-to-top.show {
+
+            opacity: 1;
+            visibility: visible;
+
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+
+            background: #146c43;
+
+            transform: translateY(-4px);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer-link {
+
+            transition:
+                color .25s ease,
+                padding-left .25s ease;
+        }
+
+        .footer-link:hover {
+
+            color: #fff !important;
+
+            padding-left: 4px;
+        }
+
+
+        /* =====================================================
+           MOBILE RESPONSIVENESS
+        ===================================================== */
+
+        @media (max-width: 991.98px) {
+
+            .navbar-brand small {
+                display: block;
+
+                max-width: 260px;
+
+                line-height: 1.2;
+            }
+
+            .navbar-collapse {
+                padding:
+                    .75rem 0 1rem;
+            }
+
+            .navbar-nav .nav-link {
+                padding:
+                    .7rem .25rem;
+            }
+
+            .navbar .nav-link::after {
+                display: none;
+            }
+
+            .hero-section {
+                min-height: auto;
+            }
+
+            .hero-section .container {
+
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+        }
+
+
+        @media (max-width: 767.98px) {
+
+            html {
+                scroll-padding-top: 75px;
+            }
+
+            .government-bar .d-flex {
+                justify-content: center !important;
+            }
+
+            .hero-section .display-3 {
+
+                font-size:
+                    clamp(
+                        2.35rem,
+                        10vw,
+                        3.5rem
+                    );
+
+                line-height: 1.08;
+            }
+
+            .hero-section .lead {
+                font-size: 1.05rem;
+            }
+
+            .hero-section .btn {
+                width: 100%;
+            }
+
+            .hero-section .d-flex {
+                flex-direction: column;
+            }
+
+            .display-6 {
+                font-size: 2rem;
+            }
+
+            section {
+                overflow: hidden;
+            }
+
+            .activity-card .card-img-top,
+            .programme-card .card-img-top {
+
+                height: 220px;
+
+                object-fit: cover;
+            }
+
+            .back-to-top {
+
+                right: 1rem;
+                bottom: 1rem;
+
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+
+        @media (max-width: 575.98px) {
+
+            .navbar-brand img {
+                height: 45px;
+            }
+
+            .navbar-brand .fw-bold {
+                font-size: .95rem;
+            }
+
+            .navbar-brand small {
+                font-size: .68rem;
+
+                max-width: 210px;
+            }
+
+            .hero-section .container {
+
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .hero-section .badge {
+                font-size: .7rem;
+            }
+
+            .stat-number {
+                font-size: 2.1rem;
+            }
+
+            .newsletter-form .input-group {
+
+                display: flex;
+
+                flex-direction: column;
+
+                gap: .75rem;
+            }
+
+            .newsletter-form .form-control,
+            .newsletter-form .btn {
+
+                width: 100%;
+
+                border-radius: .5rem !important;
+            }
+        }
+
+
+        /* =====================================================
+           ACCESSIBILITY
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration: .01ms !important;
+
+                animation-iteration-count: 1 !important;
+
+                transition-duration: .01ms !important;
+            }
+
+            .reveal,
+            .reveal-left,
+            .reveal-right,
+            .reveal-scale,
+            .stagger-item {
+
+                opacity: 1 !important;
+
+                transform: none !important;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body id="top" class="bg-light">
+
+
+<!-- =====================================================
+     GOVERNMENT BAR
+===================================================== -->
+
+<div class="bg-dark text-white py-2 government-bar">
+
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center small">
+
+            <div>
+
+                <i class="bi bi-building me-2"></i>
+
+                South East Development Commission
+
+            </div>
+
+            <div class="d-none d-md-block">
+
+                Federal Republic of Nigeria
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+
+    <div class="container">
+
+
+        <!-- LOGO -->
+
+        <a
+            class="navbar-brand d-flex align-items-center"
+            href="#top">
+
+            <img
+                src="assets/images/sedc-logo.png"
+                alt="SEDC Logo"
+                height="55"
+                class="me-2">
+
+        </a>
+
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+
+        <!-- NAVIGATION -->
+
+        <div
+            class="collapse navbar-collapse"
+            id="mainNavbar">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link active"
+                        href="#top"
+                        data-section="top">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#about"
+                        data-section="about">
+
+                        About
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#programmes"
+                        data-section="programmes">
+
+                        Programmes
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#activities"
+                        data-section="activities">
+
+                        Activities
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#opportunities"
+                        data-section="opportunities">
+
+                        Opportunities
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#resources"
+                        data-section="resources">
+
+                        Resources
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item ms-lg-3">
+
+                    <a
+                        href="#contact"
+                        data-section="contact"
+                        class="btn btn-success px-4">
+
+                        Contact Us
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    class="bg-success text-white py-5 hero-section">
+
+    <div class="container py-5">
+
+        <div class="row align-items-center g-5">
+
+
+            <!-- HERO TEXT -->
+
+            <div class="col-lg-7 hero-content reveal-left">
+
+                <span
+                    class="badge bg-warning text-dark mb-3 px-3 py-2">
+
+                    SEDC • NRARD DIRECTORATE
+
+                </span>
+
+
+                <h1 class="display-3 fw-bold mb-4">
+
+                    Transforming Agriculture.
+
+                    <br>
+
+                    Developing Rural Communities.
+
+                </h1>
+
+
+                <p class="lead mb-4">
+
+                    Driving sustainable agriculture, responsible
+                    natural resource management and rural economic
+                    development across South East Nigeria.
+
+                </p>
+
+
+                <div class="d-flex flex-wrap gap-3">
+
+                    <a
+                        href="#programmes"
+                        class="btn btn-warning btn-lg px-4">
+
+                        Explore Our Programmes
+
+                    </a>
+
+
+                    <a
+                        href="#about"
+                        class="btn btn-outline-light btn-lg px-4">
+
+                        Learn More
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- HERO IMAGE -->
+
+            <div class="col-lg-5 hero-image reveal-right">
+
+                <div
+                    class="bg-white p-2 rounded-4 shadow hero-image-wrap">
+
+                    <img
+                        src="assets/images/agriculture-hero.jpg"
+                        alt="Agricultural development in South East Nigeria"
+                        class="img-fluid rounded-4">
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    id="about"
+    class="py-5 bg-white reveal">
+
+    <div class="container py-4">
+
+        <div class="row align-items-center g-5">
+
+
+            <div class="col-lg-6">
+
+                <span class="text-success fw-bold">
+                    ABOUT THE DIRECTORATE
+                </span>
+
+
+                <h2 class="display-6 fw-bold mt-2">
+
+                    Building a productive and sustainable South East
+
+                </h2>
+
+
+                <p class="text-muted mt-3">
+
+                    The Directorate of Natural Resources, Agriculture
+                    and Rural Development is a core administrative
+                    pillar of the South East Development Commission.
+
+                </p>
+
+
+                <p class="text-muted">
+
+                    The Directorate is positioned to drive comprehensive
+                    and sustainable development through responsible
+                    management of natural resources, agricultural
+                    transformation, agro-mechanisation and rural
+                    economic development.
+
+                </p>
+
+
+                <a
+                    href="#programmes"
+                    class="btn btn-success mt-2">
+
+                    Explore Our Work
+
+                </a>
+
+            </div>
+
+
+
+            <div class="col-lg-6">
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <div
+                            class="card h-100 border-0 shadow-sm feature-card stagger-item">
+
+                            <div class="card-body p-4">
+
+                                <i
+                                    class="bi bi-tree-fill fs-1 text-success">
+                                </i>
+
+                                <h5 class="fw-bold mt-3">
+                                    Natural Resources
+                                </h5>
+
+                                <p class="text-muted small">
+
+                                    Sustainable resource management,
+                                    conservation and economic utilisation.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div
+                            class="card h-100 border-0 shadow-sm feature-card stagger-item">
+
+                            <div class="card-body p-4">
+
+                                <i
+                                    class="bi bi-flower1 fs-1 text-success">
+                                </i>
+
+                                <h5 class="fw-bold mt-3">
+                                    Agriculture
+                                </h5>
+
+                                <p class="text-muted small">
+
+                                    Food security, value-chain development
+                                    and climate-smart agriculture.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div
+                            class="card h-100 border-0 shadow-sm feature-card stagger-item">
+
+                            <div class="card-body p-4">
+
+                                <i
+                                    class="bi bi-buildings-fill fs-1 text-success">
+                                </i>
+
+                                <h5 class="fw-bold mt-3">
+                                    Rural Development
+                                </h5>
+
+                                <p class="text-muted small">
+
+                                    Infrastructure, human capital and
+                                    rural economic acceleration.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div
+                            class="card h-100 border-0 shadow-sm feature-card stagger-item">
+
+                            <div class="card-body p-4">
+
+                                <i
+                                    class="bi bi-graph-up-arrow fs-1 text-success">
+                                </i>
+
+                                <h5 class="fw-bold mt-3">
+                                    Economic Growth
+                                </h5>
+
+                                <p class="text-muted small">
+
+                                    Creating opportunities for farmers,
+                                    communities and agribusinesses.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATISTICS
+===================================================== -->
+
+<section
+    class="bg-dark text-white py-5 reveal-scale">
+
+    <div class="container">
+
+        <div class="row text-center g-4">
+
+
+            <div class="col-6 col-lg-3">
+
+                <h2
+                    class="display-5 fw-bold stat-number"
+                    data-target="5">
+
+                    0
+
+                </h2>
+
+                <p class="mb-0 text-white-50">
+                    South East States
+                </p>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <h2
+                    class="display-5 fw-bold stat-number"
+                    data-target="3">
+
+                    0
+
+                </h2>
+
+                <p class="mb-0 text-white-50">
+                    Strategic Development Pillars
+                </p>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <h2
+                    class="display-5 fw-bold stat-number"
+                    data-target="25"
+                    data-suffix="+">
+
+                    0
+
+                </h2>
+
+                <p class="mb-0 text-white-50">
+                    Agricultural Sites Mapped
+                </p>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <h2
+                    class="display-5 fw-bold stat-number"
+                    data-target="2050">
+
+                    0
+
+                </h2>
+
+                <p class="mb-0 text-white-50">
+                    Regional Vision
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROGRAMMES
+===================================================== -->
+
+<section
+    id="programmes"
+    class="py-5 reveal">
+
+    <div class="container py-4">
+
+
+        <div class="text-center mb-5 section-heading">
+
+            <span class="text-success fw-bold">
+                OUR PROGRAMMES
+            </span>
+
+            <h2 class="display-6 fw-bold mt-2">
+
+                Programmes Driving Regional Transformation
+
+            </h2>
+
+            <p class="text-muted">
+
+                Strategic programmes designed to improve agricultural
+                productivity, strengthen communities and unlock the
+                economic potential of South East Nigeria.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="row g-4">
+
+
+            <!-- PROGRAMME 1 -->
+
+            <div class="col-lg-4">
+
+                <div
+                    class="card h-100 border-0 shadow-sm overflow-hidden programme-card stagger-item">
+
+                    <img
+                        src="assets/images/seadp.jpg"
+                        class="card-img-top"
+                        alt="South East Agro Development Programme">
+
+                    <div class="card-body p-4">
+
+                        <span
+                            class="badge bg-success mb-3">
+
+                            FLAGSHIP PROGRAMME
+
+                        </span>
+
+                        <h4 class="fw-bold">
+
+                            South East Agro-Development Programme
+
+                        </h4>
+
+                        <p class="text-muted">
+
+                            Modernising agriculture through farm estates,
+                            livestock hubs, poultry feed processing,
+                            storage facilities and agribusiness
+                            development.
+
+                        </p>
+
+                        <a
+                            href="#"
+                            class="btn btn-outline-success">
+
+                            Discover SEADP
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROGRAMME 2 -->
+
+            <div class="col-lg-4">
+
+                <div
+                    class="card h-100 border-0 shadow-sm overflow-hidden programme-card stagger-item">
+
+                    <img
+                        src="assets/images/community.jpg"
+                        class="card-img-top"
+                        alt="Community development">
+
+                    <div class="card-body p-4">
+
+                        <span
+                            class="badge bg-warning text-dark mb-3">
+
+                            COMMUNITY
+
+                        </span>
+
+                        <h4 class="fw-bold">
+
+                            Renewed Hope Community Development
+
+                        </h4>
+
+                        <p class="text-muted">
+
+                            Targeted interventions supporting healthcare,
+                            rural education, clean water and sustainable
+                            livelihood development.
+
+                        </p>
+
+                        <a
+                            href="#"
+                            class="btn btn-outline-success">
+
+                            Learn More
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROGRAMME 3 -->
+
+            <div class="col-lg-4">
+
+                <div
+                    class="card h-100 border-0 shadow-sm overflow-hidden programme-card stagger-item">
+
+                    <img
+                        src="assets/images/minerals.jpg"
+                        class="card-img-top"
+                        alt="Natural resources and minerals">
+
+                    <div class="card-body p-4">
+
+                        <span
+                            class="badge bg-dark mb-3">
+
+                            NATURAL RESOURCES
+
+                        </span>
+
+                        <h4 class="fw-bold">
+
+                            Ebonyi Mineral Value Chain Acceleration
+
+                        </h4>
+
+                        <p class="text-muted">
+
+                            A targeted framework focused on maximising
+                            solid mineral resources through mining,
+                            processing and investment.
+
+                        </p>
+
+                        <a
+                            href="#"
+                            class="btn btn-outline-success">
+
+                            Explore EM-VCAP
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOCUS AREAS
+===================================================== -->
+
+<section
+    class="py-5 bg-white reveal">
+
+    <div class="container py-4">
+
+        <div class="row align-items-center g-5">
+
+
+            <div class="col-lg-5">
+
+                <span class="text-success fw-bold">
+                    OUR FOCUS
+                </span>
+
+                <h2 class="display-6 fw-bold mt-2">
+
+                    From Resources to Opportunity
+
+                </h2>
+
+                <p class="text-muted">
+
+                    Our work connects natural resources, agriculture,
+                    infrastructure, innovation and rural communities
+                    to create sustainable economic opportunities.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="col-lg-7">
+
+                <div class="row g-4">
+
+
+                    <div class="col-md-6 stagger-item">
+
+                        <div class="d-flex">
+
+                            <i
+                                class="bi bi-shield-check fs-2 text-success me-3">
+                            </i>
+
+                            <div>
+
+                                <h5 class="fw-bold">
+                                    Food Security
+                                </h5>
+
+                                <p class="text-muted small">
+
+                                    Increasing agricultural productivity
+                                    and regional food production.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6 stagger-item">
+
+                        <div class="d-flex">
+
+                            <i
+                                class="bi bi-box-seam fs-2 text-success me-3">
+                            </i>
+
+                            <div>
+
+                                <h5 class="fw-bold">
+                                    Value Chains
+                                </h5>
+
+                                <p class="text-muted small">
+
+                                    Connecting producers with processing
+                                    and commercial markets.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6 stagger-item">
+
+                        <div class="d-flex">
+
+                            <i
+                                class="bi bi-cpu fs-2 text-success me-3">
+                            </i>
+
+                            <div>
+
+                                <h5 class="fw-bold">
+                                    Technology
+                                </h5>
+
+                                <p class="text-muted small">
+
+                                    Supporting precision farming,
+                                    biotechnology and innovation.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6 stagger-item">
+
+                        <div class="d-flex">
+
+                            <i
+                                class="bi bi-people fs-2 text-success me-3">
+                            </i>
+
+                            <div>
+
+                                <h5 class="fw-bold">
+                                    Rural Livelihoods
+                                </h5>
+
+                                <p class="text-muted small">
+
+                                    Strengthening communities through
+                                    skills, infrastructure and enterprise.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ACTIVITIES
+===================================================== -->
+
+<section
+    id="activities"
+    class="py-5 bg-light reveal">
+
+    <div class="container py-4">
+
+
+        <div
+            class="d-flex flex-wrap justify-content-between align-items-end mb-5">
+
+            <div>
+
+                <span class="text-success fw-bold">
+                    FROM THE DIRECTORATE
+                </span>
+
+                <h2 class="display-6 fw-bold mt-2">
+                    Recent Activities
+                </h2>
+
+            </div>
+
+            <a
+                href="#"
+                class="btn btn-outline-success">
+
+                View All Activities
+
+            </a>
+
+        </div>
+
+
+
+        <div class="row g-4">
+
+
+            <!-- ACTIVITY 1 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div
+                    class="card h-100 border-0 shadow-sm activity-card stagger-item">
+
+                    <img
+                        src="assets/images/activity-1.jpg"
+                        class="card-img-top"
+                        alt="Africa Food Systems Forum">
+
+                    <div class="card-body p-4">
+
+                        <small class="text-success fw-bold">
+                            SEPTEMBER 2026
+                        </small>
+
+                        <h5 class="fw-bold mt-2">
+                            Africa Food Systems Forum
+                        </h5>
+
+                        <p class="text-muted small">
+
+                            Engagement at the Africa Food Systems Forum
+                            in Kigali focused on investment opportunities
+                            within the South East agri-food ecosystem.
+
+                        </p>
+
+                        <a
+                            href="#"
+                            class="text-success fw-bold">
+
+                            Read More →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ACTIVITY 2 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div
+                    class="card h-100 border-0 shadow-sm activity-card stagger-item">
+
+                    <img
+                        src="assets/images/activity-2.jpg"
+                        class="card-img-top"
+                        alt="Agro mechanisation">
+
+                    <div class="card-body p-4">
+
+                        <small class="text-success fw-bold">
+                            JULY 2026
+                        </small>
+
+                        <h5 class="fw-bold mt-2">
+
+                            Agro-Mechanisation Stakeholder Engagements
+
+                        </h5>
+
+                        <p class="text-muted small">
+
+                            Community engagements across Enugu's
+                            senatorial zones supported land access,
+                            security and community participation.
+
+                        </p>
+
+                        <a
+                            href="#"
+                            class="text-success fw-bold">
+
+                            Read More →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ACTIVITY 3 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div
+                    class="card h-100 border-0 shadow-sm activity-card stagger-item">
+
+                    <img
+                        src="assets/images/activity-3.jpg"
+                        class="card-img-top"
+                        alt="Agricultural biotechnology">
+
+                    <div class="card-body p-4">
+
+                        <small class="text-success fw-bold">
+                            JULY 2026
+                        </small>
+
+                        <h5 class="fw-bold mt-2">
+
+                            Biotechnology for Agricultural Development
+
+                        </h5>
+
+                        <p class="text-muted small">
+
+                            Discussions with the National Biotechnology
+                            Development Agency explored biotechnology
+                            applications for agriculture and economic growth.
+
+                        </p>
+
+                        <a
+                            href="#"
+                            class="text-success fw-bold">
+
+                            Read More →
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     AGRIPRENEURS
+===================================================== -->
+
+<section
+    class="py-5 bg-success text-white reveal">
+
+    <div class="container py-4">
+
+        <div class="row align-items-center g-5">
+
+
+            <div class="col-lg-7">
+
+                <span class="badge bg-warning text-dark mb-3">
+
+                    AGRIPRENEURS DIRECTORY
+
+                </span>
+
+                <h2 class="display-6 fw-bold">
+
+                    Connecting the next generation of South East farmers
+
+                </h2>
+
+                <p class="lead">
+
+                    Supporting young agripreneurs and smallholder farmers
+                    with access to finance, technology, markets and
+                    industry mentorship.
+
+                </p>
+
+                <div class="d-flex flex-wrap gap-3">
+
+                    <a
+                        href="#"
+                        class="btn btn-warning btn-lg">
+
+                        Explore SEYAF
+
+                    </a>
+
+                    <a
+                        href="#"
+                        class="btn btn-outline-light btn-lg">
+
+                        Farmer Opportunities
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-lg-5">
+
+                <div
+                    class="bg-white text-dark rounded-4 p-4 shadow reveal-right">
+
+                    <h5 class="fw-bold">
+
+                        South East Agro Geo-Cooperative Societies
+
+                    </h5>
+
+                    <p class="text-muted">
+
+                        Bringing smallholder farmers together into
+                        structured geographical cooperatives to improve
+                        scale, bargaining power and profitability.
+
+                    </p>
+
+                    <a
+                        href="#"
+                        class="btn btn-success">
+
+                        Learn About SEAGCS
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OPPORTUNITIES
+===================================================== -->
+
+<section
+    id="opportunities"
+    class="py-5 bg-white reveal">
+
+    <div class="container py-4">
+
+
+        <div class="text-center mb-5">
+
+            <span class="text-success fw-bold">
+                OPPORTUNITIES
+            </span>
+
+            <h2 class="display-6 fw-bold mt-2">
+                Grow With Us
+            </h2>
+
+            <p class="text-muted">
+
+                Explore opportunities available across our development
+                ecosystem.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="row g-4">
+
+
+            <div class="col-md-4">
+
+                <div
+                    class="card h-100 border-0 shadow-sm opportunity-card stagger-item">
+
+                    <div class="card-body p-4">
+
+                        <i
+                            class="bi bi-bank fs-1 text-success">
+                        </i>
+
+                        <h4 class="fw-bold mt-3">
+                            Agri-Finance
+                        </h4>
+
+                        <p class="text-muted">
+
+                            Access structured loans, matching grants and
+                            de-risked financial facilities backed by
+                            institutional partners.
+
+                        </p>
+
+                        <a
+                            href="#"
+                            class="btn btn-outline-success">
+
+                            Explore Funding
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-4">
+
+                <div
+                    class="card h-100 border-0 shadow-sm opportunity-card stagger-item">
+
+                    <div class="card-body p-4">
+
+                        <i
+                            class="bi bi-person-workspace fs-1 text-success">
+                        </i>
+
+                        <h4 class="fw-bold mt-3">
+                            Mentorship
+                        </h4>
+
+                        <p class="text-muted">
+
+                            Connect with agricultural specialists,
+                            agro-industrialists and business professionals.
+
+                        </p>
+
+                        <a
+                            href="#"
+                            class="btn btn-outline-success">
+
+                            Find Mentorship
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-4">
+
+                <div
+                    class="card h-100 border-0 shadow-sm opportunity-card stagger-item">
+
+                    <div class="card-body p-4">
+
+                        <i
+                            class="bi bi-cpu-fill fs-1 text-success">
+                        </i>
+
+                        <h4 class="fw-bold mt-3">
+                            Technology
+                        </h4>
+
+                        <p class="text-muted">
+
+                            Deploy precision farming tools,
+                            climate-resilient technologies and
+                            agro-mechanisation solutions.
+
+                        </p>
+
+                        <a
+                            href="#"
+                            class="btn btn-outline-success">
+
+                            Explore Technology
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RESOURCES
+===================================================== -->
+
+<section
+    id="resources"
+    class="py-5 bg-light reveal">
+
+    <div class="container py-4">
+
+
+        <div class="row align-items-center mb-5">
+
+            <div class="col-lg-8">
+
+                <span class="text-success fw-bold">
+
+                    REPORTS & PUBLICATIONS
+
+                </span>
+
+                <h2 class="display-6 fw-bold mt-2">
+
+                    Knowledge & Resources
+
+                </h2>
+
+            </div>
+
+            <div class="col-lg-4 text-lg-end">
+
+                <a
+                    href="#"
+                    class="btn btn-success">
+
+                    View All Resources
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="row g-3">
+
+
+            <div class="col-lg-4">
+
+                <div
+                    class="bg-white rounded-3 p-4 shadow-sm h-100 resource-card stagger-item">
+
+                    <i
+                        class="bi bi-file-earmark-bar-graph fs-2 text-success">
+                    </i>
+
+                    <h5 class="fw-bold mt-3">
+
+                        South East Food Production Report
+
+                    </h5>
+
+                    <p class="text-muted small">
+
+                        Regional crop yields, supply volumes and
+                        food-security metrics.
+
+                    </p>
+
+                    <a
+                        href="#"
+                        class="text-success fw-bold">
+
+                        View Report →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-lg-4">
+
+                <div
+                    class="bg-white rounded-3 p-4 shadow-sm h-100 resource-card stagger-item">
+
+                    <i
+                        class="bi bi-file-earmark-text fs-2 text-success">
+                    </i>
+
+                    <h5 class="fw-bold mt-3">
+                        NRARD Policy Brief
+                    </h5>
+
+                    <p class="text-muted small">
+
+                        Strategic updates guiding natural resource
+                        governance and rural development.
+
+                    </p>
+
+                    <a
+                        href="#"
+                        class="text-success fw-bold">
+
+                        View Policy Brief →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-lg-4">
+
+                <div
+                    class="bg-white rounded-3 p-4 shadow-sm h-100 resource-card stagger-item">
+
+                    <i
+                        class="bi bi-newspaper fs-2 text-success">
+                    </i>
+
+                    <h5 class="fw-bold mt-3">
+                        Monthly Newsletter
+                    </h5>
+
+                    <p class="text-muted small">
+
+                        Field deployments, intervention milestones and
+                        upcoming opportunities.
+
+                    </p>
+
+                    <a
+                        href="#"
+                        class="text-success fw-bold">
+
+                        Read Newsletter →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     NEWSLETTER
+===================================================== -->
+
+<section
+    class="py-5 bg-dark text-white reveal">
+
+    <div class="container py-4">
+
+        <div class="row align-items-center g-4">
+
+
+            <div class="col-lg-6">
+
+                <span class="text-warning fw-bold">
+                    STAY INFORMED
+                </span>
+
+                <h2 class="fw-bold mt-2">
+
+                    Get updates from the Directorate
+
+                </h2>
+
+                <p class="text-white-50">
+
+                    Stay updated on field deployments, programmes,
+                    opportunities and development activities.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="col-lg-6">
+
+                <form class="newsletter-form">
+
+                    <div class="input-group input-group-lg">
+
+                        <input
+                            type="email"
+                            class="form-control"
+                            placeholder="Enter your email address"
+                            required>
+
+                        <button
+                            class="btn btn-warning"
+                            type="submit">
+
+                            Subscribe
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+    id="contact"
+    class="py-5 bg-white reveal">
+
+    <div class="container py-4">
+
+        <div class="row g-5">
+
+
+            <div class="col-lg-5">
+
+                <span class="text-success fw-bold">
+                    CONTACT
+                </span>
+
+                <h2 class="display-6 fw-bold mt-2">
+
+                    Connect With the Directorate
+
+                </h2>
+
+                <p class="text-muted">
+
+                    For partnerships, programmes, agricultural
+                    opportunities and general enquiries, contact the
+                    South East Development Commission.
+
+                </p>
+
+
+                <div class="mt-4">
+
+
+                    <div class="d-flex mb-3">
+
+                        <i
+                            class="bi bi-envelope-fill fs-4 text-success me-3">
+                        </i>
+
+                        <div>
+
+                            <strong>Email</strong>
+
+                            <br>
+
+                            info@sedc.gov.ng
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="d-flex mb-3">
+
+                        <i
+                            class="bi bi-geo-alt-fill fs-4 text-success me-3">
+                        </i>
+
+                        <div>
+
+                            <strong>Headquarters</strong>
+
+                            <br>
+
+                            Enugu State, Nigeria
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-lg-7">
+
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-body p-4 p-lg-5">
+
+                        <h4 class="fw-bold mb-4">
+                            Send an Enquiry
+                        </h4>
+
+
+                        <form>
+
+                            <div class="row g-3">
+
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        First Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        required>
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label class="form-label">
+                                        Last Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        required>
+
+                                </div>
+
+
+                                <div class="col-12">
+
+                                    <label class="form-label">
+                                        Email Address
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        required>
+
+                                </div>
+
+
+                                <div class="col-12">
+
+                                    <label class="form-label">
+                                        Message
+                                    </label>
+
+                                    <textarea
+                                        class="form-control"
+                                        rows="5"
+                                        required></textarea>
+
+                                </div>
+
+
+                                <div class="col-12">
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-success px-4">
+
+                                        Send Message
+
+                                    </button>
+
+                                </div>
+
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="bg-dark text-white pt-5 pb-3">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+
+            <div class="col-lg-5">
+
+                <h4 class="fw-bold">
+                    SEDC
+                </h4>
+
+                <p class="text-white-50">
+
+                    Directorate of Natural Resources, Agriculture
+                    and Rural Development.
+
+                </p>
+
+                <p class="text-white-50 small">
+
+                    Driving sustainable agricultural transformation,
+                    responsible natural resource management and
+                    rural development across South East Nigeria.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="col-6 col-lg-2">
+
+                <h6 class="fw-bold">
+                    Navigation
+                </h6>
+
+                <ul class="list-unstyled">
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#top"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#about"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            About
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#programmes"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Programmes
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a
+                            href="#activities"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Activities
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="col-6 col-lg-2">
+
+                <h6 class="fw-bold">
+                    Resources
+                </h6>
+
+                <ul class="list-unstyled">
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#resources"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Reports
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#opportunities"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Opportunities
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Gallery
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a
+                            href="#"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            FAQs
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="col-lg-3">
+
+                <h6 class="fw-bold">
+                    Follow Us
+                </h6>
+
+                <div class="d-flex gap-3 fs-4">
+
+                    <a
+                        href="#"
+                        class="text-white">
+
+                        <i class="bi bi-facebook"></i>
+
+                    </a>
+
+                    <a
+                        href="#"
+                        class="text-white">
+
+                        <i class="bi bi-instagram"></i>
+
+                    </a>
+
+                    <a
+                        href="#"
+                        class="text-white">
+
+                        <i class="bi bi-twitter-x"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <hr class="border-secondary my-4">
+
+
+        <div
+            class="d-flex flex-column flex-md-row justify-content-between text-white-50 small">
+
+            <p>
+
+                © 2026 South East Development Commission.
+                All rights reserved.
+
+            </p>
+
+            <div>
+
+                <a
+                    href="#"
+                    class="text-white-50 text-decoration-none me-3">
+
+                    Privacy Policy
+
+                </a>
+
+                <a
+                    href="#"
+                    class="text-white-50 text-decoration-none">
+
+                    Freedom of Information
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<button
+    type="button"
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Back to top">
+
+    <i class="bi bi-arrow-up"></i>
+
+</button>
+
+
+
+<!-- =====================================================
+     BOOTSTRAP JAVASCRIPT
+===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+
+<!-- =====================================================
+     CUSTOM JAVASCRIPT
+===================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal, .reveal-left, .reveal-right, .reveal-scale"
+        );
+
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "is-visible"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12,
+
+                rootMargin:
+                    "0px 0px -60px 0px"
+            }
+        );
+
+
+    revealElements.forEach((element) => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+
+    /* =====================================================
+       STAGGERED CARD ANIMATION
+    ===================================================== */
+
+    const staggerGroups =
+        document.querySelectorAll(".row");
+
+
+    const staggerObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (!entry.isIntersecting)
+                        return;
+
+
+                    const items =
+                        entry.target.querySelectorAll(
+                            ".stagger-item"
+                        );
+
+
+                    items.forEach(
+                        (item, index) => {
+
+                            item.style.transitionDelay =
+                                `${index * 120}ms`;
+
+                            item.classList.add(
+                                "is-visible"
+                            );
+
+                        }
+                    );
+
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                });
+
+            },
+            {
+                threshold: 0.08
+            }
+        );
+
+
+    staggerGroups.forEach((group) => {
+
+        if (
+            group.querySelector(
+                ".stagger-item"
+            )
+        ) {
+
+            staggerObserver.observe(
+                group
+            );
+
+        }
+
+    });
+
+
+
+    /* =====================================================
+       ANIMATED COUNTERS
+    ===================================================== */
+
+    const counters =
+        document.querySelectorAll(
+            ".stat-number"
+        );
+
+
+    const animateCounter =
+        (element) => {
+
+            const target =
+                Number(
+                    element.dataset.target
+                );
+
+            const suffix =
+                element.dataset.suffix || "";
+
+
+            const duration = 1500;
+
+            const startTime =
+                performance.now();
+
+
+            const update =
+                (currentTime) => {
+
+                    const progress =
+                        Math.min(
+                            (
+                                currentTime -
+                                startTime
+                            ) / duration,
+                            1
+                        );
+
+
+                    /* Ease-out */
+                    const easedProgress =
+                        1 -
+                        Math.pow(
+                            1 - progress,
+                            3
+                        );
+
+
+                    const currentValue =
+                        Math.floor(
+                            target *
+                            easedProgress
+                        );
+
+
+                    element.textContent =
+                        currentValue
+                            .toLocaleString() +
+                        suffix;
+
+
+                    if (progress < 1) {
+
+                        requestAnimationFrame(
+                            update
+                        );
+
+                    } else {
+
+                        element.textContent =
+                            target
+                                .toLocaleString() +
+                            suffix;
+
+                    }
+
+                };
+
+
+            requestAnimationFrame(
+                update
+            );
+
+        };
+
+
+    const counterObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        animateCounter(
+                            entry.target
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.5
+            }
+        );
+
+
+    counters.forEach((counter) => {
+
+        counterObserver.observe(
+            counter
+        );
+
+    });
+
+
+
+    /* =====================================================
+       NAVBAR SHADOW
+    ===================================================== */
+
+    const navbar =
+        document.querySelector(
+            ".navbar"
+        );
+
+
+    const updateNavbar =
+        () => {
+
+            if (
+                window.scrollY > 30
+            ) {
+
+                navbar.classList.add(
+                    "navbar-scrolled"
+                );
+
+            } else {
+
+                navbar.classList.remove(
+                    "navbar-scrolled"
+                );
+
+            }
+
+        };
+
+
+    updateNavbar();
+
+
+    window.addEventListener(
+        "scroll",
+        updateNavbar,
+        {
+            passive: true
+        }
+    );
+
+
+
+    /* =====================================================
+       ACTIVE NAVIGATION
+    ===================================================== */
+
+    const navLinks =
+        document.querySelectorAll(
+            ".navbar .nav-link[data-section]"
+        );
+
+
+    const sections = [];
+
+
+    navLinks.forEach((link) => {
+
+        const id =
+            link.dataset.section;
+
+
+        const section =
+            document.getElementById(id);
+
+
+        if (section) {
+
+            sections.push({
+                id: id,
+                element: section
+            });
+
+        }
+
+    });
+
+
+    const updateActiveNav =
+        () => {
+
+            let current = "top";
+
+
+            const scrollPosition =
+                window.scrollY + 150;
+
+
+            sections.forEach(
+                ({ id, element }) => {
+
+                    if (
+                        scrollPosition >=
+                        element.offsetTop
+                    ) {
+
+                        current = id;
+
+                    }
+
+                }
+            );
+
+
+            navLinks.forEach((link) => {
+
+                link.classList.toggle(
+                    "active",
+                    link.dataset.section ===
+                    current
+                );
+
+            });
+
+        };
+
+
+    updateActiveNav();
+
+
+    window.addEventListener(
+        "scroll",
+        updateActiveNav,
+        {
+            passive: true
+        }
+    );
+
+
+
+    /* =====================================================
+       SMOOTH NAVIGATION
+    ===================================================== */
+
+    document
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
+        .forEach((link) => {
+
+            link.addEventListener(
+                "click",
+                (event) => {
+
+                    const targetId =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (!target)
+                        return;
+
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+
+                    /* Close mobile menu */
+
+                    const navbarCollapse =
+                        document.getElementById(
+                            "mainNavbar"
+                        );
+
+
+                    if (
+                        navbarCollapse &&
+                        navbarCollapse.classList.contains(
+                            "show"
+                        )
+                    ) {
+
+                        const collapse =
+                            bootstrap.Collapse
+                                .getInstance(
+                                    navbarCollapse
+                                ) ||
+                            new bootstrap.Collapse(
+                                navbarCollapse,
+                                {
+                                    toggle: false
+                                }
+                            );
+
+
+                        collapse.hide();
+
+                    }
+
+                }
+            );
+
+        });
+
+
+
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
+
+    const backToTop =
+        document.getElementById(
+            "backToTop"
+        );
+
+
+    const updateBackToTop =
+        () => {
+
+            if (
+                window.scrollY > 500
+            ) {
+
+                backToTop.classList.add(
+                    "show"
+                );
+
+            } else {
+
+                backToTop.classList.remove(
+                    "show"
+                );
+
+            }
+
+        };
+
+
+    updateBackToTop();
+
+
+    window.addEventListener(
+        "scroll",
+        updateBackToTop,
+        {
+            passive: true
+        }
+    );
+
+
+    backToTop.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+
+
+    /* =====================================================
+       NEWSLETTER
+    ===================================================== */
+
+    const newsletterForm =
+        document.querySelector(
+            ".newsletter-form"
+        );
+
+
+    if (newsletterForm) {
+
+        newsletterForm.addEventListener(
+            "submit",
+            (event) => {
+
+                event.preventDefault();
+
+
+                const input =
+                    newsletterForm.querySelector(
+                        "input[type='email']"
+                    );
+
+
+                if (
+                    !input.value.trim()
+                ) {
+
+                    input.focus();
+
+                    return;
+
+                }
+
+
+                alert(
+                    "Thank you for subscribing."
+                );
+
+
+                newsletterForm.reset();
+
+            }
+        );
+
+    }
+
+
+
+    /* =====================================================
+       CONTACT FORM
+    ===================================================== */
+
+    const contactForms =
+        document.querySelectorAll(
+            "#contact form"
+        );
+
+
+    contactForms.forEach((form) => {
+
+        form.addEventListener(
+            "submit",
+            (event) => {
+
+                event.preventDefault();
+
+
+                if (
+                    !form.checkValidity()
+                ) {
+
+                    form.classList.add(
+                        "was-validated"
+                    );
+
+                    return;
+
+                }
+
+
+                const button =
+                    form.querySelector(
+                        "button[type='submit']"
+                    );
+
+
+                const originalText =
+                    button.innerHTML;
+
+
+                button.disabled = true;
+
+
+                button.innerHTML =
+                    `<span
+                        class="spinner-border
+                        spinner-border-sm
+                        me-2">
+                    </span>
+                    Sending...`;
+
+
+                setTimeout(() => {
+
+                    button.innerHTML =
+                        `<i
+                            class="bi
+                            bi-check-circle
+                            me-2">
+                        </i>
+                        Message Sent`;
+
+
+                    button.classList.remove(
+                        "btn-success"
+                    );
+
+
+                    button.classList.add(
+                        "btn-dark"
+                    );
+
+
+                    form.reset();
+
+
+                    setTimeout(() => {
+
+                        button.disabled =
+                            false;
+
+
+                        button.innerHTML =
+                            originalText;
+
+
+                        button.classList.remove(
+                            "btn-dark"
+                        );
+
+
+                        button.classList.add(
+                            "btn-success"
+                        );
+
+                    }, 2500);
+
+
+                }, 1200);
+
+            }
+        );
+
+    });
+
+
+});
+
+</script>
+
+
+</body>
+
+</html>
