@@ -98,7 +98,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-
+        
 
         /* =====================================================
            HERO
@@ -526,11 +526,13 @@
 
         <div class="d-flex justify-content-between align-items-center small">
 
-            <div>
+            <div class="d-flex align-items-center ">
 
                 <i class="bi bi-building me-2"></i>
 
-                South East Development Commission
+                <span>
+                    South East Development Commission
+                </span>
 
             </div>
 
@@ -711,20 +713,33 @@
      HERO
 ===================================================== -->
 
-<section
-    class="bg-success text-white py-5 hero-section">
+<section class="bg-success text-white py-5 hero-section">
 
     <div class="container py-5">
 
         <div class="row align-items-center g-5">
 
+            <!-- HERO IMAGE -->
+            <!-- Mobile: FIRST | Desktop: SECOND -->
+            <div class="col-lg-5 order-1 order-lg-2 hero-image reveal-right">
+
+                <div class="bg-white p-2 rounded-4 shadow hero-image-wrap">
+
+                    <img
+                        src="assets/images/agriculture-hero.jpg"
+                        alt="Agricultural development in South East Nigeria"
+                        class="img-fluid rounded-4">
+
+                </div>
+
+            </div>
+
 
             <!-- HERO TEXT -->
+            <!-- Mobile: SECOND | Desktop: FIRST -->
+            <div class="col-lg-7 order-2 order-lg-1 hero-content reveal-left">
 
-            <div class="col-lg-7 hero-content reveal-left">
-
-                <span
-                    class="badge bg-warning text-dark mb-3 px-3 py-2">
+                <span class="badge bg-warning text-dark mb-3 px-3 py-2">
 
                     SEDC • NRARD DIRECTORATE
 
@@ -773,25 +788,6 @@
                 </div>
 
             </div>
-
-
-
-            <!-- HERO IMAGE -->
-
-            <div class="col-lg-5 hero-image reveal-right">
-
-                <div
-                    class="bg-white p-2 rounded-4 shadow hero-image-wrap">
-
-                    <img
-                        src="assets/images/agriculture-hero.jpg"
-                        alt="Agricultural development in South East Nigeria"
-                        class="img-fluid rounded-4">
-
-                </div>
-
-            </div>
-
 
         </div>
 
