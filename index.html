@@ -252,6 +252,154 @@
             min-height: 1.2em;
         }
 
+        /* =====================================================
+          ACTIVITY
+        ===================================================== */
+
+/* =========================================
+   ACTIVITIES CAROUSEL
+========================================= */
+
+.activities-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0 48px;
+}
+
+.activities-viewport {
+    width: 100%;
+    overflow: hidden;
+    touch-action: pan-y;
+}
+
+.activities-track {
+    display: flex;
+    transition: transform 0.65s cubic-bezier(.22, 1, .36, 1);
+    will-change: transform;
+}
+
+.activity-slide {
+    flex: 0 0 33.333333%;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+.activity-card {
+    overflow: hidden;
+    height: 100%;
+}
+
+.activity-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.activities-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background: #198754;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    line-height: 1;
+    z-index: 5;
+    cursor: pointer;
+    box-shadow: 0 .35rem .9rem rgba(0, 0, 0, .15);
+    transition: background .3s ease, transform .3s ease;
+}
+
+.activities-btn:hover {
+    background: #146c43;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.activities-btn:focus-visible {
+    outline: 3px solid rgba(25, 135, 84, .35);
+    outline-offset: 3px;
+}
+
+.activities-prev {
+    left: 0;
+}
+
+.activities-next {
+    right: 0;
+}
+
+.activities-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #b8b8b8;
+    cursor: pointer;
+    transition: width .3s ease, background .3s ease;
+}
+
+.activities-dot.active {
+    width: 28px;
+    border-radius: 10px;
+    background: #198754;
+}
+
+@media (max-width: 991px) {
+    .activity-slide {
+        flex: 0 0 50%;
+    }
+}
+
+@media (max-width: 767px) {
+    .activities-carousel-wrapper {
+        padding: 0 38px;
+    }
+
+    .activity-slide {
+        flex: 0 0 100%;
+        padding: 0 4px;
+    }
+
+    .activity-card img {
+        height: 230px;
+    }
+
+    .activities-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 27px;
+    }
+
+    .activities-prev {
+        left: 0;
+    }
+
+    .activities-next {
+        right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .activities-carousel-wrapper {
+        padding: 0 34px;
+    }
+
+    .activity-card img {
+        height: 210px;
+    }
+
+    .activity-card .card-body {
+        padding: 1.25rem !important;
+    }
+}
+
 
         /* =====================================================
            BACK TO TOP
@@ -304,6 +452,288 @@
 
             transform: translateY(-4px);
         }
+
+        /* ========================================
+BLOG / NEWS SECTION
+======================================== */
+
+.blog-main-card {
+height: 100%;
+background: #ffffff;
+border-radius: 15px;
+overflow: hidden;
+border: 1px solid #e9ecef;
+box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+transition: all 0.35s ease;
+}
+
+.blog-main-card:hover {
+transform: translateY(-6px);
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Main Image */
+
+.blog-main-image {
+position: relative;
+height: 360px;
+overflow: hidden;
+}
+
+.blog-main-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.6s ease;
+}
+
+.blog-main-card:hover .blog-main-image img {
+transform: scale(1.06);
+}
+
+/* Category */
+
+.blog-category {
+position: absolute;
+left: 20px;
+bottom: 20px;
+background: #198754;
+color: #ffffff;
+padding: 8px 15px;
+border-radius: 5px;
+font-size: 13px;
+font-weight: 600;
+}
+
+/* Main Content */
+
+.blog-main-content {
+padding: 28px;
+}
+
+.blog-meta {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+margin-bottom: 15px;
+color: #6c757d;
+font-size: 13px;
+}
+
+.blog-meta i {
+color: #198754;
+}
+
+.blog-main-content h3 {
+color: #212529;
+font-size: 27px;
+line-height: 1.35;
+font-weight: 700;
+margin-bottom: 15px;
+}
+
+.blog-main-content p {
+color: #6c757d;
+font-size: 15px;
+line-height: 1.75;
+margin-bottom: 10px;
+}
+
+/* Read More */
+
+.blog-read-more {
+display: inline-flex;
+align-items: center;
+margin-top: 12px;
+color: #198754;
+text-decoration: none;
+font-weight: 600;
+transition: all 0.3s ease;
+}
+
+.blog-read-more:hover {
+color: #146c43;
+transform: translateX(5px);
+}
+
+/* ========================================
+SMALL NEWS CARDS
+======================================== */
+
+.blog-side-news {
+display: flex;
+flex-direction: column;
+gap: 20px;
+height: 100%;
+}
+
+.blog-small-card {
+display: flex;
+min-height: 150px;
+background: #ffffff;
+border-radius: 12px;
+overflow: hidden;
+border: 1px solid #e9ecef;
+box-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
+transition: all 0.35s ease;
+}
+
+.blog-small-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+}
+
+/* Small Image */
+
+.blog-small-image {
+flex: 0 0 155px;
+width: 155px;
+overflow: hidden;
+}
+
+.blog-small-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.5s ease;
+}
+
+.blog-small-card:hover .blog-small-image img {
+transform: scale(1.08);
+}
+
+/* Small Content */
+
+.blog-small-content {
+padding: 17px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.blog-small-category {
+color: #198754;
+font-size: 11px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.7px;
+margin-bottom: 5px;
+}
+
+.blog-small-content h4 {
+color: #212529;
+font-size: 16px;
+line-height: 1.4;
+font-weight: 700;
+margin-bottom: 7px;
+}
+
+.blog-small-date {
+color: #6c757d;
+font-size: 12px;
+margin-bottom: 7px;
+}
+
+.blog-small-link {
+color: #198754;
+font-size: 13px;
+font-weight: 600;
+text-decoration: none;
+transition: all 0.3s ease;
+}
+
+.blog-small-link:hover {
+color: #146c43;
+transform: translateX(4px);
+}
+
+/* ========================================
+RESPONSIVE
+======================================== */
+
+@media (max-width: 991px) {
+
+
+.blog-main-image {
+    height: 320px;
+}
+
+.blog-main-content h3 {
+    font-size: 24px;
+}
+
+.blog-small-card {
+    min-height: 140px;
+}
+
+.blog-small-image {
+    flex: 0 0 140px;
+    width: 140px;
+}
+
+
+}
+
+@media (max-width: 767px) {
+
+
+.blog-main-image {
+    height: 250px;
+}
+
+.blog-main-content {
+    padding: 22px;
+}
+
+.blog-main-content h3 {
+    font-size: 21px;
+}
+
+.blog-main-content p {
+    font-size: 14px;
+}
+
+.blog-small-card {
+    min-height: 130px;
+}
+
+.blog-small-image {
+    flex: 0 0 120px;
+    width: 120px;
+}
+
+.blog-small-content {
+    padding: 13px;
+}
+
+.blog-small-content h4 {
+    font-size: 14px;
+}
+
+
+}
+
+@media (max-width: 480px) {
+
+
+.blog-main-image {
+    height: 210px;
+}
+
+.blog-small-card {
+    display: block;
+}
+
+.blog-small-image {
+    width: 100%;
+    height: 180px;
+}
+
+.blog-small-content {
+    padding: 18px;
+}
+
+}
 
 
         /* =====================================================
@@ -566,7 +996,7 @@
             href="#top">
 
             <img
-                src="assets/images/sedc-logo.png"
+                src="assets/images/sedc-logo.jpg"
                 alt="SEDC Logo"
                 height="55"
                 class="me-2">
@@ -637,6 +1067,19 @@
                         data-section="programmes">
 
                         Programmes
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#blog"
+                        data-section="blog">
+
+                        Blog
 
                     </a>
 
@@ -713,11 +1156,11 @@
      HERO
 ===================================================== -->
 
-<section class="bg-success text-white py-5 hero-section">
+<section class="bg-success text-white py-2 hero-section">
 
     <div class="container py-5">
 
-        <div class="row align-items-center g-5">
+        <div class="row align-items-center g-2">
 
             <!-- HERO IMAGE -->
             <!-- Mobile: FIRST | Desktop: SECOND -->
@@ -757,7 +1200,7 @@
                 </h1>
 
 
-                <p class="lead mb-4">
+                <p class="lead mb-2">
 
                     Driving sustainable agriculture, responsible
                     natural resource management and rural economic
@@ -803,9 +1246,9 @@
 
 <section
     id="about"
-    class="py-5 bg-white reveal">
+    class="py-2 bg-white reveal">
 
-    <div class="container py-4">
+    <div class="container py-3">
 
         <div class="row align-items-center g-5">
 
@@ -1124,7 +1567,7 @@
                     class="card h-100 border-0 shadow-sm overflow-hidden programme-card stagger-item">
 
                     <img
-                        src="assets/images/seadp.jpg"
+                        src="assets/images/programme-1.jpg"
                         class="card-img-top"
                         alt="South East Agro Development Programme">
 
@@ -1176,7 +1619,7 @@
                     class="card h-100 border-0 shadow-sm overflow-hidden programme-card stagger-item">
 
                     <img
-                        src="assets/images/community.jpg"
+                        src="assets/images/communi.jpg"
                         class="card-img-top"
                         alt="Community development">
 
@@ -1227,7 +1670,7 @@
                     class="card h-100 border-0 shadow-sm overflow-hidden programme-card stagger-item">
 
                     <img
-                        src="assets/images/minerals.jpg"
+                        src="assets/images/programme-2.jpg"
                         class="card-img-top"
                         alt="Natural resources and minerals">
 
@@ -1440,24 +1883,257 @@
 
 </section>
 
+<!-- =========================
+     BLOG / NEWS SECTION
+========================= -->
+
+<section id="blog" class="py-5 bg-light">
+
+<div class="container">
+
+    <!-- Section Heading -->
+    <div class="text-center mb-5">
+        <span class="text-uppercase fw-bold text-success">
+            News & Updates
+        </span>
+
+        <h2 class="fw-bold mt-2">
+            Latest News & Activities
+        </h2>
+
+        <p class="text-muted mx-auto" style="max-width: 700px;">
+            Stay updated with the latest programmes, projects,
+            engagements and development initiatives of SEDC.
+        </p>
+    </div>
+
+
+    <div class="row g-4">
+
+        <!-- =========================
+             FEATURED NEWS
+        ========================= -->
+        <div class="col-lg-7">
+
+            <article class="blog-main-card">
+
+                <div class="blog-main-image">
+
+                    <img
+                        src="assets/images/news-1.jpeg"
+                        alt="SEDC Agro-Mechanisation Project"
+                    >
+
+                    <span class="blog-category">
+                        Agriculture
+                    </span>
+
+                </div>
+
+
+                <div class="blog-main-content">
+
+                    <div class="blog-meta">
+
+                        <span>
+                            <i class="fas fa-calendar-alt me-2"></i>
+                            September 16, 2026
+                        </span>
+
+                        <span>
+                            <i class="fas fa-newspaper me-2"></i>
+                            News
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        First SEDC Agro-Mechanisation Project
+                        Set for Flag-Off in Enugu
+                    </h3>
+
+
+                    <p>
+                        The first South East Development Commission
+                        agro-mechanisation project is set for flag-off
+                        in Nomeh Unateze, Nkanu East Local Government
+                        Area of Enugu State.
+                    </p>
+
+                    <p>
+                        The initiative forms part of a wider
+                        agro-mechanisation programme planned across
+                        the South East, with projects proposed across
+                        the region's 15 senatorial zones.
+                    </p>
+
+
+                    <a
+                        href="https://www.premiumtimesng.com/promoted/910025-first-sedc-agro-mechanisation-project-set-for-flag-off-in-enugu.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="blog-read-more"
+                    >
+                        Read Full Story
+                        <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- =========================
+             OTHER NEWS
+        ========================= -->
+        <div class="col-lg-5">
+
+            <div class="blog-side-news">
+
+
+                <!-- News Item 1 -->
+                <article class="blog-small-card">
+
+                    <div class="blog-small-image">
+
+                        <img
+                            src="assets/images/news-2.jpeg"
+                            alt="Agricultural Development"
+                        >
+
+                    </div>
+
+
+                    <div class="blog-small-content">
+
+                        <span class="blog-small-category">
+                            Agriculture
+                        </span>
+
+                        <h4>
+                            Strengthening Agricultural Development
+                            Across the South East
+                        </h4>
+
+                        <div class="blog-small-date">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            September 2026
+                        </div>
+
+                        <a href="#" class="blog-small-link">
+                            Read More
+                            <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- News Item 2 -->
+                <article class="blog-small-card">
+
+                    <div class="blog-small-image">
+
+                        <img
+                            src="assets/images/news-3.jpeg"
+                            alt="Biotechnology Development"
+                        >
+
+                    </div>
+
+
+                    <div class="blog-small-content">
+
+                        <span class="blog-small-category">
+                            Innovation
+                        </span>
+
+                        <h4>
+                            Promoting Biotechnology for
+                            Agricultural Development
+                        </h4>
+
+                        <div class="blog-small-date">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            July 2026
+                        </div>
+
+                        <a href="#" class="blog-small-link">
+                            Read More
+                            <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- News Item 3 -->
+                <article class="blog-small-card">
+
+                    <div class="blog-small-image">
+
+                        <img
+                            src="assets/images/news-4.jpeg"
+                            alt="Stakeholder Engagement"
+                        >
+
+                    </div>
+
+
+                    <div class="blog-small-content">
+
+                        <span class="blog-small-category">
+                            Engagement
+                        </span>
+
+                        <h4>
+                            Stakeholder Engagements for
+                            Sustainable Agricultural Growth
+                        </h4>
+
+                        <div class="blog-small-date">
+                            <i class="fas fa-calendar-alt me-1"></i>
+                            July 2026
+                        </div>
+
+                        <a href="#" class="blog-small-link">
+                            Read More
+                            <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
 
 
 <!-- =====================================================
      ACTIVITIES
 ===================================================== -->
 
-<section
-    id="activities"
-    class="py-5 bg-light reveal">
+<section id="activities" class="py-5 bg-light reveal">
 
     <div class="container py-4">
 
-
-        <div
-            class="d-flex flex-wrap justify-content-between align-items-end mb-5">
+        <!-- SECTION HEADER -->
+        <div class="d-flex flex-wrap justify-content-between align-items-end mb-5">
 
             <div>
-
                 <span class="text-success fw-bold">
                     FROM THE DIRECTORATE
                 </span>
@@ -1465,164 +2141,305 @@
                 <h2 class="display-6 fw-bold mt-2">
                     Recent Activities
                 </h2>
-
             </div>
 
-            <a
-                href="#"
-                class="btn btn-outline-success">
-
+            <a href="#" class="btn btn-outline-success">
                 View All Activities
-
             </a>
 
         </div>
 
 
+        <!-- ACTIVITIES CAROUSEL -->
+        <div class="activities-carousel-wrapper">
 
-        <div class="row g-4">
+            <!-- PREVIOUS BUTTON -->
+            <button
+                type="button"
+                class="activities-btn activities-prev"
+                aria-label="Previous activity">
 
+                <span aria-hidden="true">‹</span>
 
-            <!-- ACTIVITY 1 -->
-
-            <div class="col-md-6 col-lg-4">
-
-                <div
-                    class="card h-100 border-0 shadow-sm activity-card stagger-item">
-
-                    <img
-                        src="assets/images/activity-1.jpg"
-                        class="card-img-top"
-                        alt="Africa Food Systems Forum">
-
-                    <div class="card-body p-4">
-
-                        <small class="text-success fw-bold">
-                            SEPTEMBER 2026
-                        </small>
-
-                        <h5 class="fw-bold mt-2">
-                            Africa Food Systems Forum
-                        </h5>
-
-                        <p class="text-muted small">
-
-                            Engagement at the Africa Food Systems Forum
-                            in Kigali focused on investment opportunities
-                            within the South East agri-food ecosystem.
-
-                        </p>
-
-                        <a
-                            href="#"
-                            class="text-success fw-bold">
-
-                            Read More →
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
+            </button>
 
 
+            <!-- VIEWPORT -->
+            <div class="activities-viewport">
 
-            <!-- ACTIVITY 2 -->
+                <!-- SLIDING TRACK -->
+                <div class="activities-track">
 
-            <div class="col-md-6 col-lg-4">
 
-                <div
-                    class="card h-100 border-0 shadow-sm activity-card stagger-item">
+                    <!-- ACTIVITY 1 -->
+                    <div class="activity-slide">
 
-                    <img
-                        src="assets/images/activity-2.jpg"
-                        class="card-img-top"
-                        alt="Agro mechanisation">
+                        <div class="card h-100 border-0 shadow-sm activity-card">
 
-                    <div class="card-body p-4">
+                            <img
+                                src="assets/images/activity-1.jpg"
+                                class="card-img-top"
+                                alt="Africa Food Systems Forum">
 
-                        <small class="text-success fw-bold">
-                            JULY 2026
-                        </small>
+                            <div class="card-body p-4">
 
-                        <h5 class="fw-bold mt-2">
+                                <small class="text-success fw-bold">
+                                    SEPTEMBER 2026
+                                </small>
 
-                            Agro-Mechanisation Stakeholder Engagements
+                                <h5 class="fw-bold mt-2">
+                                    Africa Food Systems Forum
+                                </h5>
 
-                        </h5>
+                                <p class="text-muted small">
+                                    Engagement at the Africa Food Systems
+                                    Forum in Kigali focused on investment
+                                    opportunities within the South East
+                                    agri-food ecosystem.
+                                </p>
 
-                        <p class="text-muted small">
+                                <a
+                                    href="#"
+                                    class="text-success fw-bold text-decoration-none">
 
-                            Community engagements across Enugu's
-                            senatorial zones supported land access,
-                            security and community participation.
+                                    Read More →
 
-                        </p>
+                                </a>
 
-                        <a
-                            href="#"
-                            class="text-success fw-bold">
+                            </div>
 
-                            Read More →
-
-                        </a>
+                        </div>
 
                     </div>
 
-                </div>
 
-            </div>
+                    <!-- ACTIVITY 2 -->
+                    <div class="activity-slide">
 
+                        <div class="card h-100 border-0 shadow-sm activity-card">
 
+                            <img
+                                src="assets/images/activity-2.jpg"
+                                class="card-img-top"
+                                alt="Agro mechanisation">
 
-            <!-- ACTIVITY 3 -->
+                            <div class="card-body p-4">
 
-            <div class="col-md-6 col-lg-4">
+                                <small class="text-success fw-bold">
+                                    JULY 2026
+                                </small>
 
-                <div
-                    class="card h-100 border-0 shadow-sm activity-card stagger-item">
+                                <h5 class="fw-bold mt-2">
+                                    Agro-Mechanisation Stakeholder Engagements
+                                </h5>
 
-                    <img
-                        src="assets/images/activity-3.jpg"
-                        class="card-img-top"
-                        alt="Agricultural biotechnology">
+                                <p class="text-muted small">
+                                    Community engagements across Enugu's
+                                    senatorial zones supported land access,
+                                    security and community participation.
+                                </p>
 
-                    <div class="card-body p-4">
+                                <a
+                                    href="#"
+                                    class="text-success fw-bold text-decoration-none">
 
-                        <small class="text-success fw-bold">
-                            JULY 2026
-                        </small>
+                                    Read More →
 
-                        <h5 class="fw-bold mt-2">
+                                </a>
 
-                            Biotechnology for Agricultural Development
+                            </div>
 
-                        </h5>
-
-                        <p class="text-muted small">
-
-                            Discussions with the National Biotechnology
-                            Development Agency explored biotechnology
-                            applications for agriculture and economic growth.
-
-                        </p>
-
-                        <a
-                            href="#"
-                            class="text-success fw-bold">
-
-                            Read More →
-
-                        </a>
+                        </div>
 
                     </div>
 
-                </div>
 
+                    <!-- ACTIVITY 3 -->
+                    <div class="activity-slide">
+
+                        <div class="card h-100 border-0 shadow-sm activity-card">
+
+                            <img
+                                src="assets/images/activity-3.jpg"
+                                class="card-img-top"
+                                alt="Agricultural biotechnology">
+
+                            <div class="card-body p-4">
+
+                                <small class="text-success fw-bold">
+                                    JULY 2026
+                                </small>
+
+                                <h5 class="fw-bold mt-2">
+                                    Biotechnology for Agricultural Development
+                                </h5>
+
+                                <p class="text-muted small">
+                                    Discussions with the National Biotechnology
+                                    Development Agency explored biotechnology
+                                    applications for agriculture and economic growth.
+                                </p>
+
+                                <a
+                                    href="#"
+                                    class="text-success fw-bold text-decoration-none">
+
+                                    Read More →
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIVITY 4 -->
+                    <div class="activity-slide">
+
+                        <div class="card h-100 border-0 shadow-sm activity-card">
+
+                            <img
+                                src="assets/images/activity-4.jpg"
+                                class="card-img-top"
+                                alt="Agricultural investment">
+
+                            <div class="card-body p-4">
+
+                                <small class="text-success fw-bold">
+                                    JUNE 2026
+                                </small>
+
+                                <h5 class="fw-bold mt-2">
+                                    Agricultural Investment Promotion
+                                </h5>
+
+                                <p class="text-muted small">
+                                    Stakeholder engagements focused on
+                                    strengthening agricultural investment
+                                    and creating opportunities for the
+                                    South East region.
+                                </p>
+
+                                <a
+                                    href="#"
+                                    class="text-success fw-bold text-decoration-none">
+
+                                    Read More →
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIVITY 5 -->
+                    <div class="activity-slide">
+
+                        <div class="card h-100 border-0 shadow-sm activity-card">
+
+                            <img
+                                src="assets/images/activity-5.jpg"
+                                class="card-img-top"
+                                alt="Stakeholder consultation meeting">
+
+                            <div class="card-body p-4">
+
+                                <small class="text-success fw-bold">
+                                    MAY 2026
+                                </small>
+
+                                <h5 class="fw-bold mt-2">
+                                    Stakeholder Consultation Meeting
+                                </h5>
+
+                                <p class="text-muted small">
+                                    Consultations with key stakeholders
+                                    explored opportunities for collaboration,
+                                    development and regional growth.
+                                </p>
+
+                                <a
+                                    href="#"
+                                    class="text-success fw-bold text-decoration-none">
+
+                                    Read More →
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIVITY 6 -->
+                    <div class="activity-slide">
+
+                        <div class="card h-100 border-0 shadow-sm activity-card">
+
+                            <img
+                                src="assets/images/activity-6.jpg"
+                                class="card-img-top"
+                                alt="Regional agricultural development">
+
+                            <div class="card-body p-4">
+
+                                <small class="text-success fw-bold">
+                                    APRIL 2026
+                                </small>
+
+                                <h5 class="fw-bold mt-2">
+                                    Regional Agricultural Development
+                                </h5>
+
+                                <p class="text-muted small">
+                                    The Directorate engaged partners on
+                                    initiatives aimed at improving agricultural
+                                    productivity and supporting local communities.
+                                </p>
+
+                                <a
+                                    href="#"
+                                    class="text-success fw-bold text-decoration-none">
+
+                                    Read More →
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
             </div>
 
+
+            <!-- NEXT BUTTON -->
+            <button
+                type="button"
+                class="activities-btn activities-next"
+                aria-label="Next activity">
+
+                <span aria-hidden="true">›</span>
+
+            </button>
+
+        </div>
+
+
+        <!-- INDICATORS -->
+        <div
+            class="activities-dots d-flex justify-content-center align-items-center gap-2 mt-4"
+            aria-label="Activity carousel indicators">
 
         </div>
 
@@ -3256,6 +4073,430 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     });
+
+
+    /* =====================================================
+       RESPONSIVE ACTIVITIES CAROUSEL
+       Desktop: 3 | Tablet: 2 | Mobile: 1
+       Moves ONE activity at a time
+    ===================================================== */
+
+    const activityTrack =
+        document.querySelector(".activities-track");
+
+    const activitySlides =
+        document.querySelectorAll(".activity-slide");
+
+    const activityNext =
+        document.querySelector(".activities-next");
+
+    const activityPrev =
+        document.querySelector(".activities-prev");
+
+    const activityDots =
+        document.querySelector(".activities-dots");
+
+
+    if (
+        activityTrack &&
+        activitySlides.length &&
+        activityNext &&
+        activityPrev &&
+        activityDots
+    ) {
+
+        let activityIndex = 0;
+        let activityItemsPerView = 3;
+        let activityAutoSlide;
+
+
+        /* Get the number of visible cards */
+
+        function getActivityItemsPerView() {
+
+            if (window.innerWidth <= 767) {
+                return 1;
+            }
+
+            if (window.innerWidth <= 991) {
+                return 2;
+            }
+
+            return 3;
+
+        }
+
+
+        /* Maximum position */
+
+        function getActivityMaxIndex() {
+
+            return Math.max(
+                0,
+                activitySlides.length -
+                activityItemsPerView
+            );
+
+        }
+
+
+        /* Move the track */
+
+        function moveActivities() {
+
+            if (!activitySlides[0]) return;
+
+            const slideWidth =
+                activitySlides[0].getBoundingClientRect().width;
+
+            activityTrack.style.transform =
+                `translate3d(-${activityIndex * slideWidth}px, 0, 0)`;
+
+            updateActivityDots();
+
+        }
+
+
+        /* Create indicator dots */
+
+        function createActivityDots() {
+
+            activityDots.innerHTML = "";
+
+            const totalPositions =
+                getActivityMaxIndex() + 1;
+
+
+            for (
+                let i = 0;
+                i < totalPositions;
+                i++
+            ) {
+
+                const dot =
+                    document.createElement("button");
+
+                dot.type = "button";
+
+                dot.className =
+                    "activities-dot";
+
+                dot.setAttribute(
+                    "aria-label",
+                    `Go to activity position ${i + 1}`
+                );
+
+
+                dot.addEventListener(
+                    "click",
+                    () => {
+
+                        activityIndex = i;
+
+                        moveActivities();
+
+                        restartActivityAutoSlide();
+
+                    }
+                );
+
+
+                activityDots.appendChild(dot);
+
+            }
+
+
+            updateActivityDots();
+
+        }
+
+
+        /* Update active dot */
+
+        function updateActivityDots() {
+
+            const dots =
+                activityDots.querySelectorAll(
+                    ".activities-dot"
+                );
+
+
+            dots.forEach(
+                (dot, index) => {
+
+                    dot.classList.toggle(
+                        "active",
+                        index === activityIndex
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* Next activity */
+
+        function nextActivity() {
+
+            const maxIndex =
+                getActivityMaxIndex();
+
+
+            if (
+                activityIndex <
+                maxIndex
+            ) {
+
+                activityIndex++;
+
+            } else {
+
+                /*
+                 * Return to the beginning
+                 * after reaching the last position.
+                 */
+
+                activityIndex = 0;
+
+            }
+
+
+            moveActivities();
+
+        }
+
+
+        /* Previous activity */
+
+        function previousActivity() {
+
+            const maxIndex =
+                getActivityMaxIndex();
+
+
+            if (activityIndex > 0) {
+
+                activityIndex--;
+
+            } else {
+
+                activityIndex = maxIndex;
+
+            }
+
+
+            moveActivities();
+
+        }
+
+
+        /* Buttons */
+
+        activityNext.addEventListener(
+            "click",
+            () => {
+
+                nextActivity();
+
+                restartActivityAutoSlide();
+
+            }
+        );
+
+
+        activityPrev.addEventListener(
+            "click",
+            () => {
+
+                previousActivity();
+
+                restartActivityAutoSlide();
+
+            }
+        );
+
+
+        /* Auto slide */
+
+        function startActivityAutoSlide() {
+
+            clearInterval(
+                activityAutoSlide
+            );
+
+
+            activityAutoSlide =
+                setInterval(
+                    () => {
+
+                        nextActivity();
+
+                    },
+                    5000
+                );
+
+        }
+
+
+        function restartActivityAutoSlide() {
+
+            clearInterval(
+                activityAutoSlide
+            );
+
+            startActivityAutoSlide();
+
+        }
+
+
+        /* Pause while the mouse is over the carousel */
+
+        const activityCarousel =
+            document.querySelector(
+                ".activities-carousel-wrapper"
+            );
+
+
+        activityCarousel.addEventListener(
+            "mouseenter",
+            () => {
+
+                clearInterval(
+                    activityAutoSlide
+                );
+
+            }
+        );
+
+
+        activityCarousel.addEventListener(
+            "mouseleave",
+            () => {
+
+                startActivityAutoSlide();
+
+            }
+        );
+
+
+        /* Touch / swipe support */
+
+        let activityTouchStartX = 0;
+        let activityTouchEndX = 0;
+
+
+        activityTrack.addEventListener(
+            "touchstart",
+            (event) => {
+
+                activityTouchStartX =
+                    event.changedTouches[0].screenX;
+
+                clearInterval(
+                    activityAutoSlide
+                );
+
+            },
+            { passive: true }
+        );
+
+
+        activityTrack.addEventListener(
+            "touchend",
+            (event) => {
+
+                activityTouchEndX =
+                    event.changedTouches[0].screenX;
+
+
+                const distance =
+                    activityTouchEndX -
+                    activityTouchStartX;
+
+
+                if (Math.abs(distance) > 50) {
+
+                    if (distance < 0) {
+
+                        nextActivity();
+
+                    } else {
+
+                        previousActivity();
+
+                    }
+
+                }
+
+
+                startActivityAutoSlide();
+
+            },
+            { passive: true }
+        );
+
+
+        /* Responsive resize */
+
+        function updateActivityLayout() {
+
+            const newItemsPerView =
+                getActivityItemsPerView();
+
+
+            if (
+                newItemsPerView !==
+                activityItemsPerView
+            ) {
+
+                activityItemsPerView =
+                    newItemsPerView;
+
+
+                const maxIndex =
+                    getActivityMaxIndex();
+
+
+                if (
+                    activityIndex >
+                    maxIndex
+                ) {
+
+                    activityIndex =
+                        maxIndex;
+
+                }
+
+
+                createActivityDots();
+
+            }
+
+
+            moveActivities();
+
+        }
+
+
+        window.addEventListener(
+            "resize",
+            updateActivityLayout
+        );
+
+
+        /* Initialize */
+
+        activityItemsPerView =
+            getActivityItemsPerView();
+
+        createActivityDots();
+
+        moveActivities();
+
+        startActivityAutoSlide();
+
+    }
 
 
 });
