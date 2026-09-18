@@ -1,0 +1,3196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NRARD SEDC | Activities & Stories</title>
+
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <style>
+        .back-to-top {
+
+            position: fixed;
+
+            right: 1.25rem;
+            bottom: 1.25rem;
+
+            width: 48px;
+            height: 48px;
+
+            border: 0;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #198754;
+            color: #fff;
+
+            box-shadow:
+                0 .5rem 1.5rem rgba(0, 0, 0, .2);
+
+            z-index: 1050;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform: translateY(15px);
+
+            transition: all .3s ease;
+        }
+
+        .back-to-top.show {
+
+            opacity: 1;
+            visibility: visible;
+
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+
+            background: #146c43;
+
+            transform: translateY(-4px);
+        }
+
+        :root {
+
+            --sedc-green: #198754;
+
+            --sedc-dark: #17301f;
+
+            --sedc-light: #f5f8f6;
+
+            --sedc-muted: #6c757d;
+
+            --sedc-border: #e4ebe6;
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: var(--sedc-dark);
+
+            background: #ffffff;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .activities-hero {
+
+            background:
+                linear-gradient(
+                    rgba(8, 55, 31, 0.88),
+                    rgba(8, 55, 31, 0.88)
+                ),
+                url("assets/images/blog/activities-hero.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            padding: 110px 0;
+
+            color: white;
+
+        }
+
+
+        .hero-small-title {
+
+            color: #b8e0c8;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .activities-hero h1 {
+
+            font-size: clamp(38px, 5vw, 64px);
+
+            font-weight: 800;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .activities-hero p {
+
+            max-width: 800px;
+
+            margin: auto;
+
+            color: #e5eee8;
+
+            line-height: 1.8;
+
+            font-size: 17px;
+
+        }
+
+
+        /* =====================================================
+           ACTIVITIES SECTION
+        ===================================================== */
+
+        .activities-section {
+
+            background: var(--sedc-light);
+
+            padding: 90px 0;
+
+        }
+
+
+        .section-label {
+
+            color: var(--sedc-green);
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+        }
+
+
+        .section-heading {
+
+            font-size: clamp(32px, 4vw, 48px);
+
+            font-weight: 800;
+
+            margin-top: 8px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .section-intro {
+
+            max-width: 750px;
+
+            margin: 0 auto;
+
+            color: var(--sedc-muted);
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           FILTER BUTTONS
+        ===================================================== */
+
+        .filter-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 40px;
+
+            margin-bottom: 45px;
+
+        }
+
+
+        .filter-btn {
+
+            border: 1px solid var(--sedc-green);
+
+            background: white;
+
+            color: var(--sedc-green);
+
+            padding: 9px 18px;
+
+            border-radius: 50px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+        .filter-btn:hover,
+
+        .filter-btn.active {
+
+            background: var(--sedc-green);
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           ACTIVITY CARD
+        ===================================================== */
+
+        .activity-card {
+
+            background: white;
+
+            border: 1px solid var(--sedc-border);
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            height: 100%;
+
+            box-shadow:
+                0 7px 25px rgba(0, 0, 0, 0.05);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+
+        }
+
+
+        .activity-card:hover {
+
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 16px 35px rgba(0, 0, 0, 0.10);
+
+        }
+
+
+        /* =====================================================
+           CARD IMAGE
+        ===================================================== */
+
+        .activity-image {
+
+            height: 235px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: #dfe8e2;
+
+        }
+
+
+        .activity-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: transform 0.5s ease;
+
+        }
+
+
+        .activity-card:hover
+        .activity-image img {
+
+            transform: scale(1.06);
+
+        }
+
+
+        /* IMAGE PLACEHOLDER */
+
+        .image-placeholder {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dfeee4,
+                    #edf4ef
+                );
+
+            color: var(--sedc-green);
+
+            text-align: center;
+
+            padding: 20px;
+
+        }
+
+
+        .image-placeholder i {
+
+            font-size: 38px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .image-placeholder span {
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* =====================================================
+           CARD BODY
+        ===================================================== */
+
+        .activity-body {
+
+            padding: 24px;
+
+        }
+
+
+        .activity-number {
+
+            width: 38px;
+
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(25, 135, 84, 0.10);
+
+            color: var(--sedc-green);
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .activity-category {
+
+            display: inline-block;
+
+            color: var(--sedc-green);
+
+            background: rgba(25, 135, 84, 0.09);
+
+            padding: 5px 11px;
+
+            border-radius: 50px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .activity-date {
+
+            color: var(--sedc-muted);
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .activity-title {
+
+            font-size: 21px;
+
+            line-height: 1.4;
+
+            font-weight: 750;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .activity-description {
+
+            color: var(--sedc-muted);
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .read-story {
+
+            color: var(--sedc-green);
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            font-size: 14px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            transition: gap 0.3s ease;
+
+        }
+
+
+        .read-story:hover {
+
+            color: #146c43;
+
+            gap: 12px;
+
+        }
+
+
+        /* =====================================================
+           SINGLE POST
+        ===================================================== */
+
+        #singlePost {
+
+            display: none;
+
+            background: white;
+
+            padding: 70px 0 100px;
+
+            min-height: 100vh;
+
+        }
+
+
+        .post-container {
+
+            max-width: 1050px;
+
+            margin: auto;
+
+        }
+
+
+        .back-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            text-decoration: none;
+
+            color: var(--sedc-green);
+
+            border: 1px solid var(--sedc-green);
+
+            padding: 10px 18px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            margin-bottom: 35px;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+        .back-button:hover {
+
+            background: var(--sedc-green);
+
+            color: white;
+
+        }
+
+
+        .post-category {
+
+            display: inline-block;
+
+            color: var(--sedc-green);
+
+            background: rgba(25, 135, 84, 0.10);
+
+            padding: 7px 14px;
+
+            border-radius: 50px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .post-title {
+
+            font-size: clamp(34px, 5vw, 58px);
+
+            line-height: 1.2;
+
+            font-weight: 800;
+
+            margin: 15px 0;
+
+        }
+
+
+        .post-date {
+
+            color: var(--sedc-muted);
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .post-image {
+
+            width: 100%;
+
+            height: 520px;
+
+            object-fit: cover;
+
+            border-radius: 18px;
+
+            margin-bottom: 45px;
+
+        }
+
+
+        .post-content {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            font-size: 17px;
+
+            line-height: 1.9;
+
+            color: #444;
+
+        }
+
+
+        .post-content h3 {
+
+            color: var(--sedc-dark);
+
+            font-size: 28px;
+
+            font-weight: 750;
+
+            margin-top: 40px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .post-content p {
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .post-content ul {
+
+            padding-left: 25px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .post-content li {
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 767px) {
+
+            .activities-hero {
+
+                padding: 75px 0;
+
+            }
+
+
+            .activities-section {
+
+                padding: 60px 0;
+
+            }
+
+
+            .activity-image {
+
+                height: 220px;
+
+            }
+
+
+            .activity-title {
+
+                font-size: 20px;
+
+            }
+
+
+            .post-image {
+
+                height: 300px;
+
+                border-radius: 12px;
+
+            }
+
+
+            #singlePost {
+
+                padding: 45px 0 70px;
+
+            }
+
+
+            .post-content {
+
+                font-size: 16px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body id="top" class="bg-light">
+
+
+<!-- =====================================================
+     GOVERNMENT BAR
+===================================================== -->
+
+<div class="bg-dark text-white py-2 government-bar">
+
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center small">
+
+            <div class="d-flex align-items-center ">
+
+                <i class="bi bi-building me-2"></i>
+
+                <span>
+                    South East Development Commission
+                </span>
+
+            </div>
+
+            <div class="d-none d-md-block">
+
+                Federal Republic of Nigeria
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+
+    <div class="container">
+
+
+        <!-- LOGO -->
+
+        <a
+            class="navbar-brand d-flex align-items-center"
+            href="#top">
+
+            <img
+                src="assets/images/sedc-logo.jpg"
+                alt="SEDC Logo"
+                height="55"
+                class="me-2">
+
+        </a>
+
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+
+        <!-- NAVIGATION -->
+
+        <div
+            class="collapse navbar-collapse"
+            id="mainNavbar">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link active"
+                        href="index.html"
+                        data-section="top">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#about"
+                        data-section="about">
+
+                        About
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#programmes"
+                        data-section="programmes">
+
+                        Programmes
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#blog"
+                        data-section="blog">
+
+                        Blog
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="blog.html"
+                        data-section="activities">
+
+                        Activities
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#opportunities"
+                        data-section="opportunities">
+
+                        Opportunities
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="#resources"
+                        data-section="resources">
+
+                        Resources
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item ms-lg-3">
+
+                    <a
+                        href="#contact"
+                        data-section="contact"
+                        class="btn btn-success px-4">
+
+                        Contact Us
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="activities-hero">
+
+    <div class="container text-center">
+
+        <div class="hero-small-title">
+            NRARD • SEDC
+        </div>
+
+        <h1>
+            Activities & Stories
+        </h1>
+
+        <p>
+            Explore the documented activities and engagements of the
+            Executive Director of Natural Resources, Agriculture and
+            Rural Development from January 2025 to mid-September 2026.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ALL ACTIVITIES
+========================================================= -->
+
+<section
+    id="activitiesSection"
+    class="activities-section"
+>
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <div class="section-label">
+                Media Centre
+            </div>
+
+            <h2 class="section-heading">
+                Executive Director's Activities
+            </h2>
+
+            <p class="section-intro">
+                Discover engagements covering agriculture, natural resources,
+                rural development, partnerships, innovation, community
+                development and regional transformation across the South East.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             FILTERS
+        ================================================== -->
+
+        <div class="filter-buttons">
+
+            <button
+                class="filter-btn active"
+                data-filter="all"
+            >
+                All Activities
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="agriculture"
+            >
+                Agriculture
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="natural-resources"
+            >
+                Natural Resources
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="rural-development"
+            >
+                Rural Development
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="partnerships"
+            >
+                Partnerships
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="community"
+            >
+                Community
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             CARDS ARE GENERATED HERE
+        ================================================== -->
+
+        <div
+            id="activitiesGrid"
+            class="row g-4"
+        ></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SINGLE POST
+========================================================= -->
+
+<section id="singlePost">
+
+    <div class="container post-container">
+
+        <a
+            href="#activities"
+            class="back-button"
+            onclick="closePost()"
+        >
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to Activities
+
+        </a>
+
+
+        <div id="postCategory" class="post-category"></div>
+
+
+        <h1
+            id="postTitle"
+            class="post-title"
+        ></h1>
+
+
+        <div
+            id="postDate"
+            class="post-date"
+        ></div>
+
+
+        <img
+            id="postImage"
+            class="post-image"
+            src=""
+            alt=""
+        >
+
+
+        <article
+            id="postContent"
+            class="post-content"
+        ></article>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="bg-dark text-white pt-5 pb-3">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+
+            <div class="col-lg-5">
+
+                <h4 class="fw-bold">
+                    SEDC
+                </h4>
+
+                <p class="text-white-50">
+
+                    Directorate of Natural Resources, Agriculture
+                    and Rural Development.
+
+                </p>
+
+                <p class="text-white-50 small">
+
+                    Driving sustainable agricultural transformation,
+                    responsible natural resource management and
+                    rural development across South East Nigeria.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="col-6 col-lg-2">
+
+                <h6 class="fw-bold">
+                    Navigation
+                </h6>
+
+                <ul class="list-unstyled">
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#top"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#about"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            About
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#programmes"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Programmes
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#blog"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Blog
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a
+                            href="#activities"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Activities
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="col-6 col-lg-2">
+
+                <h6 class="fw-bold">
+                    Resources
+                </h6>
+
+                <ul class="list-unstyled">
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#resources"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Reports
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#opportunities"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Opportunities
+
+                        </a>
+
+                    </li>
+
+                    <li class="mb-2">
+
+                        <a
+                            href="#"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            Gallery
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a
+                            href="#"
+                            class="text-white-50 text-decoration-none footer-link">
+
+                            FAQs
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="col-lg-3">
+
+                <h6 class="fw-bold">
+                    Follow Us
+                </h6>
+
+                <div class="d-flex gap-3 fs-4">
+
+                    <a
+                        href="#"
+                        class="text-white">
+
+                        <i class="bi bi-facebook"></i>
+
+                    </a>
+
+                    <a
+                        href="#"
+                        class="text-white">
+
+                        <i class="bi bi-instagram"></i>
+
+                    </a>
+
+                    <a
+                        href="#"
+                        class="text-white">
+
+                        <i class="bi bi-twitter-x"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <hr class="border-secondary my-4">
+
+
+        <div
+            class="d-flex flex-column flex-md-row justify-content-between text-white-50 small">
+
+            <p>
+
+                © 2026 South East Development Commission.
+                All rights reserved.
+
+            </p>
+
+            <div>
+
+                <a
+                    href="#"
+                    class="text-white-50 text-decoration-none me-3">
+
+                    Privacy Policy
+
+                </a>
+
+                <a
+                    href="#"
+                    class="text-white-50 text-decoration-none">
+
+                    Freedom of Information
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<button
+    type="button"
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Back to top">
+
+    <i class="bi bi-arrow-up"></i>
+
+</button>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/*
+===============================================================
+ACTIVITY DATA
+===============================================================
+
+All activities below are based on the uploaded
+NRARD SEDC ED Activities Allocation document.
+
+To add an image:
+
+assets/images/activities/activity-1.jpg
+assets/images/activities/activity-2.jpg
+etc.
+
+You can replace any image later without changing the
+HTML card structure.
+*/
+
+
+const activities = [
+
+
+    /* =====================================================
+       1
+    ===================================================== */
+
+    {
+        id: "activity-1",
+
+        number: "01",
+
+        category: "Vision",
+
+        filter: "community",
+
+        date: "Early January 2025",
+
+        title:
+            "Congratulatory Engagement & Vision Statement",
+
+        image:
+            "assets/images/activities/activity-1.jpg",
+
+        description:
+            "A foundational public engagement articulating the SEDC purpose and the Executive Director's pledge of integrity for regional rehabilitation and agricultural revitalisation.",
+
+        content: `
+
+            <p>
+                In early January 2025, the Executive Director participated
+                in a congratulatory engagement during which the vision and
+                purpose of the South East Development Commission were
+                publicly articulated.
+            </p>
+
+            <h3>Vision and Regional Development</h3>
+
+            <p>
+                The engagement included a pledge of service with integrity
+                and a focus on regional rehabilitation and agricultural
+                revitalisation.
+            </p>
+
+            <p>
+                The activity forms part of the institutional and vision
+                foundation of the Directorate of Natural Resources,
+                Agriculture and Rural Development.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       2
+    ===================================================== */
+
+    {
+        id: "activity-2",
+
+        number: "02",
+
+        category: "Institutional",
+
+        filter: "community",
+
+        date: "13–15 January 2025",
+
+        title:
+            "Senate Screening and Confirmation",
+
+        image:
+            "assets/images/activities/activity-2.jpg",
+
+        description:
+            "The Executive Director was screened and confirmed by the Senate Ad Hoc Committee on Regional Development Commissions.",
+
+        content: `
+
+            <p>
+                Between 13 and 15 January 2025, the Executive Director
+                underwent Senate screening and confirmation.
+            </p>
+
+            <h3>Institutional Appointment</h3>
+
+            <p>
+                The screening was conducted by the Senate Ad Hoc Committee
+                on Regional Development Commissions, chaired by
+                Senator Orji Uzor Kalu.
+            </p>
+
+            <p>
+                The activity forms part of the institutional history
+                of the Directorate and its leadership.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       3
+    ===================================================== */
+
+    {
+        id: "activity-3",
+
+        number: "03",
+
+        category: "Institutional",
+
+        filter: "community",
+
+        date: "11 February 2025",
+
+        title:
+            "Official Inauguration of the Executive Director",
+
+        image:
+            "assets/images/activities/activity-3.jpg",
+
+        description:
+            "The Executive Director was officially inaugurated following the inauguration of the SEDC Board.",
+
+        content: `
+
+            <p>
+                On 11 February 2025, Dr. Cliff Chimeremeze Ogbede was
+                officially inaugurated as Executive Director of Natural
+                Resources, Agriculture and Rural Development.
+            </p>
+
+            <h3>NRARD Leadership</h3>
+
+            <p>
+                The inauguration followed the inauguration of the Board
+                of the South East Development Commission.
+            </p>
+
+            <p>
+                This milestone forms part of the institutional history
+                of the Directorate.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       4
+    ===================================================== */
+
+    {
+        id: "activity-4",
+
+        number: "04",
+
+        category: "Agriculture",
+
+        filter: "agriculture",
+
+        date: "Mid-February 2025",
+
+        title:
+            "Three-Phase Strategy for Agricultural Revitalisation",
+
+        image:
+            "assets/images/activities/activity-4.jpg",
+
+        description:
+            "The Executive Director outlined a quick-wins, mid-term and long-term strategy for agricultural revitalisation, jobs and economic reconstruction.",
+
+        content: `
+
+            <p>
+                In mid-February 2025, the Executive Director outlined
+                a three-phase strategy for agricultural revitalisation,
+                job creation and economic reconstruction.
+            </p>
+
+            <h3>Three-Phase Approach</h3>
+
+            <ul>
+                <li>Quick wins</li>
+                <li>Mid-term interventions</li>
+                <li>Long-term development</li>
+            </ul>
+
+            <p>
+                The strategy provides core programme framing for the
+                South East Agro-Transformation Programme.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       5
+    ===================================================== */
+
+    {
+        id: "activity-5",
+
+        number: "05",
+
+        category: "Agriculture",
+
+        filter: "agriculture",
+
+        date: "March 2025",
+
+        title:
+            "Inspection of the 200-Hectare Enugu State Farm Settlement",
+
+        image:
+            "assets/images/activities/activity-5.jpg",
+
+        description:
+            "An inspection of the Enugu State Farm Settlement in Nkanu West examined opportunities for storage, fishery, food sufficiency and agrotourism.",
+
+        content: `
+
+            <p>
+                In March 2025, the Executive Director inspected the
+                200-hectare Enugu State Farm Settlement in Nkanu West.
+            </p>
+
+            <h3>Areas of Focus</h3>
+
+            <ul>
+                <li>Large-scale storage</li>
+                <li>Fishery development</li>
+                <li>Food sufficiency</li>
+                <li>Agrotourism</li>
+            </ul>
+
+            <p>
+                The inspection supports the wider South East
+                Agro-Transformation Programme and agricultural
+                development objectives.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       6
+    ===================================================== */
+
+    {
+        id: "activity-6",
+
+        number: "06",
+
+        category: "Community Development",
+
+        filter: "community",
+
+        date: "Early May 2025",
+
+        title:
+            "Civic Reception in Obiangwu, Ngor Okpala",
+
+        image:
+            "assets/images/activities/activity-6.jpg",
+
+        description:
+            "A civic reception in Obiangwu included an assurance of meaningful infrastructural and agricultural interventions.",
+
+        content: `
+
+            <p>
+                In early May 2025, the Executive Director participated
+                in a civic reception in Obiangwu, Ngor Okpala.
+            </p>
+
+            <p>
+                During the engagement, the community received an
+                assurance of meaningful infrastructural and agricultural
+                interventions within two years.
+            </p>
+
+            <h3>Community Engagement</h3>
+
+            <p>
+                The engagement demonstrates the Directorate's local
+                presence and accessibility within communities.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       7
+    ===================================================== */
+
+    {
+        id: "activity-7",
+
+        number: "07",
+
+        category: "Partnerships",
+
+        filter: "partnerships",
+
+        date: "Early May 2025",
+
+        title:
+            "Owerri Reception and Regional Development Roadmap",
+
+        image:
+            "assets/images/activities/activity-7.jpg",
+
+        description:
+            "A reception in Owerri featured disclosure of a roadmap covering agricultural value chains, transportation, ICT and erosion control.",
+
+        content: `
+
+            <p>
+                In early May 2025, the Executive Director participated
+                in a reception in Owerri where the SEDC roadmap was
+                disclosed.
+            </p>
+
+            <h3>Roadmap Areas</h3>
+
+            <ul>
+                <li>Agricultural value chains</li>
+                <li>Transportation and rail</li>
+                <li>ICT</li>
+                <li>Erosion control</li>
+            </ul>
+
+            <p>
+                The engagement also noted an MoU with UNDP.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       8
+    ===================================================== */
+
+    {
+        id: "activity-8",
+
+        number: "08",
+
+        category: "Agriculture",
+
+        filter: "agriculture",
+
+        date: "July 2025",
+
+        title:
+            "Engagement with COVEC on Agricultural Partnerships",
+
+        image:
+            "assets/images/activities/activity-8.jpg",
+
+        description:
+            "The Executive Director engaged China Overseas Engineering Group on possible partnerships for large-scale farming, agro-processing and value-chain development.",
+
+        content: `
+
+            <p>
+                In July 2025, the Executive Director held an engagement
+                with China Overseas Engineering Group (COVEC).
+            </p>
+
+            <h3>Partnership Exploration</h3>
+
+            <p>
+                Discussions explored opportunities for large-scale
+                farming, agro-processing and agricultural value-chain
+                development.
+            </p>
+
+            <p>
+                The engagement supports the agricultural transformation
+                objectives of NRARD SEDC.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       9
+    ===================================================== */
+
+    {
+        id: "activity-9",
+
+        number: "09",
+
+        category: "Natural Resources & Agriculture",
+
+        filter: "natural-resources",
+
+        date: "September 2025",
+
+        title:
+            "Intra-African Trade Fair in Algiers",
+
+        image:
+            "assets/images/activities/activity-9.jpg",
+
+        description:
+            "Participation in panels focused on investments in agriculture and natural resources, digital gateways and strategic partnerships.",
+
+        content: `
+
+            <p>
+                In September 2025, the Executive Director participated
+                in the Intra-African Trade Fair (IATF) in Algiers.
+            </p>
+
+            <h3>Key Areas</h3>
+
+            <ul>
+                <li>Agricultural investment</li>
+                <li>Natural resources</li>
+                <li>Digital gateways</li>
+                <li>Strategic partnerships</li>
+                <li>AfCFTA and intra-African trade linkages</li>
+            </ul>
+
+        `
+    },
+
+
+    /* =====================================================
+       10
+    ===================================================== */
+
+    {
+        id: "activity-10",
+
+        number: "10",
+
+        category: "Partnerships",
+
+        filter: "partnerships",
+
+        date: "Late September 2025",
+
+        title:
+            "Strategic Meeting with NIRSAL",
+
+        image:
+            "assets/images/activities/activity-10.jpg",
+
+        description:
+            "A strategic engagement with NIRSAL focused on connecting agricultural development mandates with financing and innovation support.",
+
+        content: `
+
+            <p>
+                In late September 2025, the Executive Director held a
+                strategic meeting with NIRSAL.
+            </p>
+
+            <h3>Agricultural Financing</h3>
+
+            <p>
+                The engagement focused on integrating agricultural
+                development mandates with financing and innovation support.
+            </p>
+
+            <p>
+                The NIRSAL/SEDC partnership is identified in the NRARD
+                framework as a collaboration intended to support
+                agricultural credit, technical assistance and commercial
+                financing.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       11
+    ===================================================== */
+
+    {
+        id: "activity-11",
+
+        number: "11",
+
+        category: "Agriculture",
+
+        filter: "agriculture",
+
+        date: "Early December 2025",
+
+        title:
+            "Partnership with Abia State Ministry of Agriculture",
+
+        image:
+            "assets/images/activities/activity-11.jpg",
+
+        description:
+            "Engagement focused on farm estates across three senatorial zones through planning, technical support and counterpart funding.",
+
+        content: `
+
+            <p>
+                In early December 2025, the Executive Director engaged
+                the Abia State Ministry of Agriculture on agricultural
+                development.
+            </p>
+
+            <h3>Farm Estate Development</h3>
+
+            <p>
+                The partnership focused on farm estates across three
+                senatorial zones, including planning, technical support
+                and counterpart funding.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       12
+    ===================================================== */
+
+    {
+        id: "activity-12",
+
+        number: "12",
+
+        category: "Agriculture",
+
+        filter: "agriculture",
+
+        date: "December 2025",
+
+        title:
+            "Field Assessment of Abia Agricultural Sites",
+
+        image:
+            "assets/images/activities/activity-12.jpg",
+
+        description:
+            "Field assessments covered oil palm and rubber estates and the 10,000-hectare Ofiavu plot in Bende.",
+
+        content: `
+
+            <p>
+                In December 2025, field assessments were conducted on
+                key agricultural sites in Abia State.
+            </p>
+
+            <h3>Sites Assessed</h3>
+
+            <ul>
+                <li>Oil palm estates</li>
+                <li>Rubber estates</li>
+                <li>10,000-hectare Ofiavu plot in Bende</li>
+            </ul>
+
+            <p>
+                The assessment considered access roads and pilot
+                agro-mechanisation opportunities.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       13
+    ===================================================== */
+
+    {
+        id: "activity-13",
+
+        number: "13",
+
+        category: "Regional Development",
+
+        filter: "community",
+
+        date: "Early February 2026",
+
+        title:
+            "South East Vision 2050 Inaugural Convening",
+
+        image:
+            "assets/images/activities/activity-13.jpg",
+
+        description:
+            "A multi-stakeholder assembly around the 25-year South East Vision 2050 regional blueprint.",
+
+        content: `
+
+            <p>
+                In early February 2026, the Executive Director participated
+                in the inaugural convening for South East Vision 2050.
+            </p>
+
+            <h3>Regional Blueprint</h3>
+
+            <p>
+                The multi-stakeholder assembly adopted a 25-year regional
+                blueprint covering areas including institutional reform,
+                human capital, infrastructure, agriculture and innovative
+                financing.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       14
+    ===================================================== */
+
+    {
+        id: "activity-14",
+
+        number: "14",
+
+        category: "Innovation",
+
+        filter: "community",
+
+        date: "February 2026",
+
+        title:
+            "Enugu Campus Hackathon Grand Finale",
+
+        image:
+            "assets/images/activities/activity-14.jpg",
+
+        description:
+            "The engagement highlighted AgriTech innovation, the South East Venture Capital Programme and youth enterprise.",
+
+        content: `
+
+            <p>
+                In February 2026, the Executive Director represented
+                SEDC at the Enugu Campus Hackathon Grand Finale.
+            </p>
+
+            <h3>Innovation and Youth Enterprise</h3>
+
+            <p>
+                The engagement highlighted AgriTech innovation, the
+                South East Venture Capital Programme and youth enterprise.
+            </p>
+
+            <p>
+                The activity also provides a direct connection to the
+                SEYAF agripreneur ecosystem.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       15
+    ===================================================== */
+
+    {
+        id: "activity-15",
+
+        number: "15",
+
+        category: "Agriculture",
+
+        filter: "agriculture",
+
+        date: "Late February 2026",
+
+        title:
+            "Mapping of More Than 25,000 Hectares in Anambra",
+
+        image:
+            "assets/images/activities/activity-15.jpg",
+
+        description:
+            "Comprehensive mapping covered rice clusters, Ugbene ATC and the Lower Anambra Irrigation Project.",
+
+        content: `
+
+            <p>
+                In late February 2026, the Directorate undertook
+                comprehensive mapping of more than 25,000 hectares
+                across agricultural zones in Anambra State.
+            </p>
+
+            <h3>Mapped Areas</h3>
+
+            <ul>
+                <li>Rice clusters in Ayamelum and Umunze</li>
+                <li>Ugbene ATC</li>
+                <li>Lower Anambra Irrigation Project</li>
+                <li>Omor</li>
+            </ul>
+
+            <p>
+                The mapping supports preparation for modern farm estates
+                and agro-industrial hubs.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       16
+    ===================================================== */
+
+    {
+        id: "activity-16",
+
+        number: "16",
+
+        category: "Community Development",
+
+        filter: "community",
+
+        date: "7 April 2026",
+
+        title:
+            "Renewed Hope Partners Inauguration in Imo",
+
+        image:
+            "assets/images/activities/activity-16.jpg",
+
+        description:
+            "A constituency engagement involving the Aboh Mbaise/Ngor Okpala Federal Constituency.",
+
+        content: `
+
+            <p>
+                On 7 April 2026, the Executive Director participated
+                in the inauguration of Renewed Hope Partners in Imo.
+            </p>
+
+            <h3>Community Engagement</h3>
+
+            <p>
+                The activity involved constituency engagement within
+                the Aboh Mbaise/Ngor Okpala Federal Constituency.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       17
+    ===================================================== */
+
+    {
+        id: "activity-17",
+
+        number: "17",
+
+        category: "Climate-Smart Agriculture",
+
+        filter: "agriculture",
+
+        date: "13–14 April 2026",
+
+        title:
+            "IAEA/NRCRI Climate-Smart Agriculture Training",
+
+        image:
+            "assets/images/activities/activity-17.jpg",
+
+        description:
+            "The Executive Director chaired the opening ceremony of a regional training course on climate-smart cassava production.",
+
+        content: `
+
+            <p>
+                On 13–14 April 2026, the Executive Director chaired
+                the opening ceremony of the IAEA/NRCRI Regional Training
+                Course on Climate-Smart Agriculture.
+            </p>
+
+            <h3>Cassava Production</h3>
+
+            <p>
+                The training focused on climate-smart cassava practices
+                aligned with the South East Agro-Transformation
+                development objectives.
+            </p>
+
+            <p>
+                Climate-smart and sustainable agriculture is one of
+                the Directorate's stated agricultural priorities.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       18
+    ===================================================== */
+
+    {
+        id: "activity-18",
+
+        number: "18",
+
+        category: "Innovation",
+
+        filter: "community",
+
+        date: "April 2026",
+
+        title:
+            "ACE-FUELS ElectroLab-X Commissioning at FUTO",
+
+        image:
+            "assets/images/activities/activity-18.jpg",
+
+        description:
+            "The commissioning connected research, energy innovation and regional competitiveness.",
+
+        content: `
+
+            <p>
+                In April 2026, the Executive Director participated in
+                the commissioning of the ACE-FUELS ElectroLab-X facility
+                at the Federal University of Technology, Owerri.
+            </p>
+
+            <h3>Research and Innovation</h3>
+
+            <p>
+                The activity is connected to research, energy innovation
+                and regional competitiveness.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       19
+    ===================================================== */
+
+    {
+        id: "activity-19",
+
+        number: "19",
+
+        category: "Agriculture",
+
+        filter: "agriculture",
+
+        date: "May 2026",
+
+        title:
+            "Numo Farms & Petros Farms Facility Mapping",
+
+        image:
+            "assets/images/activities/activity-19.jpg",
+
+        description:
+            "Facility mapping in Imo supported the Agro-Mechanisation Programme and rural land development, alongside community engagement.",
+
+        content: `
+
+            <p>
+                In May 2026, facility mapping was conducted at Numo Farms
+                Ltd and Petros Farms in Imo State.
+            </p>
+
+            <h3>Agro-Mechanisation</h3>
+
+            <p>
+                The activity supported the Agro-Mechanisation Programme
+                and rural land development.
+            </p>
+
+            <p>
+                The engagement also involved the Ubichukwu community.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       20
+    ===================================================== */
+
+    {
+        id: "activity-20",
+
+        number: "20",
+
+        category: "Partnerships",
+
+        filter: "partnerships",
+
+        date: "May 2026",
+
+        title:
+            "Meeting with Women of Distinction of Nigeria and Diaspora",
+
+        image:
+            "assets/images/activities/activity-20.jpg",
+
+        description:
+            "The meeting explored partnerships supporting empowerment initiatives and community impact.",
+
+        content: `
+
+            <p>
+                In May 2026, the Executive Director hosted the Women
+                of Distinction of Nigeria and Diaspora.
+            </p>
+
+            <h3>Partnership Opportunities</h3>
+
+            <p>
+                Discussions explored partnerships supporting empowerment
+                initiatives complementary to rural development and
+                community impact.
+            </p>
+
+            <p>
+                The engagement also connects with the Directorate's
+                efforts to support inclusive agripreneur communities.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       21
+    ===================================================== */
+
+    {
+        id: "activity-21",
+
+        number: "21",
+
+        category: "Institutional Support",
+
+        filter: "community",
+
+        date: "June 2026",
+
+        title:
+            "Centre for DNA Forensics Commissioning in Enugu",
+
+        image:
+            "assets/images/activities/activity-21.jpg",
+
+        description:
+            "The Executive Director represented SEDC at the commissioning of the Centre for DNA Forensics and Criminal Investigation.",
+
+        content: `
+
+            <p>
+                In June 2026, the Executive Director participated in
+                the commissioning of the Centre for DNA Forensics and
+                Criminal Investigation (CeDFOCI) in Enugu.
+            </p>
+
+            <h3>Institutional Engagement</h3>
+
+            <p>
+                The activity involved institutional support representation
+                on behalf of the South East Development Commission.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       22
+    ===================================================== */
+
+    {
+        id: "activity-22",
+
+        number: "22",
+
+        category: "Youth & Regional Integration",
+
+        filter: "community",
+
+        date: "Late June 2026",
+
+        title:
+            "Nzuko Umuotorobia Na South East 2026",
+
+        image:
+            "assets/images/activities/activity-22.jpg",
+
+        description:
+            "A youth gathering focused on cultural heritage, regional economic integration and youth engagement.",
+
+        content: `
+
+            <p>
+                In late June 2026, the Executive Director participated
+                in Nzuko Umuotorobia Na South East 2026.
+            </p>
+
+            <h3>Youth and Regional Integration</h3>
+
+            <p>
+                The gathering highlighted cultural heritage and regional
+                economic integration.
+            </p>
+
+            <p>
+                The engagement also carried the message:
+                <strong>“Onye aghala nwanne ya”.</strong>
+            </p>
+
+            <p>
+                The activity is also identified as supporting youth
+                engagement and the promotion of agriculture among young
+                people in the South East.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       23
+    ===================================================== */
+
+    {
+        id: "activity-23",
+
+        number: "23",
+
+        category: "Natural Resources & Innovation",
+
+        filter: "natural-resources",
+
+        date: "July 2026",
+
+        title:
+            "Meeting with the National Biotechnology Development Agency",
+
+        image:
+            "assets/images/activities/activity-23.jpg",
+
+        description:
+            "Discussions explored biotechnology innovations relevant to natural resources, agriculture and economic growth.",
+
+        content: `
+
+            <p>
+                In July 2026, the Executive Director engaged the
+                National Biotechnology Development Agency.
+            </p>
+
+            <h3>Biotechnology</h3>
+
+            <p>
+                Discussions explored biotechnology innovations relevant
+                to natural resources and economic growth.
+            </p>
+
+            <p>
+                The activity also supports the Directorate's interest
+                in leveraging biotechnology for agricultural development.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       24
+    ===================================================== */
+
+    {
+        id: "activity-24",
+
+        number: "24",
+
+        category: "Agro-Mechanisation",
+
+        filter: "agriculture",
+
+        date: "July 2026",
+
+        title:
+            "Agro-Mechanisation Stakeholder Engagements in Enugu",
+
+        image:
+            "assets/images/activities/activity-24.jpg",
+
+        description:
+            "Stakeholder engagements took place across Uzo-Uwani, Oji River and Nkanu East ahead of Agro-Mechanisation pilots.",
+
+        content: `
+
+            <p>
+                In July 2026, the Executive Director led stakeholder
+                engagements across three Enugu senatorial zones.
+            </p>
+
+            <h3>Areas Covered</h3>
+
+            <ul>
+                <li>Uzo-Uwani</li>
+                <li>Oji River</li>
+                <li>Nkanu East</li>
+            </ul>
+
+            <p>
+                The engagements focused on community buy-in, land access
+                and security for South East Agro-Transformation Programme
+                pilots.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       25
+    ===================================================== */
+
+    {
+        id: "activity-25",
+
+        number: "25",
+
+        category: "Agriculture",
+
+        filter: "agriculture",
+
+        date: "1–4 September 2026",
+
+        title:
+            "Africa Food Systems Forum in Kigali",
+
+        image:
+            "assets/images/activities/activity-25.jpg",
+
+        description:
+            "Participation in the 20th Africa Food Systems Forum focused on investment opportunities for South East agri-food systems.",
+
+        content: `
+
+            <p>
+                From 1 to 4 September 2026, the Executive Director
+                participated in the 20th Africa Food Systems Forum
+                in Kigali.
+            </p>
+
+            <h3>South East Agri-Food Systems</h3>
+
+            <p>
+                The engagement focused on investment opportunities in
+                South East agri-food systems, beginning with Enugu State.
+            </p>
+
+            <p>
+                The participation forms part of wider efforts to promote
+                agricultural development, investment and regional food
+                systems.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       26A
+       Source has another activity numbered 26
+    ===================================================== */
+
+    {
+        id: "activity-26-poultry",
+
+        number: "26",
+
+        category: "Agriculture",
+
+        filter: "agriculture",
+
+        date: "Early–Mid September 2026",
+
+        title:
+            "Eastern International Poultry Summit 2026",
+
+        image:
+            "assets/images/activities/activity-26-poultry.jpg",
+
+        description:
+            "The Executive Director delivered a keynote focused on rebuilding the poultry industry for food security and jobs.",
+
+        content: `
+
+            <p>
+                In early to mid-September 2026, the Executive Director
+                delivered a keynote at the Eastern International Poultry
+                Summit 2026 in Enugu.
+            </p>
+
+            <h3>Poultry Industry Development</h3>
+
+            <p>
+                The keynote prioritised poultry industry rebuilding
+                for food security and jobs.
+            </p>
+
+            <p>
+                The engagement forms part of the Directorate's broader
+                agricultural transformation and food security agenda.
+            </p>
+
+        `
+    },
+
+
+    /* =====================================================
+       26B
+       Source has another activity numbered 26
+    ===================================================== */
+
+    {
+        id: "activity-26-ngbo",
+
+        number: "26",
+
+        category: "Rural Development",
+
+        filter: "rural-development",
+
+        date: "Early–Mid September 2026",
+
+        title:
+            "Renewed Hope Community Advancement Programme in Ngbo",
+
+        image:
+            "assets/images/activities/activity-26-ngbo.jpg",
+
+        description:
+            "Sensitisation activities were conducted in Ngbo, Ohaukwu LGA, Ebonyi State.",
+
+        content: `
+
+            <p>
+                In early to mid-September 2026, the Executive Director
+                led Renewed Hope Community Advancement Programme
+                sensitisation activities in Ngbo, Ohaukwu Local
+                Government Area of Ebonyi State.
+            </p>
+
+            <h3>Community Development</h3>
+
+            <p>
+                The activity focused on sensitisation around the
+                governor-endorsed regional development blueprint.
+            </p>
+
+            <p>
+                The Renewed Hope Community Development Programme is
+                designed as a grassroots-focused intervention model
+                covering areas such as healthcare, rural education,
+                clean water and sustainable livelihood training.
+            </p>
+
+        `
+    }
+
+];
+
+
+
+/* ============================================================
+   GENERATE CARDS
+============================================================ */
+
+const activitiesGrid =
+    document.getElementById("activitiesGrid");
+
+
+function displayActivities(filter = "all") {
+
+    activitiesGrid.innerHTML = "";
+
+
+    const filteredActivities =
+        filter === "all"
+
+            ? activities
+
+            : activities.filter(
+                activity =>
+                    activity.filter === filter
+            );
+
+
+    filteredActivities.forEach(activity => {
+
+
+        const card = document.createElement("div");
+
+        card.className =
+            "col-md-6 col-lg-4 activity-item";
+
+
+        card.innerHTML = `
+
+            <article class="activity-card">
+
+                <div class="activity-image">
+
+                    <img
+                        src="${activity.image}"
+                        alt="${activity.title}"
+                        onerror="
+                            this.style.display='none';
+                            this.nextElementSibling.style.display='flex';
+                        "
+                    >
+
+                    <div class="image-placeholder">
+
+                        <i class="bi bi-image"></i>
+
+                        <span>
+                            Activity Image Coming Soon
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-body">
+
+                    <div class="activity-number">
+                        ${activity.number}
+                    </div>
+
+
+                    <div class="activity-category">
+                        ${activity.category}
+                    </div>
+
+
+                    <div class="activity-date">
+
+                        <i class="bi bi-calendar3 me-1"></i>
+
+                        ${activity.date}
+
+                    </div>
+
+
+                    <h3 class="activity-title">
+                        ${activity.title}
+                    </h3>
+
+
+                    <p class="activity-description">
+                        ${activity.description}
+                    </p>
+
+
+                    <a
+                        href="#post/${activity.id}"
+                        class="read-story"
+                        onclick="openPost('${activity.id}')"
+                    >
+
+                        Read Story
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+        `;
+
+
+        activitiesGrid.appendChild(card);
+
+    });
+
+}
+
+
+/* ============================================================
+   FILTER BUTTONS
+============================================================ */
+
+const filterButtons =
+    document.querySelectorAll(".filter-btn");
+
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        filterButtons.forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+        this.classList.add("active");
+
+
+        const filter =
+            this.getAttribute("data-filter");
+
+
+        displayActivities(filter);
+
+    });
+
+});
+
+
+/* ============================================================
+   OPEN SINGLE POST
+============================================================ */
+
+function openPost(postId) {
+
+    const post =
+        activities.find(
+            activity => activity.id === postId
+        );
+
+
+    if (!post) {
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "activitiesSection"
+    ).style.display = "none";
+
+
+    document.querySelector(
+        ".activities-hero"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "singlePost"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "postCategory"
+    ).textContent = post.category;
+
+
+    document.getElementById(
+        "postTitle"
+    ).textContent = post.title;
+
+
+    document.getElementById(
+        "postDate"
+    ).innerHTML = `
+
+        <i class="bi bi-calendar3 me-1"></i>
+
+        ${post.date}
+
+    `;
+
+
+    document.getElementById(
+        "postImage"
+    ).src = post.image;
+
+
+    document.getElementById(
+        "postImage"
+    ).alt = post.title;
+
+
+    document.getElementById(
+        "postContent"
+    ).innerHTML = post.content;
+
+
+    history.pushState(
+        null,
+        "",
+        "#post/" + postId
+    );
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* ============================================================
+   CLOSE SINGLE POST
+============================================================ */
+
+function closePost() {
+
+    document.getElementById(
+        "singlePost"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "activitiesSection"
+    ).style.display = "block";
+
+
+    document.querySelector(
+        ".activities-hero"
+    ).style.display = "block";
+
+
+    history.pushState(
+        null,
+        "",
+        "#activities"
+    );
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* ============================================================
+   OPEN POST WITHOUT PUSHING HISTORY
+============================================================ */
+
+function openPostWithoutHistory(postId) {
+
+    const post =
+        activities.find(
+            activity => activity.id === postId
+        );
+
+
+    if (!post) {
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "activitiesSection"
+    ).style.display = "none";
+
+
+    document.querySelector(
+        ".activities-hero"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "singlePost"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "postCategory"
+    ).textContent = post.category;
+
+
+    document.getElementById(
+        "postTitle"
+    ).textContent = post.title;
+
+
+    document.getElementById(
+        "postDate"
+    ).innerHTML = `
+
+        <i class="bi bi-calendar3 me-1"></i>
+
+        ${post.date}
+
+    `;
+
+
+    document.getElementById(
+        "postImage"
+    ).src = post.image;
+
+
+    document.getElementById(
+        "postImage"
+    ).alt = post.title;
+
+
+    document.getElementById(
+        "postContent"
+    ).innerHTML = post.content;
+
+
+    window.scrollTo(0, 0);
+
+}
+
+
+/* ============================================================
+   BROWSER BACK / FORWARD
+============================================================ */
+
+window.addEventListener(
+    "popstate",
+    function () {
+
+        const hash =
+            window.location.hash;
+
+
+        if (
+            hash.startsWith("#post/")
+        ) {
+
+            const postId =
+                hash.replace("#post/", "");
+
+
+            openPostWithoutHistory(
+                postId
+            );
+
+        } else {
+
+            document.getElementById(
+                "singlePost"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "activitiesSection"
+            ).style.display = "block";
+
+
+            document.querySelector(
+                ".activities-hero"
+            ).style.display = "block";
+
+        }
+
+    }
+);
+
+
+/* ============================================================
+   CHECK URL WHEN PAGE LOADS
+============================================================ */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        displayActivities();
+
+
+        const hash =
+            window.location.hash;
+
+
+        if (
+            hash.startsWith("#post/")
+        ) {
+
+            const postId =
+                hash.replace("#post/", "");
+
+
+            openPostWithoutHistory(
+                postId
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>
