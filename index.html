@@ -104,58 +104,86 @@
            HERO
         ===================================================== */
 
-        .hero-section {
-            min-height: 680px;
+    .hero-section {
+        min-height: 680px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
 
-            display: flex;
-            align-items: center;
+    .hero-background {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
 
-            position: relative;
-            overflow: hidden;
+    .hero-slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+    }
+
+    .hero-slide.active {
+        opacity: 1;
+    }
+
+    .hero-video {
+        background: #000;
+    }
+
+    .hero-video video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+            radial-gradient(circle at 85% 20%, rgba(255, 193, 7, .18), transparent 30%),
+            radial-gradient(circle at 10% 90%, rgba(0, 0, 0, .18), transparent 35%),
+            rgba(0, 0, 0, .55);
+    }
+
+    .hero-content-container {
+        position: relative;
+        z-index: 2;
+        min-height: 680px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    @media (max-width: 991.98px) {
+        .hero-section,
+        .hero-content-container {
+            min-height: 650px;
         }
+    }
 
-        .hero-section::before {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
-            background:
-                radial-gradient(
-                    circle at 85% 20%,
-                    rgba(255, 193, 7, .18),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 10% 90%,
-                    rgba(0, 0, 0, .18),
-                    transparent 35%
-                );
-
-            pointer-events: none;
+    @media (max-width: 767.98px) {
+        .hero-section,
+        .hero-content-container {
+            min-height: 620px;
         }
+    }
 
-        .hero-content,
-        .hero-image {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-image-wrap {
-            transition:
-                transform .4s ease,
-                box-shadow .4s ease;
-        }
-
-        .hero-image-wrap:hover {
-            transform: translateY(-8px);
-
-            box-shadow:
-                0 1.5rem 3rem rgba(0, 0, 0, .22) !important;
-        }
-
-
-        /* =====================================================
+/* =====================================================
            NAVBAR
         ===================================================== */
 
@@ -164,6 +192,8 @@
                 box-shadow .3s ease,
                 background-color .3s ease;
         }
+
+        
 
         .navbar.navbar-scrolled {
             box-shadow:
@@ -201,6 +231,10 @@
         .navbar .nav-link:hover::after,
         .navbar .nav-link.active::after {
             transform: scaleX(1);
+        }
+
+        .bg-nrard-gold {
+            background-color: #F5C542 !important;
         }
 
 
@@ -809,16 +843,16 @@ RESPONSIVE
 
                 font-size:
                     clamp(
-                        2.35rem,
-                        10vw,
-                        3.5rem
+                        1.35rem,
+                        8vw,
+                        1.05rem
                     );
 
                 line-height: 1.08;
             }
 
             .hero-section .lead {
-                font-size: 1.05rem;
+                font-size: 10px;
             }
 
             .hero-section .btn {
@@ -939,6 +973,7 @@ RESPONSIVE
         }
 
     </style>
+    
 
 </head>
 
@@ -984,258 +1019,380 @@ RESPONSIVE
      NAVIGATION
 ===================================================== -->
 
-<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
-
+<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
 
-
-        <!-- LOGO -->
-
-        <a
-            class="navbar-brand d-flex align-items-center"
-            href="#top">
-
-            <img
-                src="assets/images/sedc-logo.jpg"
-                alt="SEDC Logo"
-                height="55"
-                class="me-2">
-
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="images/logo.png" alt="Logo" class="navbar-logo">
         </a>
 
-
-
-        <!-- MOBILE MENU BUTTON -->
-
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNavbar"
-            aria-controls="mainNavbar"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-
-            <span class="navbar-toggler-icon"></span>
-
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarContent"
+                aria-controls="navbarContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon bg-nrard-gold"></span>
         </button>
 
-
-
-        <!-- NAVIGATION -->
-
-        <div
-            class="collapse navbar-collapse"
-            id="mainNavbar">
+        <!-- Navigation -->
+        <div class="collapse navbar-collapse" id="navbarContent">
 
             <ul class="navbar-nav ms-auto align-items-lg-center">
 
-
+                <!-- Home -->
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link active"
-                        href="#top"
-                        data-section="top">
-
-                        Home
-
-                    </a>
-
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
 
+                <!-- Who We Are -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="#"
+                       id="whoWeAreDropdown"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Who we are
+                    </a>
 
+                    <ul class="dropdown-menu" aria-labelledby="whoWeAreDropdown">
+                        <li>
+                            <a class="dropdown-item" href="vision.html">
+                                Our Vision
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="people.html">
+                                Our People
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- What We Do -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="#"
+                       id="whatWeDoDropdown"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        What we do
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="whatWeDoDropdown">
+                        <li>
+                            <a class="dropdown-item" href="natural-resources.html">
+                                Natural Resources
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="agriculture.html">
+                                Agriculture
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="rural-development.html">
+                                Rural Development
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Activities -->
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="about.html"
-                        data-section="about">
-
-                        About
-
-                    </a>
-
+                    <a class="nav-link" href="activities.html">Activities</a>
                 </li>
 
-
+                <!-- Blog -->
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="#programmes"
-                        data-section="programmes">
-
-                        Programmes
-
-                    </a>
-
+                    <a class="nav-link" href="blog.html">Blog</a>
                 </li>
 
+                <!-- Contact -->
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="#blog"
-                        data-section="blog">
-
-                        Blog
-
-                    </a>
-
+                    <a class="nav-link" href="contact.html">Contact</a>
                 </li>
-
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="activities.html"
-                        data-section="activities">
-
-                        Activities
-
-                    </a>
-
-                </li>
-
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="#opportunities"
-                        data-section="opportunities">
-
-                        Opportunities
-
-                    </a>
-
-                </li>
-
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="#resources"
-                        data-section="resources">
-
-                        Resources
-
-                    </a>
-
-                </li>
-
-
-                <li class="nav-item ms-lg-3">
-
-                    <a
-                        href="#contact"
-                        data-section="contact"
-                        class="btn btn-success px-4">
-
-                        Contact Us
-
-                    </a>
-
-                </li>
-
 
             </ul>
-
         </div>
-
     </div>
-
 </nav>
 
+<!-- =====================================================
+     MODERN NAVBAR STYLES
+===================================================== -->
 
+<style>
+    #mainNavbar {
+        padding: 18px 0;
+        background: transparent;
+        transition:
+            background-color 0.45s ease,
+            padding 0.45s ease,
+            box-shadow 0.45s ease,
+            backdrop-filter 0.45s ease;
+        z-index: 9999;
+    }
+
+    .navbar-logo {
+        height: 55px;
+        width: auto;
+        transition:
+            height 0.4s ease,
+            transform 0.4s ease;
+    }
+
+    .navbar-brand:hover .navbar-logo {
+        transform: scale(1.04);
+    }
+
+    #mainNavbar .nav-link {
+        position: relative;
+        color: #ffffff;
+        font-weight: 500;
+        padding: 10px 16px !important;
+        margin: 0 2px;
+        transition:
+            color 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    #mainNavbar .nav-link:hover {
+        color: #f5c542;
+        transform: translateY(-2px);
+    }
+
+    #mainNavbar .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 3px;
+        height: 2px;
+        background: #f5c542;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.3s ease;
+    }
+
+    #mainNavbar .nav-link:hover::after,
+    #mainNavbar .nav-link.active::after {
+        transform: scaleX(1);
+    }
+
+    /* Dropdown */
+    #mainNavbar .dropdown-menu {
+        border: none;
+        border-radius: 12px;
+        padding: 10px;
+        margin-top: 12px;
+        background: #ffffff;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+    #mainNavbar .dropdown-menu.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    #mainNavbar .dropdown-item {
+        position: relative;
+        padding: 11px 16px;
+        border-radius: 8px;
+        color: #176b3a;
+        font-weight: 500;
+
+        transition:
+            background-color 0.25s ease,
+            color 0.25s ease,
+            padding-left 0.25s ease;
+    }
+
+    #mainNavbar .dropdown-item:hover {
+        background: #176b3a;
+        color: #ffffff;
+        padding-left: 21px;
+    }
+
+    /* Scrolled Navbar */
+    #mainNavbar.scrolled {
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 9px 0;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    #mainNavbar.scrolled .navbar-logo {
+        height: 45px;
+    }
+
+    #mainNavbar.scrolled .nav-link {
+        color: #176b3a;
+    }
+
+    #mainNavbar.scrolled .nav-link:hover {
+        color: #e0a900;
+    }
+
+    /* Mobile */
+    .navbar-toggler {
+        border: none;
+        padding: 8px;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    @media (max-width: 991.98px) {
+        #mainNavbar {
+            background: #ffffff;
+            padding: 10px 0;
+        }
+
+        #mainNavbar .nav-link {
+            color: #176b3a;
+            padding: 12px 10px !important;
+        }
+
+        #mainNavbar .nav-link::after {
+            display: none;
+        }
+
+        #mainNavbar .navbar-collapse {
+            margin-top: 15px;
+            padding: 10px 0;
+        }
+
+        #mainNavbar .dropdown-menu {
+            box-shadow: none;
+            border-left: 3px solid #176b3a;
+            border-radius: 0;
+            margin-top: 0;
+            padding-left: 10px;
+
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+        }
+
+        #mainNavbar .dropdown-item {
+            color: #176b3a;
+        }
+
+        #mainNavbar .dropdown-item:hover {
+            background: #176b3a;
+            color: #ffffff;
+        }
+
+        #mainNavbar.scrolled {
+            padding: 8px 0;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .navbar-logo {
+            height: 45px;
+        }
+
+        #mainNavbar.scrolled .navbar-logo {
+            height: 40px;
+        }
+    }
+</style>
+
+<!-- =====================================================
+     NAVBAR JAVASCRIPT
+===================================================== -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const navbar = document.getElementById("mainNavbar");
+
+        function handleNavbarScroll() {
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        }
+
+        handleNavbarScroll();
+
+        window.addEventListener("scroll", handleNavbarScroll, {
+            passive: true
+        });
+
+    });
+</script>
 
 <!-- =====================================================
      HERO
 ===================================================== -->
 
-<section class="bg-success text-white py-2 hero-section">
+<section class="hero-section text-white">
+    <div class="hero-background">
+        <div class="hero-slide active"
+             style="background-image: url('assets/images/hero-slide-1.jpg');"></div>
 
-    <div class="container py-5">
+        <div class="hero-slide"
+             style="background-image: url('assets/images/hero-slide-2.jpg');"></div>
 
-        <div class="row align-items-center g-2">
+        <div class="hero-slide"
+             style="background-image: url('assets/images/hero-slide-3.jpg');"></div>
 
-            <!-- HERO IMAGE -->
-            <!-- Mobile: FIRST | Desktop: SECOND -->
-            <div class="col-lg-5 order-1 order-lg-2 hero-image reveal-right">
+        <div class="hero-slide"
+             style="background-image: url('assets/images/hero-slide-4.jpg');"></div>
+    </div>
 
-                <div class="bg-white p-2 rounded-4 shadow hero-image-wrap">
+    <div class="hero-overlay"></div>
 
-                    <img
-                        src="assets/images/agriculture-hero.jpg"
-                        alt="Agricultural development in South East Nigeria"
-                        class="img-fluid rounded-4">
-
-                </div>
-
-            </div>
-
-
-            <!-- HERO TEXT -->
-            <!-- Mobile: SECOND | Desktop: FIRST -->
-            <div class="col-lg-7 order-2 order-lg-1 hero-content reveal-left">
-
+    <div class="container hero-content-container">
+        <div class="row align-items-center w-100">
+            <div class="col-lg-9 hero-content reveal-left">
                 <span class="badge bg-warning text-dark mb-3 px-3 py-2">
-
                     SEDC • NRARD DIRECTORATE
-
                 </span>
 
-
                 <h1 class="display-3 fw-bold mb-4">
-
-                    Transforming Agriculture.
-
-                    <br>
-
-                    Developing Rural Communities.
-
+                    Tranforming Agriculture •
+                    Developing Rural Communities•<br>Optimizing Natural Resources
                 </h1>
 
-
-                <p class="lead mb-2">
-
+                <p class="lead mb-4">
                     Driving sustainable agriculture, responsible
                     natural resource management and rural economic
                     development across South East Nigeria.
-
                 </p>
 
-
                 <div class="d-flex flex-wrap gap-3">
-
-                    <a
-                        href="#programmes"
-                        class="btn btn-warning btn-lg px-4">
-
+                    <a href="#programmes" class="btn btn-warning btn-lg px-4">
                         Explore Our Programmes
-
                     </a>
 
-
-                    <a
-                        href="#about"
-                        class="btn btn-outline-light btn-lg px-4">
-
+                    <a href="#about" class="btn btn-outline-light btn-lg px-4">
                         Learn More
-
                     </a>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
 
@@ -3397,6 +3554,15 @@ RESPONSIVE
 
 <script>
 
+    const navbar = document.getElementById("mainNavbar"); 
+    window.addEventListener("scroll", function () { 
+        if (window.scrollY > 50) { 
+            navbar.classList.add("scrolled");
+         } else { 
+            navbar.classList.remove("scrolled"); 
+        }
+    });
+
 document.addEventListener("DOMContentLoaded", () => {
 
 
@@ -4508,6 +4674,102 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </script>
 
+
+
+
+<script>
+/* =========================
+   HERO BACKGROUND SLIDER
+   4 IMAGES + 1 VIDEO
+========================= */
+document.addEventListener("DOMContentLoaded", function () {
+    const heroSlides = document.querySelectorAll(".hero-slide");
+    const heroVideo = document.querySelector(".hero-video video");
+
+    if (!heroSlides.length) return;
+
+    let currentHeroSlide = 0;
+    let heroTimer = null;
+    const imageDuration = 5000;
+
+    function clearHeroTimer() {
+        if (heroTimer) {
+            clearTimeout(heroTimer);
+            heroTimer = null;
+        }
+    }
+
+    function showHeroSlide(index) {
+        heroSlides.forEach(function (slide) {
+            slide.classList.remove("active");
+        });
+
+        heroSlides[index].classList.add("active");
+
+        if (heroVideo) {
+            if (heroSlides[index].classList.contains("hero-video")) {
+                heroVideo.currentTime = 0;
+
+                const playPromise = heroVideo.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.catch(function () {
+                        // Autoplay may be blocked by the browser.
+                    });
+                }
+            } else {
+                heroVideo.pause();
+            }
+        }
+    }
+
+    function scheduleNextImage() {
+        clearHeroTimer();
+        heroTimer = setTimeout(nextHeroSlide, imageDuration);
+    }
+
+    function nextHeroSlide() {
+        clearHeroTimer();
+
+        if (
+            heroVideo &&
+            heroSlides[currentHeroSlide].classList.contains("hero-video")
+        ) {
+            heroVideo.pause();
+        }
+
+        currentHeroSlide++;
+
+        if (currentHeroSlide >= heroSlides.length) {
+            currentHeroSlide = 0;
+        }
+
+        showHeroSlide(currentHeroSlide);
+
+        if (heroSlides[currentHeroSlide].classList.contains("hero-video")) {
+            return;
+        }
+
+        scheduleNextImage();
+    }
+
+    showHeroSlide(currentHeroSlide);
+    scheduleNextImage();
+
+    if (heroVideo) {
+        heroVideo.addEventListener("ended", function () {
+            clearHeroTimer();
+
+            heroSlides[currentHeroSlide].classList.remove("active");
+
+            currentHeroSlide = 0;
+
+            showHeroSlide(currentHeroSlide);
+            scheduleNextImage();
+        });
+    }
+});
+</script>
 
 </body>
 

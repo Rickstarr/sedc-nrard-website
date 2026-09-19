@@ -1,0 +1,1490 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Our People | NRARD SEDC</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* =========================
+           ROOT VARIABLES
+        ========================== */
+
+        :root {
+            --green: #176B3A;
+            --dark: #0D4526;
+            --gold: #F5C542;
+            --cream: #F8F6EF;
+            --soft: #EEF5F0;
+            --text: #183025;
+        }
+
+
+        /* =========================
+           GENERAL STYLES
+        ========================== */
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 3px 18px rgba(13, 69, 38, 0.12);
+            padding: 9px 0;
+        }
+
+        .navbar-logo {
+            height: 48px;
+            width: auto;
+        }
+
+        .nav-link {
+            color: var(--dark) !important;
+            font-weight: 600;
+        }
+
+        .nav-link:hover {
+            color: var(--green) !important;
+        }
+
+
+        /* =========================
+           DROPDOWN
+        ========================== */
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(13, 69, 38, 0.16);
+        }
+
+        .dropdown-item {
+            color: var(--dark);
+            border-radius: 8px;
+        }
+
+        .dropdown-item:hover {
+            background: var(--green);
+            color: #ffffff;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            margin-top: 66px;
+            background: linear-gradient(
+                120deg,
+                var(--dark),
+                var(--green)
+            );
+            color: #ffffff;
+            padding: 70px 0;
+        }
+
+        .hero h1 {
+            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        .section {
+            padding: 70px 0;
+        }
+
+        .title {
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        .title span {
+            color: var(--gold);
+        }
+
+
+        /* =========================
+           CARDS
+        ========================== */
+
+        .cardx {
+            height: 100%;
+            border: none;
+            border-radius: 18px;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(13, 69, 38, 0.09);
+            padding: 26px;
+        }
+
+
+        /* =========================
+           IMAGE PLACEHOLDER
+        ========================== */
+
+        .placeholder {
+            min-height: 300px;
+            border: 2px dashed #9bb8a5;
+            border-radius: 18px;
+            background: linear-gradient(
+                135deg,
+                var(--soft),
+                var(--cream)
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #557261;
+            padding: 25px;
+            font-weight: 600;
+        }
+
+        .placeholder.tall {
+            min-height: 380px;
+        }
+
+
+        /* =========================
+           TIMELINE
+        ========================== */
+
+        .timeline {
+            border-left: 3px solid var(--gold);
+            padding-left: 25px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -34px;
+            top: 8px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 2px var(--green);
+        }
+
+        .date {
+            font-weight: 800;
+            color: var(--green);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: var(--dark);
+            color: #dcebe1;
+            padding: 45px 0 20px;
+        }
+
+        footer a {
+            color: #dcebe1;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 767px) {
+
+            .hero {
+                padding: 50px 0;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .placeholder {
+                min-height: 230px;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+
+        <div class="container">
+
+            <!-- LOGO -->
+            <a class="navbar-brand" href="index.html">
+
+                <img
+                    src="images/logo.png"
+                    class="navbar-logo"
+                    alt="NRARD Logo"
+                >
+
+            </a>
+
+
+            <!-- MOBILE TOGGLE -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#nav"
+            >
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <!-- NAVIGATION -->
+            <div class="collapse navbar-collapse" id="nav">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <!-- HOME -->
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="index.html"
+                        >
+                            Home
+                        </a>
+
+                    </li>
+
+
+                    <!-- WHO WE ARE -->
+                    <li class="nav-item dropdown">
+
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            data-bs-toggle="dropdown"
+                        >
+                            Who we are
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="about.html"
+                                >
+                                    About NRARD SEDC
+                                </a>
+                            </li>
+
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="vision.html"
+                                >
+                                    Our Vision
+                                </a>
+                            </li>
+
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="people.html"
+                                >
+                                    Our People
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+
+                    <!-- WHAT WE DO -->
+                    <li class="nav-item dropdown">
+
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            data-bs-toggle="dropdown"
+                        >
+                            What we do
+                        </a>
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="natural-resources.html"
+                                >
+                                    Natural Resources
+                                </a>
+                            </li>
+
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="agriculture.html"
+                                >
+                                    Agriculture
+                                </a>
+                            </li>
+
+                            <li>
+                                <a
+                                    class="dropdown-item"
+                                    href="rural-development.html"
+                                >
+                                    Rural Development
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+
+                    <!-- ACTIVITIES -->
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="activities.html"
+                        >
+                            Activities
+                        </a>
+
+                    </li>
+
+
+                    <!-- BLOG -->
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="blog.html"
+                        >
+                            Blog
+                        </a>
+
+                    </li>
+
+
+                    <!-- CONTACT -->
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="contact.html"
+                        >
+                            Contact
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <header class="hero text-center">
+
+        <div class="container">
+
+            <h1>
+                Our People
+            </h1>
+
+            <p class="lead mb-0">
+                Meet the leadership and explore the institutional
+                timeline of the Directorate.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         EXECUTIVE DIRECTOR
+    ========================== -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="row g-5 align-items-center">
+
+                <!-- EXECUTIVE DIRECTOR IMAGE -->
+                <div class="col-lg-5">
+
+                    <div class="placeholder tall">
+
+                        ADD OFFICIAL EXECUTIVE DIRECTOR
+                        PHOTO HERE
+
+                        <br>
+
+                        <small>
+                            Dr Cliff Chimeremeze Ogbede
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXECUTIVE DIRECTOR INFORMATION -->
+                <div class="col-lg-7">
+
+                    <span class="badge text-bg-warning mb-3">
+                        Executive Director
+                    </span>
+
+                    <h2 class="title">
+                        Dr Cliff Chimeremeze Ogbede
+                    </h2>
+
+                    <p>
+                        Dr Cliff Chimeremeze Ogbede is the
+                        Executive Director of Natural Resources,
+                        Agriculture and Rural Development.
+                        He was sworn in on the 11th of February
+                        2025 alongside other Executive Directors.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         INSTITUTIONAL TIMELINE
+    ========================== -->
+
+    <section
+        class="section"
+        style="background: var(--cream);"
+    >
+
+        <div class="container">
+
+            <h2 class="title mb-5">
+
+                Institutional
+                <span>Timeline</span>
+
+            </h2>
+
+
+            <div class="timeline">
+
+                <!-- JANUARY 2025 -->
+                <div class="timeline-item">
+
+                    <div class="date">
+                        Early January 2025
+                    </div>
+
+                    <div>
+                        Hosts Ngor Okpala Journalists Forum;
+                        articulates SEDC vision and pledges
+                        service with integrity for regional
+                        rehabilitation and agricultural
+                        revitalisation.
+                    </div>
+
+                </div>
+
+
+                <!-- 13–15 JANUARY 2025 -->
+                <div class="timeline-item">
+
+                    <div class="date">
+                        13–15 January 2025
+                    </div>
+
+                    <div>
+                        Screened and confirmed by the Senate
+                        Ad Hoc Committee on Regional Development
+                        Commissions (chaired by Senator Orji
+                        Uzor Kalu).
+                    </div>
+
+                </div>
+
+
+                <!-- FEBRUARY 2025 -->
+                <div class="timeline-item">
+
+                    <div class="date">
+                        11 February 2025
+                    </div>
+
+                    <div>
+                        Officially inaugurated as Executive
+                        Director following Board inauguration
+                        by President Bola Tinubu.
+                    </div>
+
+                </div>
+
+
+                <!-- MID-FEBRUARY 2025 -->
+                <div class="timeline-item">
+
+                    <div class="date">
+                        Mid-February 2025
+                    </div>
+
+                    <div>
+                        Outlines three-phase strategy
+                        (quick wins, mid-term, long-term)
+                        for agricultural revitalisation,
+                        job creation and economic reconstruction.
+                    </div>
+
+                </div>
+
+
+                <!-- FEBRUARY 2026 -->
+                <div class="timeline-item">
+
+                    <div class="date">
+                        Early February 2026
+                    </div>
+
+                    <div>
+                        Participates in the SEDC-hosted
+                        inaugural convening for South East
+                        Vision 2050 – a 25-year regional blueprint.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row g-4">
+
+                <!-- ABOUT -->
+                <div class="col-lg-5">
+
+                    <h4 class="text-white">
+                        NRARD SEDC
+                    </h4>
+
+                    <p>
+                        Directorate of Natural Resources,
+                        Agriculture and Rural Development.
+                    </p>
+
+                </div>
+
+
+                <!-- EXPLORE -->
+                <div class="col-lg-3">
+
+                    <h5 class="text-white">
+                        Explore
+                    </h5>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <br>
+
+                    <a href="vision.html">
+                        Our Vision
+                    </a>
+
+                    <br>
+
+                    <a href="people.html">
+                        Our People
+                    </a>
+
+                </div>
+
+
+                <!-- WHAT WE DO -->
+                <div class="col-lg-4">
+
+                    <h5 class="text-white">
+                        What We Do
+                    </h5>
+
+                    <a href="natural-resources.html">
+                        Natural Resources
+                    </a>
+
+                    <br>
+
+                    <a href="agriculture.html">
+                        Agriculture
+                    </a>
+
+                    <br>
+
+                    <a href="rural-development.html">
+                        Rural Development
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <hr class="border-secondary">
+
+
+            <!-- COPYRIGHT -->
+            <p class="text-center mb-0 small">
+
+                © 2026 NRARD SEDC.
+                All rights reserved.
+
+            </p>
+
+        </div>
+
+    </footer><!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Our People | NRARD SEDC</title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+        /* =========================
+           ROOT VARIABLES
+        ========================== */
+
+        :root {
+            --green: #176B3A;
+            --dark: #0D4526;
+            --gold: #F5C542;
+            --cream: #F8F6EF;
+            --soft: #EEF5F0;
+            --text: #183025;
+        }
+
+
+        /* =========================
+           GENERAL STYLES
+        ========================== */
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 3px 18px rgba(13, 69, 38, 0.12);
+            padding: 9px 0;
+        }
+
+        .navbar-logo {
+            height: 48px;
+            width: auto;
+        }
+
+        .nav-link {
+            color: var(--dark) !important;
+            font-weight: 600;
+        }
+
+        .nav-link:hover {
+            color: var(--green) !important;
+        }
+
+
+        /* =========================
+           DROPDOWN
+        ========================== */
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(13, 69, 38, 0.16);
+        }
+
+        .dropdown-item {
+            color: var(--dark);
+            border-radius: 8px;
+        }
+
+        .dropdown-item:hover {
+            background: var(--green);
+            color: #ffffff;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            margin-top: 66px;
+            background: linear-gradient(
+                120deg,
+                var(--dark),
+                var(--green)
+            );
+            color: #ffffff;
+            padding: 70px 0;
+        }
+
+        .hero h1 {
+            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        .section {
+            padding: 70px 0;
+        }
+
+        .title {
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        .title span {
+            color: var(--gold);
+        }
+
+
+        /* =========================
+           CARDS
+        ========================== */
+
+        .cardx {
+            height: 100%;
+            border: none;
+            border-radius: 18px;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(13, 69, 38, 0.09);
+            padding: 26px;
+        }
+
+
+        /* =========================
+           IMAGE PLACEHOLDER
+        ========================== */
+
+        .placeholder {
+            min-height: 300px;
+            border: 2px dashed #9bb8a5;
+            border-radius: 18px;
+            background: linear-gradient(
+                135deg,
+                var(--soft),
+                var(--cream)
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #557261;
+            padding: 25px;
+            font-weight: 600;
+        }
+
+        .placeholder.tall {
+            min-height: 380px;
+        }
+
+
+        /* =========================
+           TIMELINE
+        ========================== */
+
+        .timeline {
+            border-left: 3px solid var(--gold);
+            padding-left: 25px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -34px;
+            top: 8px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 2px var(--green);
+        }
+
+        .date {
+            font-weight: 800;
+            color: var(--green);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: var(--dark);
+            color: #dcebe1;
+            padding: 45px 0 20px;
+        }
+
+        footer a {
+            color: #dcebe1;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 767px) {
+
+            .hero {
+                padding: 50px 0;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .placeholder {
+                min-height: 230px;
+            }
+
+        }
+
+        /* =========================
+           PAGE ANIMATIONS
+        ========================== */
+        html { scroll-behavior: smooth; }
+
+        .navbar {
+            animation: navbarDrop 0.8s ease both;
+            transition: box-shadow .35s ease, background .35s ease;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color .3s ease, transform .3s ease;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity .25s ease, transform .25s ease;
+        }
+
+        .dropdown.show .dropdown-menu {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            animation: heroGlow 5s ease-in-out infinite alternate;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: .18;
+        }
+
+        .hero::before {
+            width: 320px;
+            height: 320px;
+            right: -120px;
+            top: -160px;
+            background: var(--gold);
+            animation: floatOrb 7s ease-in-out infinite;
+        }
+
+        .hero::after {
+            width: 240px;
+            height: 240px;
+            left: -100px;
+            bottom: -150px;
+            background: #ffffff;
+            animation: floatOrb 9s ease-in-out infinite reverse;
+        }
+
+        .hero h1,
+        .hero p {
+            animation: fadeUp .9s ease both;
+        }
+
+        .hero p {
+            animation-delay: .18s;
+        }
+
+        .cardx,
+        .placeholder {
+            transition: transform .45s cubic-bezier(.2,.8,.2,1),
+                        box-shadow .45s ease,
+                        border-color .45s ease;
+        }
+
+        .cardx {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cardx::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .45s ease;
+        }
+
+        .cardx:hover {
+            transform: translateY(-9px) scale(1.015);
+            box-shadow: 0 18px 40px rgba(13, 69, 38, .16);
+        }
+
+        .cardx:hover::before {
+            transform: scaleX(1);
+        }
+
+        .placeholder:hover {
+            transform: translateY(-7px) scale(1.01);
+            box-shadow: 0 18px 38px rgba(13, 69, 38, .14);
+            border-color: var(--green);
+        }
+
+        .reveal,
+        .reveal-left,
+        .reveal-right,
+        .scale-in {
+            opacity: 0;
+            transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);
+            will-change: opacity, transform;
+        }
+
+        .reveal { transform: translateY(55px); }
+        .reveal-left { transform: translateX(-70px); }
+        .reveal-right { transform: translateX(70px); }
+        .scale-in { transform: scale(.88); }
+
+        .reveal.active,
+        .reveal-left.active,
+        .reveal-right.active,
+        .scale-in.active {
+            opacity: 1;
+            transform: none;
+        }
+
+        .stagger:nth-child(1) { transition-delay: .05s; }
+        .stagger:nth-child(2) { transition-delay: .15s; }
+        .stagger:nth-child(3) { transition-delay: .25s; }
+        .stagger:nth-child(4) { transition-delay: .35s; }
+        .stagger:nth-child(5) { transition-delay: .45s; }
+        .stagger:nth-child(6) { transition-delay: .55s; }
+
+        .timeline-item {
+            transition: transform .4s ease, opacity .4s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(7px);
+        }
+
+        footer a {
+            transition: color .3s ease, padding-left .3s ease;
+        }
+
+        footer a:hover {
+            padding-left: 4px;
+        }
+
+        @keyframes navbarDrop {
+            from { opacity: 0; transform: translateY(-25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(0, 22px, 0) scale(1.08); }
+        }
+
+        @keyframes heroGlow {
+            from { background-position: 0% 50%; }
+            to { background-position: 100% 50%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<!-- =========================
+         NAVBAR
+    ========================== -->
+<nav class="navbar navbar-expand-lg fixed-top">
+<div class="container">
+<!-- LOGO -->
+<a class="navbar-brand" href="index.html">
+<img alt="NRARD Logo" class="navbar-logo" src="images/logo.png"/>
+</a>
+<!-- MOBILE TOGGLE -->
+<button class="navbar-toggler" data-bs-target="#nav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<!-- NAVIGATION -->
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto">
+<!-- HOME -->
+<li class="nav-item">
+<a class="nav-link" href="index.html">
+                            Home
+                        </a>
+</li>
+<!-- WHO WE ARE -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+                            Who we are
+                        </a>
+<ul class="dropdown-menu">
+<li>
+<a class="dropdown-item" href="about.html">
+                                    About NRARD SEDC
+                                </a>
+</li>
+<li>
+<a class="dropdown-item" href="vision.html">
+                                    Our Vision
+                                </a>
+</li>
+<li>
+<a class="dropdown-item" href="people.html">
+                                    Our People
+                                </a>
+</li>
+</ul>
+</li>
+<!-- WHAT WE DO -->
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+                            What we do
+                        </a>
+<ul class="dropdown-menu">
+<li>
+<a class="dropdown-item" href="natural-resources.html">
+                                    Natural Resources
+                                </a>
+</li>
+<li>
+<a class="dropdown-item" href="agriculture.html">
+                                    Agriculture
+                                </a>
+</li>
+<li>
+<a class="dropdown-item" href="rural-development.html">
+                                    Rural Development
+                                </a>
+</li>
+</ul>
+</li>
+<!-- ACTIVITIES -->
+<li class="nav-item">
+<a class="nav-link" href="activities.html">
+                            Activities
+                        </a>
+</li>
+<!-- BLOG -->
+<li class="nav-item">
+<a class="nav-link" href="blog.html">
+                            Blog
+                        </a>
+</li>
+<!-- CONTACT -->
+<li class="nav-item">
+<a class="nav-link" href="contact.html">
+                            Contact
+                        </a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<!-- =========================
+         HERO
+    ========================== -->
+<header class="hero text-center">
+<div class="container">
+<h1 class="reveal">
+                Our People
+            </h1>
+<p class="lead mb-0 reveal">
+                Meet the leadership and explore the institutional
+                timeline of the Directorate.
+            </p>
+</div>
+</header>
+<!-- =========================
+         EXECUTIVE DIRECTOR
+    ========================== -->
+<section class="section reveal">
+<div class="container">
+<div class="row g-5 align-items-center">
+<!-- EXECUTIVE DIRECTOR IMAGE -->
+<div class="col-lg-5">
+<div class="placeholder tall scale-in stagger">
+
+                        ADD OFFICIAL EXECUTIVE DIRECTOR
+                        PHOTO HERE
+
+                        <br/>
+<small>
+                            Dr Cliff Chimeremeze Ogbede
+                        </small>
+</div>
+</div>
+<!-- EXECUTIVE DIRECTOR INFORMATION -->
+<div class="col-lg-7">
+<span class="badge text-bg-warning mb-3">
+                        Executive Director
+                    </span>
+<h2 class="title reveal">
+                        Dr Cliff Chimeremeze Ogbede
+                    </h2>
+<p>
+                        Dr Cliff Chimeremeze Ogbede is the
+                        Executive Director of Natural Resources,
+                        Agriculture and Rural Development.
+                        He was sworn in on the 11th of February
+                        2025 alongside other Executive Directors.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================
+         INSTITUTIONAL TIMELINE
+    ========================== -->
+<section class="section reveal" style="background: var(--cream);">
+<div class="container">
+<h2 class="title mb-5 reveal">
+
+                Institutional
+                <span>Timeline</span>
+</h2>
+<div class="timeline">
+<!-- JANUARY 2025 -->
+<div class="timeline-item reveal-left">
+<div class="date">
+                        Early January 2025
+                    </div>
+<div>
+                        Hosts Ngor Okpala Journalists Forum;
+                        articulates SEDC vision and pledges
+                        service with integrity for regional
+                        rehabilitation and agricultural
+                        revitalisation.
+                    </div>
+</div>
+<!-- 13–15 JANUARY 2025 -->
+<div class="timeline-item reveal-left">
+<div class="date">
+                        13–15 January 2025
+                    </div>
+<div>
+                        Screened and confirmed by the Senate
+                        Ad Hoc Committee on Regional Development
+                        Commissions (chaired by Senator Orji
+                        Uzor Kalu).
+                    </div>
+</div>
+<!-- FEBRUARY 2025 -->
+<div class="timeline-item reveal-left">
+<div class="date">
+                        11 February 2025
+                    </div>
+<div>
+                        Officially inaugurated as Executive
+                        Director following Board inauguration
+                        by President Bola Tinubu.
+                    </div>
+</div>
+<!-- MID-FEBRUARY 2025 -->
+<div class="timeline-item reveal-left">
+<div class="date">
+                        Mid-February 2025
+                    </div>
+<div>
+                        Outlines three-phase strategy
+                        (quick wins, mid-term, long-term)
+                        for agricultural revitalisation,
+                        job creation and economic reconstruction.
+                    </div>
+</div>
+<!-- FEBRUARY 2026 -->
+<div class="timeline-item reveal-left">
+<div class="date">
+                        Early February 2026
+                    </div>
+<div>
+                        Participates in the SEDC-hosted
+                        inaugural convening for South East
+                        Vision 2050 – a 25-year regional blueprint.
+                    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================
+         FOOTER
+    ========================== -->
+<footer>
+<div class="container">
+<div class="row g-4">
+<!-- ABOUT -->
+<div class="col-lg-5 reveal">
+<h4 class="text-white">
+                        NRARD SEDC
+                    </h4>
+<p>
+                        Directorate of Natural Resources,
+                        Agriculture and Rural Development.
+                    </p>
+</div>
+<!-- EXPLORE -->
+<div class="col-lg-3 reveal">
+<h5 class="text-white">
+                        Explore
+                    </h5>
+<a href="about.html">
+                        About
+                    </a>
+<br/>
+<a href="vision.html">
+                        Our Vision
+                    </a>
+<br/>
+<a href="people.html">
+                        Our People
+                    </a>
+</div>
+<!-- WHAT WE DO -->
+<div class="col-lg-4 reveal">
+<h5 class="text-white">
+                        What We Do
+                    </h5>
+<a href="natural-resources.html">
+                        Natural Resources
+                    </a>
+<br/>
+<a href="agriculture.html">
+                        Agriculture
+                    </a>
+<br/>
+<a href="rural-development.html">
+                        Rural Development
+                    </a>
+</div>
+</div>
+<hr class="border-secondary"/>
+<!-- COPYRIGHT -->
+<p class="text-center mb-0 small">
+
+                © 2026 NRARD SEDC.
+                All rights reserved.
+
+            </p>
+</div>
+</footer>
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            /* Scroll reveal */
+            const animatedElements = document.querySelectorAll(
+                ".reveal, .reveal-left, .reveal-right, .scale-in"
+            );
+
+            if ("IntersectionObserver" in window) {
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("active");
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.12,
+                    rootMargin: "0px 0px -40px 0px"
+                });
+
+                animatedElements.forEach(el => observer.observe(el));
+            } else {
+                animatedElements.forEach(el => el.classList.add("active"));
+            }
+
+            /* Card tilt effect */
+            document.querySelectorAll(".cardx").forEach(card => {
+                card.addEventListener("mousemove", function (e) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const rotateY = ((x / rect.width) - 0.5) * 5;
+                    const rotateX = ((y / rect.height) - 0.5) * -5;
+
+                    card.style.transform =
+                        `translateY(-9px) scale(1.015) perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+
+                card.addEventListener("mouseleave", function () {
+                    card.style.transform = "";
+                });
+            });
+
+            /* Navbar shadow on scroll */
+            const navbar = document.querySelector(".navbar");
+
+            window.addEventListener("scroll", function () {
+                if (!navbar) return;
+
+                if (window.scrollY > 30) {
+                    navbar.style.boxShadow = "0 8px 25px rgba(13, 69, 38, 0.18)";
+                    navbar.style.background = "rgba(255,255,255,0.99)";
+                } else {
+                    navbar.style.boxShadow = "0 3px 18px rgba(13, 69, 38, 0.12)";
+                    navbar.style.background = "rgba(255,255,255,0.97)";
+                }
+            }, { passive: true });
+        });
+    </script></body>
+</html>
+
+
+    <!-- Bootstrap JavaScript -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+</body>
+
+</html>

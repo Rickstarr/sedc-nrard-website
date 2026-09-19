@@ -1,0 +1,1096 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery | NRARD</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <style>
+        :root {
+            --success-green: #198754;
+            --dark-green: #11653d;
+            --light-green: #eaf7ef;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f9fa;
+            color: #222;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .gallery-hero {
+            background:
+                linear-gradient(
+                    rgba(0, 80, 45, 0.78),
+                    rgba(0, 80, 45, 0.78)
+                ),
+                url("images/gallery/gallery-hero.jpg");
+
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+        }
+
+        .gallery-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .gallery-hero p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-title h2 {
+            font-weight: 800;
+            color: var(--dark-green);
+        }
+
+        .section-title .line {
+            width: 70px;
+            height: 4px;
+            background: var(--success-green);
+            margin: 15px auto 20px;
+            border-radius: 10px;
+        }
+
+        /* =========================
+           FILTER BUTTONS
+        ========================= */
+
+        .gallery-filter {
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            border: 1px solid var(--success-green);
+            color: var(--success-green);
+            background: white;
+            padding: 9px 22px;
+            border-radius: 30px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--success-green);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .gallery-item {
+            margin-bottom: 24px;
+        }
+
+        .gallery-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+
+            transition:
+                transform 0.5s ease,
+                filter 0.5s ease;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.08);
+            filter: brightness(0.65);
+        }
+
+        /* =========================
+           IMAGE OVERLAY
+        ========================= */
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            padding: 25px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    transparent 35%,
+                    rgba(0, 0, 0, 0.8)
+                );
+
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-card:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h5 {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .gallery-overlay p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .gallery-overlay .view-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+            background: white;
+            color: var(--success-green);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+        }
+
+        /* =========================
+           LIGHTBOX
+        ========================= */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.92);
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            z-index: 9999;
+
+            padding: 30px;
+        }
+
+        .lightbox.show {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+
+            color: white;
+            font-size: 40px;
+
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+
+            text-align: center;
+            color: white;
+
+            font-size: 16px;
+        }
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        .gallery-item {
+            animation: fadeUp 0.7s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 767px) {
+
+            .gallery-hero {
+                min-height: 320px;
+            }
+
+            .gallery-card img {
+                height: 240px;
+            }
+
+            .gallery-overlay {
+                opacity: 1;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .lightbox {
+                padding: 15px;
+            }
+
+            .lightbox img {
+                max-width: 100%;
+                max-height: 75vh;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <!--
+        USE THE SAME HEADER FROM YOUR index.html
+        HERE
+    -->
+
+    <header class="bg-white shadow-sm sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+
+                <a class="navbar-brand" href="index.html">
+                    <img
+                        src="images/logo.png"
+                        alt="NRARD Logo"
+                        height="55"
+                    >
+                </a>
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNav"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div
+                    class="collapse navbar-collapse"
+                    id="mainNav"
+                >
+                    <ul class="navbar-nav ms-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">
+                                About
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="activities.html">
+                                Activities
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active text-success" href="gallery.html">
+                                Gallery
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.html">
+                                Blog
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="gallery-hero">
+
+        <div class="container">
+
+            <h1>Our Gallery</h1>
+
+            <p>
+                Explore moments, activities, projects and community
+                engagements that showcase our work and impact.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALLERY SECTION
+    ========================= -->
+
+    <section class="py-5">
+
+        <div class="container">
+
+            <!-- TITLE -->
+
+            <div class="section-title text-center mb-4">
+
+                <span class="text-success fw-bold">
+                    OUR WORK IN PICTURES
+                </span>
+
+                <h2 class="mt-2">
+                    Moments That Matter
+                </h2>
+
+                <div class="line"></div>
+
+                <p class="text-muted mx-auto" style="max-width: 700px;">
+                    Take a look at some of our programmes, field activities,
+                    stakeholder engagements, community projects and events.
+                </p>
+
+            </div>
+
+
+            <!-- FILTER -->
+
+            <div class="gallery-filter text-center">
+
+                <button
+                    class="filter-btn active"
+                    data-filter="all"
+                >
+                    All
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="activities"
+                >
+                    Activities
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="projects"
+                >
+                    Projects
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="events"
+                >
+                    Events
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="community"
+                >
+                    Community
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 IMAGES
+            ========================= -->
+
+            <div class="row g-4" id="gallery">
+
+
+                <!-- IMAGE 1 -->
+
+                <div
+                    class="col-sm-6 col-lg-4 gallery-item"
+                    data-category="activities"
+                >
+
+                    <div
+                        class="gallery-card"
+                        data-image="images/gallery/activity-1.jpg"
+                        data-title="Community Engagement"
+                        data-description="Community engagement and field activities."
+                    >
+
+                        <img
+                            src="assets/images/gallery/activity-10.jpg"
+                            alt="Community Engagement"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="view-icon">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+
+                            <h5>
+                                Community Engagement
+                            </h5>
+
+                            <p>
+                                Field activity
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 2 -->
+
+                <div
+                    class="col-sm-6 col-lg-4 gallery-item"
+                    data-category="projects"
+                >
+
+                    <div
+                        class="gallery-card"
+                        data-image="images/gallery/project1.jpg"
+                        data-title="Project Activity"
+                        data-description="Project implementation and community development."
+                    >
+
+                        <img
+                            src="images/gallery/project1.jpg"
+                            alt="Project Activity"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="view-icon">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+
+                            <h5>
+                                Project Activity
+                            </h5>
+
+                            <p>
+                                Project implementation
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 3 -->
+
+                <div
+                    class="col-sm-6 col-lg-4 gallery-item"
+                    data-category="events"
+                >
+
+                    <div
+                        class="gallery-card"
+                        data-image="images/gallery/event1.jpg"
+                        data-title="Stakeholder Event"
+                        data-description="Stakeholder engagement and collaboration."
+                    >
+
+                        <img
+                            src="images/gallery/event1.jpg"
+                            alt="Stakeholder Event"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="view-icon">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+
+                            <h5>
+                                Stakeholder Event
+                            </h5>
+
+                            <p>
+                                Stakeholder engagement
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 4 -->
+
+                <div
+                    class="col-sm-6 col-lg-4 gallery-item"
+                    data-category="community"
+                >
+
+                    <div
+                        class="gallery-card"
+                        data-image="images/gallery/community1.jpg"
+                        data-title="Community Development"
+                        data-description="Working with communities to create sustainable impact."
+                    >
+
+                        <img
+                            src="images/gallery/community1.jpg"
+                            alt="Community Development"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="view-icon">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+
+                            <h5>
+                                Community Development
+                            </h5>
+
+                            <p>
+                                Community programme
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 5 -->
+
+                <div
+                    class="col-sm-6 col-lg-4 gallery-item"
+                    data-category="activities"
+                >
+
+                    <div
+                        class="gallery-card"
+                        data-image="images/gallery/activity2.jpg"
+                        data-title="Field Activity"
+                        data-description="Our team during a field activity."
+                    >
+
+                        <img
+                            src="images/gallery/activity2.jpg"
+                            alt="Field Activity"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="view-icon">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+
+                            <h5>
+                                Field Activity
+                            </h5>
+
+                            <p>
+                                Programme activity
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 6 -->
+
+                <div
+                    class="col-sm-6 col-lg-4 gallery-item"
+                    data-category="projects"
+                >
+
+                    <div
+                        class="gallery-card"
+                        data-image="images/gallery/project2.jpg"
+                        data-title="Project Implementation"
+                        data-description="Supporting development through practical interventions."
+                    >
+
+                        <img
+                            src="images/gallery/project2.jpg"
+                            alt="Project Implementation"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="view-icon">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+
+                            <h5>
+                                Project Implementation
+                            </h5>
+
+                            <p>
+                                Development project
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 7 -->
+
+                <div
+                    class="col-sm-6 col-lg-4 gallery-item"
+                    data-category="events"
+                >
+
+                    <div
+                        class="gallery-card"
+                        data-image="images/gallery/event2.jpg"
+                        data-title="Programme Event"
+                        data-description="A special programme and stakeholder event."
+                    >
+
+                        <img
+                            src="images/gallery/event2.jpg"
+                            alt="Programme Event"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="view-icon">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+
+                            <h5>
+                                Programme Event
+                            </h5>
+
+                            <p>
+                                Special event
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 8 -->
+
+                <div
+                    class="col-sm-6 col-lg-4 gallery-item"
+                    data-category="community"
+                >
+
+                    <div
+                        class="gallery-card"
+                        data-image="images/gallery/community2.jpg"
+                        data-title="Community Outreach"
+                        data-description="Connecting with communities and beneficiaries."
+                    >
+
+                        <img
+                            src="images/gallery/community2.jpg"
+                            alt="Community Outreach"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="view-icon">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+
+                            <h5>
+                                Community Outreach
+                            </h5>
+
+                            <p>
+                                Community engagement
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE 9 -->
+
+                <div
+                    class="col-sm-6 col-lg-4 gallery-item"
+                    data-category="activities"
+                >
+
+                    <div
+                        class="gallery-card"
+                        data-image="images/gallery/activity3.jpg"
+                        data-title="Team Activity"
+                        data-description="Our team working with partners and communities."
+                    >
+
+                        <img
+                            src="images/gallery/activity3.jpg"
+                            alt="Team Activity"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div class="view-icon">
+                                <i class="bi bi-zoom-in"></i>
+                            </div>
+
+                            <h5>
+                                Team Activity
+                            </h5>
+
+                            <p>
+                                Team engagement
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         LIGHTBOX
+    ========================= -->
+
+    <div class="lightbox" id="lightbox">
+
+        <button
+            class="lightbox-close border-0 bg-transparent"
+            id="lightboxClose"
+            aria-label="Close image"
+        >
+            &times;
+        </button>
+
+        <img
+            src=""
+            alt=""
+            id="lightboxImage"
+        >
+
+        <div
+            class="lightbox-caption"
+            id="lightboxCaption"
+        ></div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <!--
+        USE THE SAME FOOTER FROM YOUR WEBSITE HERE
+    -->
+
+    <footer class="bg-dark text-white py-5">
+
+        <div class="container text-center">
+
+            <h5 class="fw-bold">
+                NRARD
+            </h5>
+
+            <p class="mb-0 text-white-50">
+                Working together for sustainable development
+                and stronger communities.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    <!-- =========================
+         GALLERY JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* =========================
+           FILTER
+        ========================= */
+
+        const filterButtons =
+            document.querySelectorAll(".filter-btn");
+
+        const galleryItems =
+            document.querySelectorAll(".gallery-item");
+
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                /* Remove active */
+
+                filterButtons.forEach(btn => {
+                    btn.classList.remove("active");
+                });
+
+                /* Add active */
+
+                button.classList.add("active");
+
+
+                const filter =
+                    button.getAttribute("data-filter");
+
+
+                galleryItems.forEach(item => {
+
+                    const category =
+                        item.getAttribute("data-category");
+
+
+                    if (
+                        filter === "all" ||
+                        category === filter
+                    ) {
+
+                        item.style.display = "block";
+
+                    } else {
+
+                        item.style.display = "none";
+
+                    }
+
+                });
+
+            });
+
+        });
+
+
+        /* =========================
+           LIGHTBOX
+        ========================= */
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const lightboxImage =
+            document.getElementById("lightboxImage");
+
+        const lightboxCaption =
+            document.getElementById("lightboxCaption");
+
+        const lightboxClose =
+            document.getElementById("lightboxClose");
+
+
+        const galleryCards =
+            document.querySelectorAll(".gallery-card");
+
+
+        galleryCards.forEach(card => {
+
+            card.addEventListener("click", () => {
+
+                const image =
+                    card.getAttribute("data-image");
+
+                const title =
+                    card.getAttribute("data-title");
+
+                const description =
+                    card.getAttribute("data-description");
+
+
+                lightboxImage.src = image;
+
+                lightboxImage.alt = title;
+
+                lightboxCaption.innerHTML =
+                    `<strong>${title}</strong> — ${description}`;
+
+
+                lightbox.classList.add("show");
+
+                document.body.style.overflow = "hidden";
+
+            });
+
+        });
+
+
+        /* CLOSE */
+
+        lightboxClose.addEventListener("click", closeLightbox);
+
+
+        /* CLICK OUTSIDE IMAGE */
+
+        lightbox.addEventListener("click", event => {
+
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+
+        });
+
+
+        /* ESC KEY */
+
+        document.addEventListener("keydown", event => {
+
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+
+        });
+
+
+        function closeLightbox() {
+
+            lightbox.classList.remove("show");
+
+            document.body.style.overflow = "";
+
+            lightboxImage.src = "";
+
+        }
+
+    </script>
+
+</body>
+</html>

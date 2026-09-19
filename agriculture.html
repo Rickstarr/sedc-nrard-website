@@ -1,0 +1,1589 @@
+```html
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Agriculture | NRARD SEDC</title>
+
+    <!-- ================================
+         BOOTSTRAP CSS
+    ================================= -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =================================
+           NRARD COLOR VARIABLES
+        ================================= */
+
+        :root {
+            --green: #176B3A;
+            --dark: #0D4526;
+            --gold: #F5C542;
+            --cream: #F8F6EF;
+            --soft: #EEF5F0;
+            --text: #183025;
+        }
+
+
+        /* =================================
+           GENERAL STYLES
+        ================================= */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+
+        /* =================================
+           NAVBAR
+        ================================= */
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 3px 18px rgba(13, 69, 38, 0.12);
+            padding: 9px 0;
+
+            /* Motion */
+            animation: navbarDrop 0.8s ease forwards;
+        }
+
+        .navbar-logo {
+            height: 48px;
+            width: auto;
+
+            transition:
+                transform 0.3s ease,
+                filter 0.3s ease;
+        }
+
+        .navbar-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            color: var(--dark) !important;
+            font-weight: 600;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--green) !important;
+            transform: translateY(-2px);
+        }
+
+
+        /* =================================
+           DROPDOWN MENU
+        ================================= */
+
+        .dropdown-menu {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(13, 69, 38, 0.16);
+
+            /* Bootstrap handles display.
+               Our transition adds smooth movement. */
+
+            transform: translateY(10px);
+            opacity: 0;
+
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .dropdown.show .dropdown-menu {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .dropdown-item {
+            color: var(--dark);
+            border-radius: 8px;
+
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                padding-left 0.25s ease;
+        }
+
+        .dropdown-item:hover {
+            background: var(--green);
+            color: #ffffff;
+            padding-left: 20px;
+        }
+
+
+        /* =================================
+           HERO
+        ================================= */
+
+        .hero {
+            margin-top: 66px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    var(--dark),
+                    var(--green)
+                );
+
+            color: #ffffff;
+            padding: 70px 0;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative animated glow */
+
+        .hero::before {
+            content: "";
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            border-radius: 50%;
+
+            background: rgba(245, 197, 66, 0.08);
+
+            top: -150px;
+            right: -100px;
+
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.04);
+
+            bottom: -130px;
+            left: -80px;
+
+            animation: heroGlow 10s ease-in-out infinite alternate-reverse;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+
+            opacity: 0;
+            transform: translateY(35px);
+
+            animation:
+                fadeUp 0.9s ease 0.2s forwards;
+        }
+
+        .hero p {
+            opacity: 0;
+            transform: translateY(25px);
+
+            animation:
+                fadeUp 0.9s ease 0.45s forwards;
+        }
+
+
+        /* =================================
+           GENERAL SECTIONS
+        ================================= */
+
+        .section {
+            padding: 70px 0;
+        }
+
+
+        /* =================================
+           SECTION TITLES
+        ================================= */
+
+        .title {
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        .title span {
+            color: var(--gold);
+        }
+
+
+        /* =================================
+           CONTENT CARDS
+        ================================= */
+
+        .cardx {
+            height: 100%;
+
+            border: none;
+            border-radius: 18px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 10px 30px rgba(13, 69, 38, 0.09);
+
+            padding: 26px;
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Small gold line */
+
+        .cardx::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 0;
+            height: 4px;
+
+            background: var(--gold);
+
+            transition: width 0.4s ease;
+        }
+
+        .cardx:hover {
+            transform: translateY(-10px) scale(1.015);
+
+            box-shadow:
+                0 20px 40px rgba(13, 69, 38, 0.16);
+        }
+
+        .cardx:hover::before {
+            width: 100%;
+        }
+
+        .cardx h4 {
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .cardx:hover h4 {
+            color: var(--green);
+            transform: translateX(4px);
+        }
+
+
+        /* =================================
+           IMAGE PLACEHOLDER
+        ================================= */
+
+        .placeholder {
+            min-height: 300px;
+
+            border: 2px dashed #9bb8a5;
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--soft),
+                    var(--cream)
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            color: #557261;
+
+            padding: 25px;
+
+            font-weight: 600;
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+        }
+
+        .placeholder:hover {
+            transform: scale(1.02);
+
+            border-color: var(--green);
+
+            box-shadow:
+                0 15px 35px rgba(13, 69, 38, 0.12);
+        }
+
+        .placeholder.tall {
+            min-height: 380px;
+        }
+
+
+        /* =================================
+           TIMELINE
+        ================================= */
+
+        .timeline {
+            border-left: 3px solid var(--gold);
+            padding-left: 25px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .timeline-item::before {
+            content: "";
+
+            position: absolute;
+
+            left: -34px;
+            top: 8px;
+
+            width: 13px;
+            height: 13px;
+
+            border-radius: 50%;
+
+            background: var(--gold);
+
+            border: 3px solid #ffffff;
+
+            box-shadow:
+                0 0 0 2px var(--green);
+        }
+
+        .date {
+            font-weight: 800;
+            color: var(--green);
+        }
+
+
+        /* =================================
+           SCROLL REVEAL SYSTEM
+           FRAMER MOTION STYLE
+        ================================= */
+
+        .reveal,
+        .reveal-left,
+        .reveal-right,
+        .scale-in,
+        .reveal-list {
+            opacity: 0;
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+
+        /* From bottom */
+
+        .reveal {
+            transform: translateY(60px);
+        }
+
+
+        /* From left */
+
+        .reveal-left {
+            transform: translateX(-70px);
+        }
+
+
+        /* From right */
+
+        .reveal-right {
+            transform: translateX(70px);
+        }
+
+
+        /* Scale */
+
+        .scale-in {
+            transform: scale(0.85);
+        }
+
+
+        /* Active state */
+
+        .reveal.active,
+        .reveal-left.active,
+        .reveal-right.active,
+        .scale-in.active,
+        .reveal-list.active {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+
+
+        /* =================================
+           STAGGERED ANIMATIONS
+        ================================= */
+
+        .stagger:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .stagger:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .stagger:nth-child(3) {
+            transition-delay: 0.25s;
+        }
+
+        .stagger:nth-child(4) {
+            transition-delay: 0.35s;
+        }
+
+        .stagger:nth-child(5) {
+            transition-delay: 0.45s;
+        }
+
+        .stagger:nth-child(6) {
+            transition-delay: 0.55s;
+        }
+
+        .stagger:nth-child(7) {
+            transition-delay: 0.65s;
+        }
+
+        .stagger:nth-child(8) {
+            transition-delay: 0.75s;
+        }
+
+        .stagger:nth-child(9) {
+            transition-delay: 0.85s;
+        }
+
+        .stagger:nth-child(10) {
+            transition-delay: 0.95s;
+        }
+
+        .stagger:nth-child(11) {
+            transition-delay: 1.05s;
+        }
+
+        .stagger:nth-child(12) {
+            transition-delay: 1.15s;
+        }
+
+        .stagger:nth-child(13) {
+            transition-delay: 1.25s;
+        }
+
+
+        /* =================================
+           FOOTER
+        ================================= */
+
+        footer {
+            background: var(--dark);
+            color: #dcebe1;
+            padding: 45px 0 20px;
+        }
+
+        footer a {
+            color: #dcebe1;
+            text-decoration: none;
+
+            transition:
+                color 0.3s ease,
+                padding-left 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+
+        /* =================================
+           KEYFRAMES
+        ================================= */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @keyframes navbarDrop {
+
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @keyframes heroGlow {
+
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(-30px, 25px) scale(1.15);
+            }
+
+        }
+
+
+        /* =================================
+           RESPONSIVE DESIGN
+        ================================= */
+
+        @media (max-width: 767px) {
+
+            .hero {
+                padding: 50px 0;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .placeholder {
+                min-height: 230px;
+            }
+
+            .placeholder.tall {
+                min-height: 280px;
+            }
+
+            .reveal-left {
+                transform: translateX(-40px);
+            }
+
+            .reveal-right {
+                transform: translateX(40px);
+            }
+
+        }
+
+
+        /* =================================
+           REDUCED MOTION
+        ================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal,
+            .reveal-left,
+            .reveal-right,
+            .scale-in,
+            .reveal-list {
+                opacity: 1;
+                transform: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVIGATION BAR
+    ========================================== -->
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+
+        <div class="container">
+
+            <!-- LOGO -->
+
+            <a
+                class="navbar-brand"
+                href="index.html"
+            >
+
+                <img
+                    src="images/logo.png"
+                    class="navbar-logo"
+                    alt="NRARD Logo"
+                >
+
+            </a>
+
+
+            <!-- MOBILE TOGGLE -->
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#nav"
+                aria-controls="nav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <!-- NAVIGATION LINKS -->
+
+            <div
+                class="collapse navbar-collapse"
+                id="nav"
+            >
+
+                <ul class="navbar-nav ms-auto">
+
+
+                    <!-- HOME -->
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="index.html"
+                        >
+                            Home
+                        </a>
+
+                    </li>
+
+
+                    <!-- =========================
+                         WHO WE ARE
+                    ========================== -->
+
+                    <li class="nav-item dropdown">
+
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Who we are
+                        </a>
+
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+
+                                <a
+                                    class="dropdown-item"
+                                    href="about.html"
+                                >
+                                    About NRARD SEDC
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a
+                                    class="dropdown-item"
+                                    href="vision.html"
+                                >
+                                    Our Vision
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a
+                                    class="dropdown-item"
+                                    href="people.html"
+                                >
+                                    Our People
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+
+                    <!-- =========================
+                         WHAT WE DO
+                    ========================== -->
+
+                    <li class="nav-item dropdown">
+
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            What we do
+                        </a>
+
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+
+                                <a
+                                    class="dropdown-item"
+                                    href="natural-resources.html"
+                                >
+                                    Natural Resources
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a
+                                    class="dropdown-item"
+                                    href="agriculture.html"
+                                >
+                                    Agriculture
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a
+                                    class="dropdown-item"
+                                    href="rural-development.html"
+                                >
+                                    Rural Development
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+
+                    <!-- ACTIVITIES -->
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="activities.html"
+                        >
+                            Activities
+                        </a>
+
+                    </li>
+
+
+                    <!-- BLOG -->
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="blog.html"
+                        >
+                            Blog
+                        </a>
+
+                    </li>
+
+
+                    <!-- CONTACT -->
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="contact.html"
+                        >
+                            Contact
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================================
+         HERO SECTION
+    ========================================== -->
+
+    <header class="hero text-center">
+
+        <div class="container">
+
+            <h1>
+                Agriculture
+            </h1>
+
+            <p class="lead mb-0">
+                Advancing food security, agro-mechanization,
+                value chains and sustainable agricultural growth.
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         AGRICULTURE OVERVIEW
+    ========================================== -->
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="row g-5 align-items-center">
+
+
+                <!-- CONTENT -->
+
+                <div class="col-lg-7 reveal-left">
+
+                    <h2 class="title mb-4">
+                        Agriculture
+                    </h2>
+
+
+                    <div class="row g-3">
+
+
+                        <!-- FOOD SECURITY -->
+
+                        <div class="col-md-6 reveal scale-in stagger">
+
+                            <div class="cardx">
+
+                                <h4>
+                                    Food Security
+                                </h4>
+
+                                <p>
+                                    Boost regional agricultural
+                                    productivity to guarantee food security.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- VALUE CHAINS -->
+
+                        <div class="col-md-6 reveal scale-in stagger">
+
+                            <div class="cardx">
+
+                                <h4>
+                                    Value Chains
+                                </h4>
+
+                                <p>
+                                    Enhance agro-value chain development
+                                    and open commercial market access.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- SUSTAINABILITY -->
+
+                        <div class="col-md-6 reveal scale-in stagger">
+
+                            <div class="cardx">
+
+                                <h4>
+                                    Sustainability
+                                </h4>
+
+                                <p>
+                                    Promote climate-smart and sustainable
+                                    agricultural practices.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- LIVELIHOODS -->
+
+                        <div class="col-md-6 reveal scale-in stagger">
+
+                            <div class="cardx">
+
+                                <h4>
+                                    Livelihoods
+                                </h4>
+
+                                <p>
+                                    Strengthen rural livelihoods and scale
+                                    competitive economic growth.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMAGE -->
+
+                <div class="col-lg-5 reveal-right">
+
+                    <div class="placeholder tall">
+
+                        ADD AGRICULTURE IMAGE HERE
+
+                        <br>
+
+                        <small>
+                            Farms, crops, farmers, machinery
+                            or agro-processing.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         SOUTH EAST AGRO-TRANSFORMATION PROGRAMME
+    ========================================== -->
+
+    <section
+        class="section"
+        style="background: var(--cream);"
+    >
+
+        <div class="container">
+
+            <div class="row g-5 align-items-center">
+
+
+                <!-- IMAGE -->
+
+                <div class="col-lg-5 reveal-left">
+
+                    <div class="placeholder tall">
+
+                        ADD AGRO-TRANSFORMATION IMAGE HERE
+
+                        <br>
+
+                        <small>
+                            Farm estates, livestock, poultry,
+                            storage or processing.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTENT -->
+
+                <div class="col-lg-7 reveal-right">
+
+                    <h2 class="title">
+
+                        South East
+
+                        <span>
+                            Agro-Transformation Programme
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        An integrated regional initiative designed
+                        to modernize the agricultural landscape through
+                        broad agro-mechanization projects.
+
+                    </p>
+
+
+                    <p>
+
+                        Key projects include state-of-the-art
+                        Farm Estates, scalable Livestock hubs,
+                        advanced Poultry Feed Processing plants,
+                        modern Storage Facilities, and targeted
+                        Agribusiness Development funding designed
+                        to accelerate youth employment.
+
+                    </p>
+
+
+                    <!-- KEY ENGAGEMENTS -->
+
+                    <h4 class="mt-4 reveal">
+                        Key Engagements
+                    </h4>
+
+
+                    <ul class="engagement-list">
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                Mid-February 2025:
+                            </strong>
+
+                            Outlines three-phase strategy for
+                            agricultural revitalisation, job creation
+                            and economic reconstruction.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                March 2025:
+                            </strong>
+
+                            Inspects 200-hectare Enugu State Farm
+                            Settlement (Nkanu West) – supports storage
+                            facilities, fishery development, food
+                            sufficiency and agrotourism.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                July 2025:
+                            </strong>
+
+                            Receives high-level delegation from China
+                            Overseas Engineering Group (COVEC) to explore
+                            partnerships for large-scale farming,
+                            agro-processing and value-chain development.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                September 2025:
+                            </strong>
+
+                            Participates in Intra-African Trade Fair
+                            (IATF), Algiers – agriculture investment
+                            panels, AfCFTA and strategic partnerships.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                Late September 2025:
+                            </strong>
+
+                            Holds strategic meeting with NIRSAL MD/CEO
+                            to integrate agricultural development
+                            mandates with financing and innovation support.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                Early December 2025:
+                            </strong>
+
+                            Leads SEDC delegation in partnership engagement
+                            with Abia State Ministry of Agriculture on
+                            farm estates across three senatorial zones.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                December 2025:
+                            </strong>
+
+                            Completes field assessments of key Abia sites
+                            including oil palm/rubber estates and the
+                            10,000-hectare Ofiavu plot, Bende LGA.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                Late February 2026:
+                            </strong>
+
+                            Maps more than 25,000 hectares across Anambra
+                            agricultural zones for modern farm estates
+                            and agro-industrial hubs.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                13–14 April 2026:
+                            </strong>
+
+                            Chairs opening ceremony of IAEA/NRCRI
+                            Regional Training Course on Climate-Smart
+                            Agriculture for cassava production.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                May 2026:
+                            </strong>
+
+                            Conducts facility mappings at Numo Farms Ltd
+                            and Petros Farms (Imo) and engages Ubichukwu
+                            Autonomous Community to strengthen the
+                            Agro-Mechanisation Programme.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                July 2026:
+                            </strong>
+
+                            Holds discussions with National Biotechnology
+                            Development Agency on biotech innovations
+                            for agricultural development.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                July 2026:
+                            </strong>
+
+                            Leads community stakeholder engagements
+                            across Enugu’s three senatorial zones —
+                            Uzo-Uwani, Oji River and Nkanu East —
+                            ahead of Agro-Mechanisation project flag-off.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                1–4 September 2026:
+                            </strong>
+
+                            Attends 20th Africa Food Systems Forum,
+                            Kigali – canvasses investments in South East
+                            agri-food systems, starting with Enugu State.
+
+                        </li>
+
+
+                        <li class="reveal-list stagger">
+
+                            <strong>
+                                Early–Mid September 2026:
+                            </strong>
+
+                            Delivers keynote at Eastern International
+                            Poultry Summit 2026, Enugu – prioritises
+                            poultry industry rebuilding for food security
+                            and jobs.
+
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row g-4">
+
+
+                <!-- ABOUT -->
+
+                <div class="col-lg-5 reveal">
+
+                    <h4 class="text-white">
+                        NRARD SEDC
+                    </h4>
+
+                    <p>
+                        Directorate of Natural Resources,
+                        Agriculture and Rural Development.
+                    </p>
+
+                </div>
+
+
+                <!-- EXPLORE -->
+
+                <div class="col-lg-3 reveal">
+
+                    <h5 class="text-white">
+                        Explore
+                    </h5>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <br>
+
+                    <a href="vision.html">
+                        Our Vision
+                    </a>
+
+                    <br>
+
+                    <a href="people.html">
+                        Our People
+                    </a>
+
+                </div>
+
+
+                <!-- WHAT WE DO -->
+
+                <div class="col-lg-4 reveal">
+
+                    <h5 class="text-white">
+                        What We Do
+                    </h5>
+
+                    <a href="natural-resources.html">
+                        Natural Resources
+                    </a>
+
+                    <br>
+
+                    <a href="agriculture.html">
+                        Agriculture
+                    </a>
+
+                    <br>
+
+                    <a href="rural-development.html">
+                        Rural Development
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <hr class="border-secondary">
+
+
+            <p class="text-center mb-0 small">
+
+                © 2026 NRARD SEDC.
+                All rights reserved.
+
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================
+         BOOTSTRAP JAVASCRIPT
+    ========================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+
+    <!-- =========================================
+         CUSTOM FRAMER-MOTION-STYLE JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+            /*
+            ========================================
+            FRAMER MOTION STYLE SCROLL REVEAL
+            ========================================
+            */
+
+            const animatedElements = document.querySelectorAll(
+                ".reveal, .reveal-left, .reveal-right, .scale-in, .reveal-list"
+            );
+
+
+            /*
+            ========================================
+            INTERSECTION OBSERVER
+            ========================================
+
+            This watches the page and detects when
+            an element enters the user's viewport.
+            */
+
+            const observer = new IntersectionObserver(
+
+                function (entries, observer) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("active");
+
+                            /*
+                            Stop watching this element
+                            after it has animated once.
+                            */
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.15,
+
+                    rootMargin: "0px 0px -50px 0px"
+                }
+
+            );
+
+
+            /*
+            ========================================
+            START OBSERVING
+            ========================================
+            */
+
+            animatedElements.forEach(function (element) {
+
+                observer.observe(element);
+
+            });
+
+
+            /*
+            ========================================
+            CARD HOVER MICRO-INTERACTION
+            ========================================
+            */
+
+            const cards = document.querySelectorAll(".cardx");
+
+
+            cards.forEach(function (card) {
+
+                card.addEventListener("mousemove", function (event) {
+
+                    const rect = card.getBoundingClientRect();
+
+                    const x =
+                        event.clientX - rect.left;
+
+                    const y =
+                        event.clientY - rect.top;
+
+
+                    const centerX =
+                        rect.width / 2;
+
+                    const centerY =
+                        rect.height / 2;
+
+
+                    const rotateX =
+                        ((y - centerY) / centerY) * -2;
+
+
+                    const rotateY =
+                        ((x - centerX) / centerX) * 2;
+
+
+                    card.style.transform =
+                        `translateY(-10px) scale(1.015)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)`;
+
+                });
+
+
+                card.addEventListener("mouseleave", function () {
+
+                    card.style.transform =
+                        "translateY(0) scale(1) rotateX(0) rotateY(0)";
+
+                });
+
+            });
+
+
+            /*
+            ========================================
+            SMOOTH NAVBAR SHADOW ON SCROLL
+            ========================================
+            */
+
+            const navbar =
+                document.querySelector(".navbar");
+
+
+            window.addEventListener("scroll", function () {
+
+                if (window.scrollY > 20) {
+
+                    navbar.style.boxShadow =
+                        "0 8px 25px rgba(13, 69, 38, 0.18)";
+
+                } else {
+
+                    navbar.style.boxShadow =
+                        "0 3px 18px rgba(13, 69, 38, 0.12)";
+
+                }
+
+            });
+
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
