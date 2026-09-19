@@ -13,7 +13,14 @@
         rel="stylesheet"
     >
 
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    >
+
     <style>
+
         /* =========================
            ROOT VARIABLES
         ========================== */
@@ -32,35 +39,117 @@
            GENERAL STYLES
         ========================== */
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             color: var(--text);
             line-height: 1.7;
+            margin: 0;
         }
 
 
         /* =========================
-           NAVBAR
+           GOVERNMENT BAR
         ========================== */
 
-        .navbar {
-            background: rgba(255, 255, 255, 0.97);
-            box-shadow: 0 3px 18px rgba(13, 69, 38, 0.12);
-            padding: 9px 0;
+        .government-bar {
+            background: var(--dark);
+            color: #ffffff;
+            font-size: 13px;
+            padding: 6px 0;
+            position: relative;
+            z-index: 10000;
+        }
+
+        .government-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        /* =========================
+           MAIN NAVBAR
+        ========================== */
+
+        #mainNavbar {
+            background: transparent;
+            padding: 12px 0;
+            transition:
+                background .35s ease,
+                box-shadow .35s ease,
+                backdrop-filter .35s ease,
+                padding .35s ease;
+            z-index: 9999;
+            animation: navbarDrop .8s ease both;
+        }
+
+        #mainNavbar.scrolled {
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 8px 25px rgba(13, 69, 38, .16);
+            backdrop-filter: blur(10px);
+            padding: 7px 0;
         }
 
         .navbar-logo {
-            height: 48px;
+            height: 55px;
             width: auto;
+            transition:
+                height .35s ease,
+                transform .35s ease;
         }
 
-        .nav-link {
-            color: var(--dark) !important;
+        #mainNavbar.scrolled .navbar-logo {
+            height: 45px;
+        }
+
+
+        /* =========================
+           NAV LINKS
+        ========================== */
+
+        #mainNavbar .nav-link {
+            position: relative;
+            color: #ffffff !important;
             font-weight: 600;
+            margin-left: 7px;
+            margin-right: 7px;
+            transition:
+                color .25s ease,
+                transform .25s ease;
         }
 
-        .nav-link:hover {
+        #mainNavbar.scrolled .nav-link {
+            color: var(--dark) !important;
+        }
+
+        #mainNavbar .nav-link:hover {
+            color: var(--gold) !important;
+            transform: translateY(-2px);
+        }
+
+        #mainNavbar.scrolled .nav-link:hover {
             color: var(--green) !important;
+        }
+
+        #mainNavbar .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 2px;
+            width: 100%;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform .3s ease;
+        }
+
+        #mainNavbar .nav-link:hover::after {
+            transform: scaleX(1);
         }
 
 
@@ -68,20 +157,65 @@
            DROPDOWN
         ========================== */
 
-        .dropdown-menu {
+        #mainNavbar .dropdown-menu {
             border: none;
             border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(13, 69, 38, 0.16);
+            box-shadow: 0 15px 35px rgba(13, 69, 38, .16);
+            padding: 8px;
+            margin-top: 12px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition:
+                opacity .25s ease,
+                transform .25s ease;
         }
 
-        .dropdown-item {
+        #mainNavbar .dropdown.show .dropdown-menu {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #mainNavbar .dropdown-item {
             color: var(--dark);
+            font-weight: 500;
             border-radius: 8px;
+            padding: 9px 14px;
+            transition:
+                background .25s ease,
+                color .25s ease,
+                transform .25s ease;
         }
 
-        .dropdown-item:hover {
+        #mainNavbar .dropdown-item:hover {
             background: var(--green);
             color: #ffffff;
+            transform: translateX(3px);
+        }
+
+
+        /* =========================
+           NAVBAR TOGGLER
+        ========================== */
+
+        #mainNavbar .navbar-toggler {
+            border: 1px solid rgba(255, 255, 255, .6);
+            padding: 6px 9px;
+        }
+
+        #mainNavbar.scrolled .navbar-toggler {
+            border-color: var(--green);
+        }
+
+        #mainNavbar .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        #mainNavbar .navbar-toggler-icon {
+            filter: brightness(0) invert(1);
+        }
+
+        #mainNavbar.scrolled .navbar-toggler-icon {
+            filter: none;
         }
 
 
@@ -90,183 +224,15 @@
         ========================== */
 
         .hero {
-            margin-top: 66px;
+            margin-top: 104px;
             background: linear-gradient(
                 120deg,
                 var(--dark),
                 var(--green)
             );
+            background-size: 200% 200%;
             color: #ffffff;
             padding: 70px 0;
-        }
-
-        .hero h1 {
-            font-weight: 800;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-        }
-
-
-        /* =========================
-           SECTIONS
-        ========================== */
-
-        .section {
-            padding: 70px 0;
-        }
-
-        .title {
-            color: var(--dark);
-            font-weight: 800;
-        }
-
-        .title span {
-            color: var(--gold);
-        }
-
-
-        /* =========================
-           CARDS
-        ========================== */
-
-        .cardx {
-            height: 100%;
-            border: none;
-            border-radius: 18px;
-            background: #ffffff;
-            box-shadow: 0 10px 30px rgba(13, 69, 38, 0.09);
-            padding: 26px;
-        }
-
-
-        /* =========================
-           IMAGE PLACEHOLDER
-        ========================== */
-
-        .placeholder {
-            min-height: 300px;
-            border: 2px dashed #9bb8a5;
-            border-radius: 18px;
-            background: linear-gradient(
-                135deg,
-                var(--soft),
-                var(--cream)
-            );
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #557261;
-            padding: 25px;
-            font-weight: 600;
-        }
-
-        .placeholder.tall {
-            min-height: 380px;
-        }
-
-
-        /* =========================
-           TIMELINE
-        ========================== */
-
-        .timeline {
-            border-left: 3px solid var(--gold);
-            padding-left: 25px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 28px;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: -34px;
-            top: 8px;
-            width: 13px;
-            height: 13px;
-            border-radius: 50%;
-            background: var(--gold);
-            border: 3px solid #ffffff;
-            box-shadow: 0 0 0 2px var(--green);
-        }
-
-        .date {
-            font-weight: 800;
-            color: var(--green);
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================== */
-
-        footer {
-            background: var(--dark);
-            color: #dcebe1;
-            padding: 45px 0 20px;
-        }
-
-        footer a {
-            color: #dcebe1;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: var(--gold);
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================== */
-
-        @media (max-width: 767px) {
-
-            .hero {
-                padding: 50px 0;
-            }
-
-            .section {
-                padding: 50px 0;
-            }
-
-            .placeholder {
-                min-height: 230px;
-            }
-
-        }
-
-        /* =========================
-           ANIMATIONS
-        ========================== */
-
-        html { scroll-behavior: smooth; }
-
-        .navbar {
-            animation: navbarDrop .8s ease both;
-            transition: box-shadow .3s ease, background .3s ease;
-        }
-
-        .nav-link {
-            transition: color .25s ease, transform .25s ease;
-        }
-
-        .nav-link:hover { transform: translateY(-2px); }
-
-        .dropdown-menu {
-            transform: translateY(10px);
-            opacity: 0;
-            transition: opacity .25s ease, transform .25s ease;
-        }
-
-        .dropdown.show .dropdown-menu {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .hero {
             position: relative;
             overflow: hidden;
             animation: heroGlow 5s ease-in-out infinite alternate;
@@ -306,6 +272,8 @@
         }
 
         .hero h1 {
+            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 3.5rem);
             animation: fadeUp .9s ease .15s both;
         }
 
@@ -313,39 +281,65 @@
             animation: fadeUp .9s ease .35s both;
         }
 
-        .reveal,
-        .reveal-left,
-        .reveal-right,
-        .scale-in {
-            opacity: 0;
-            transition: opacity .8s ease, transform .8s ease;
-            will-change: opacity, transform;
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        .section {
+            padding: 70px 0;
         }
 
-        .reveal { transform: translateY(45px); }
-        .reveal-left { transform: translateX(-70px); }
-        .reveal-right { transform: translateX(70px); }
-        .scale-in { transform: scale(.88); }
-
-        .reveal.active,
-        .reveal-left.active,
-        .reveal-right.active,
-        .scale-in.active {
-            opacity: 1;
-            transform: none;
+        .title {
+            color: var(--dark);
+            font-weight: 800;
         }
 
-        .stagger:nth-child(1) { transition-delay: .08s; }
-        .stagger:nth-child(2) { transition-delay: .18s; }
-        .stagger:nth-child(3) { transition-delay: .28s; }
-        .stagger:nth-child(4) { transition-delay: .38s; }
-        .stagger:nth-child(5) { transition-delay: .48s; }
-        .stagger:nth-child(6) { transition-delay: .58s; }
+        .title span {
+            color: var(--gold);
+        }
+
+
+        /* =========================
+           IMAGE AREA
+        ========================== */
+
+        .image-space {
+            height: 420px;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 12px 35px rgba(13, 69, 38, .12);
+        }
+
+        .image-space img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s ease;
+        }
+
+        .image-space:hover img {
+            transform: scale(1.05);
+        }
+
+
+        /* =========================
+           CARDS
+        ========================== */
 
         .cardx {
+            height: 100%;
+            border: none;
+            border-radius: 18px;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(13, 69, 38, 0.09);
+            padding: 26px;
             position: relative;
             overflow: hidden;
-            transition: transform .35s ease, box-shadow .35s ease;
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease;
         }
 
         .cardx::before {
@@ -366,11 +360,40 @@
             box-shadow: 0 18px 40px rgba(13, 69, 38, .16);
         }
 
-        .cardx:hover::before { transform: scaleX(1); }
+        .cardx:hover::before {
+            transform: scaleX(1);
+        }
+
+
+        /* =========================
+           PLACEHOLDER
+        ========================== */
 
         .placeholder {
-            transition: transform .45s ease, box-shadow .45s ease, border-color .35s ease;
+            min-height: 300px;
+            border: 2px dashed #9bb8a5;
+            border-radius: 18px;
+            background: linear-gradient(
+                135deg,
+                var(--soft),
+                var(--cream)
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #557261;
+            padding: 25px;
+            font-weight: 600;
+            transition:
+                transform .45s ease,
+                box-shadow .45s ease,
+                border-color .35s ease;
             overflow: hidden;
+        }
+
+        .placeholder.tall {
+            min-height: 380px;
         }
 
         .placeholder:hover {
@@ -379,10 +402,37 @@
             box-shadow: 0 18px 38px rgba(13, 69, 38, .13);
         }
 
+
+        /* =========================
+           TIMELINE
+        ========================== */
+
+        .timeline {
+            border-left: 3px solid var(--gold);
+            padding-left: 25px;
+        }
+
         .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
             opacity: 0;
             transform: translateX(-45px);
-            transition: opacity .7s ease, transform .7s ease;
+            transition:
+                opacity .7s ease,
+                transform .7s ease;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -34px;
+            top: 8px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 2px var(--green);
         }
 
         .timeline-item.active {
@@ -394,39 +444,257 @@
             transform: translateX(6px);
         }
 
+        .date {
+            font-weight: 800;
+            color: var(--green);
+        }
+
+
+        /* =========================
+           SCROLL REVEAL
+        ========================== */
+
+        .reveal,
+        .reveal-left,
+        .reveal-right,
+        .scale-in {
+            opacity: 0;
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+            will-change: opacity, transform;
+        }
+
+        .reveal {
+            transform: translateY(45px);
+        }
+
+        .reveal-left {
+            transform: translateX(-70px);
+        }
+
+        .reveal-right {
+            transform: translateX(70px);
+        }
+
+        .scale-in {
+            transform: scale(.88);
+        }
+
+        .reveal.active,
+        .reveal-left.active,
+        .reveal-right.active,
+        .scale-in.active {
+            opacity: 1;
+            transform: none;
+        }
+
+        .stagger:nth-child(1) {
+            transition-delay: .08s;
+        }
+
+        .stagger:nth-child(2) {
+            transition-delay: .18s;
+        }
+
+        .stagger:nth-child(3) {
+            transition-delay: .28s;
+        }
+
+        .stagger:nth-child(4) {
+            transition-delay: .38s;
+        }
+
+        .stagger:nth-child(5) {
+            transition-delay: .48s;
+        }
+
+        .stagger:nth-child(6) {
+            transition-delay: .58s;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
         footer {
+            background: #212529;
+            color: #ffffff;
+            padding: 45px 0 20px;
             position: relative;
             overflow: hidden;
+        }
+
+        footer a {
+            transition:
+                color .25s ease,
+                transform .25s ease;
+        }
+
+        .footer-link:hover {
+            color: #ffffff !important;
+            transform: translateX(3px);
         }
 
         footer .container {
             animation: fadeUp .8s ease both;
         }
 
+
+        /* =========================
+           ANIMATIONS
+        ========================== */
+
         @keyframes navbarDrop {
-            from { opacity: 0; transform: translateY(-25px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes heroGlow {
-            from { background-position: 0% 50%; }
-            to { background-position: 100% 50%; }
+            from {
+                background-position: 0% 50%;
+            }
+
+            to {
+                background-position: 100% 50%;
+            }
         }
 
         @keyframes floatBlob {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(35px, 20px) scale(1.08); }
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(35px, 20px) scale(1.08);
+            }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
 
-            *, *::before, *::after {
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 991px) {
+
+            #mainNavbar {
+                background: rgba(255, 255, 255, .98);
+                box-shadow: 0 8px 25px rgba(13, 69, 38, .14);
+                padding: 7px 0;
+                backdrop-filter: blur(10px);
+            }
+
+            #mainNavbar .nav-link {
+                color: var(--dark) !important;
+                margin: 2px 0;
+                padding: 10px 12px;
+            }
+
+            #mainNavbar .nav-link:hover {
+                color: var(--green) !important;
+            }
+
+            #mainNavbar .dropdown-menu {
+                box-shadow: none;
+                border-radius: 0;
+                margin-top: 0;
+                padding-left: 12px;
+                opacity: 1;
+                transform: none;
+                display: none;
+            }
+
+            #mainNavbar .dropdown.show .dropdown-menu {
+                display: block;
+            }
+
+            #mainNavbar .dropdown-item {
+                border-left: 3px solid var(--gold);
+                border-radius: 0;
+                margin-bottom: 3px;
+            }
+
+            .navbar-logo {
+                height: 45px;
+            }
+
+            #mainNavbar.scrolled .navbar-logo {
+                height: 40px;
+            }
+
+            .hero {
+                margin-top: 102px;
+            }
+        }
+
+
+        @media (max-width: 767px) {
+
+            .government-bar {
+                font-size: 11px;
+            }
+
+            .government-bar .container {
+                gap: 10px;
+            }
+
+            .government-bar span:last-child {
+                display: none;
+            }
+
+            .hero {
+                padding: 50px 0;
+                margin-top: 100px;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .image-space {
+                height: 300px;
+            }
+
+            .placeholder {
+                min-height: 230px;
+            }
+
+        }
+
+
+        /* =========================
+           REDUCED MOTION
+        ========================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
                 animation-duration: .01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: .01ms !important;
@@ -446,23 +714,52 @@
 </head>
 
 
-<body>
+<body id="top">
+
+
+    <!-- =========================
+         GOVERNMENT BAR
+    ========================== -->
+
+    <div class="government-bar">
+
+        <div class="container">
+
+            <span>
+                South East Development Commission
+            </span>
+
+            <span>
+                Federal Republic of Nigeria
+            </span>
+
+        </div>
+
+    </div>
+
 
     <!-- =========================
          NAVBAR
     ========================== -->
 
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav
+        id="mainNavbar"
+        class="navbar navbar-expand-lg navbar-dark fixed-top"
+    >
 
         <div class="container">
 
+
             <!-- LOGO -->
-            <a class="navbar-brand" href="index.html">
+            <a
+                class="navbar-brand"
+                href="index.html"
+            >
 
                 <img
                     src="images/logo.png"
                     class="navbar-logo"
-                    alt="NRARD Logo"
+                    alt="NRARD SEDC Logo"
                 >
 
             </a>
@@ -473,7 +770,10 @@
                 class="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#nav"
+                data-bs-target="#navbarContent"
+                aria-controls="navbarContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
             >
 
                 <span class="navbar-toggler-icon"></span>
@@ -482,9 +782,13 @@
 
 
             <!-- NAVIGATION -->
-            <div class="collapse navbar-collapse" id="nav">
+            <div
+                class="collapse navbar-collapse"
+                id="navbarContent"
+            >
 
                 <ul class="navbar-nav ms-auto">
+
 
                     <!-- HOME -->
                     <li class="nav-item">
@@ -503,23 +807,20 @@
                     <li class="nav-item dropdown">
 
                         <a
+                            id="whoWeAreDropdown"
                             class="nav-link dropdown-toggle"
                             href="#"
+                            role="button"
                             data-bs-toggle="dropdown"
+                            aria-expanded="false"
                         >
                             Who we are
                         </a>
 
-                        <ul class="dropdown-menu">
-
-                            <li>
-                                <a
-                                    class="dropdown-item"
-                                    href="about.html"
-                                >
-                                    About NRARD SEDC
-                                </a>
-                            </li>
+                        <ul
+                            class="dropdown-menu"
+                            aria-labelledby="whoWeAreDropdown"
+                        >
 
                             <li>
                                 <a
@@ -548,14 +849,20 @@
                     <li class="nav-item dropdown">
 
                         <a
+                            id="whatWeDoDropdown"
                             class="nav-link dropdown-toggle"
                             href="#"
+                            role="button"
                             data-bs-toggle="dropdown"
+                            aria-expanded="false"
                         >
                             What we do
                         </a>
 
-                        <ul class="dropdown-menu">
+                        <ul
+                            class="dropdown-menu"
+                            aria-labelledby="whatWeDoDropdown"
+                        >
 
                             <li>
                                 <a
@@ -668,15 +975,16 @@
 
             <div class="row g-5 align-items-center">
 
+
                 <!-- IMAGE -->
-                <div class="col-lg-6">
+                <div
+                    class="col-lg-6 image-space reveal-left"
+                >
 
-                    <div class="placeholder tall">
-
-                        ADD VISION / SOUTH EAST
-                        DEVELOPMENT IMAGE HERE
-
-                    </div>
+                    <img
+                        src="assets/images/activity-1.jpg"
+                        alt="SEDC Vision"
+                    >
 
                 </div>
 
@@ -727,201 +1035,458 @@
          FOOTER
     ========================== -->
 
-    <footer>
+    <footer class="bg-dark text-white pt-5 pb-3">
 
         <div class="container">
 
             <div class="row g-4">
 
+
                 <!-- ABOUT -->
                 <div class="col-lg-5">
 
-                    <h4 class="text-white">
-                        NRARD SEDC
+                    <h4 class="fw-bold">
+                        SEDC
                     </h4>
 
-                    <p>
-                        Directorate of Natural Resources,
-                        Agriculture and Rural Development.
+                    <p class="text-white-50">
+                        Directorate of Natural Resources, Agriculture
+                        and Rural Development.
+                    </p>
+
+                    <p class="text-white-50 small">
+                        Driving sustainable agricultural transformation,
+                        responsible natural resource management and
+                        rural development across South East Nigeria.
                     </p>
 
                 </div>
 
 
-                <!-- EXPLORE -->
-                <div class="col-lg-3">
+                <!-- NAVIGATION -->
+                <div class="col-6 col-lg-2">
 
-                    <h5 class="text-white">
-                        Explore
-                    </h5>
+                    <h6 class="fw-bold">
+                        Navigation
+                    </h6>
 
-                    <a href="about.html">
-                        About
-                    </a>
+                    <ul class="list-unstyled">
 
-                    <br>
+                        <li class="mb-2">
+                            <a
+                                href="index.html"
+                                class="text-white-50 text-decoration-none footer-link"
+                            >
+                                Home
+                            </a>
+                        </li>
 
-                    <a href="vision.html">
-                        Our Vision
-                    </a>
+                        <li class="mb-2">
+                            <a
+                                href="about.html"
+                                class="text-white-50 text-decoration-none footer-link"
+                            >
+                                About
+                            </a>
+                        </li>
 
-                    <br>
+                        <li class="mb-2">
+                            <a
+                                href="#top"
+                                class="text-white-50 text-decoration-none footer-link"
+                            >
+                                Programmes
+                            </a>
+                        </li>
 
-                    <a href="people.html">
-                        Our People
-                    </a>
+                        <li class="mb-2">
+                            <a
+                                href="blog.html"
+                                class="text-white-50 text-decoration-none footer-link"
+                            >
+                                Blog
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="activities.html"
+                                class="text-white-50 text-decoration-none footer-link"
+                            >
+                                Activities
+                            </a>
+                        </li>
+
+                    </ul>
 
                 </div>
 
 
-                <!-- WHAT WE DO -->
-                <div class="col-lg-4">
+                <!-- RESOURCES -->
+                <div class="col-6 col-lg-2">
 
-                    <h5 class="text-white">
-                        What We Do
-                    </h5>
+                    <h6 class="fw-bold">
+                        Resources
+                    </h6>
 
-                    <a href="natural-resources.html">
-                        Natural Resources
-                    </a>
+                    <ul class="list-unstyled">
 
-                    <br>
+                        <li class="mb-2">
+                            <a
+                                href="#top"
+                                class="text-white-50 text-decoration-none footer-link"
+                            >
+                                Reports
+                            </a>
+                        </li>
 
-                    <a href="agriculture.html">
-                        Agriculture
-                    </a>
+                        <li class="mb-2">
+                            <a
+                                href="#top"
+                                class="text-white-50 text-decoration-none footer-link"
+                            >
+                                Opportunities
+                            </a>
+                        </li>
 
-                    <br>
+                        <li class="mb-2">
+                            <a
+                                href="#"
+                                class="text-white-50 text-decoration-none footer-link"
+                            >
+                                Gallery
+                            </a>
+                        </li>
 
-                    <a href="rural-development.html">
-                        Rural Development
-                    </a>
+                        <li>
+                            <a
+                                href="#"
+                                class="text-white-50 text-decoration-none footer-link"
+                            >
+                                FAQs
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- FOLLOW US -->
+                <div class="col-lg-3">
+
+                    <h6 class="fw-bold">
+                        Follow Us
+                    </h6>
+
+                    <div class="d-flex gap-3 fs-4">
+
+                        <a
+                            href="#"
+                            class="text-white"
+                            aria-label="Facebook"
+                        >
+                            <i class="bi bi-facebook"></i>
+                        </a>
+
+                        <a
+                            href="#"
+                            class="text-white"
+                            aria-label="Instagram"
+                        >
+                            <i class="bi bi-instagram"></i>
+                        </a>
+
+                        <a
+                            href="#"
+                            class="text-white"
+                            aria-label="Twitter X"
+                        >
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+
+                    </div>
 
                 </div>
 
             </div>
 
 
-            <hr class="border-secondary">
+            <hr class="border-secondary my-4">
 
 
             <!-- COPYRIGHT -->
-            <p class="text-center mb-0 small">
+            <div
+                class="d-flex flex-column flex-md-row justify-content-between text-white-50 small"
+            >
 
-                © 2026 NRARD SEDC.
-                All rights reserved.
+                <p>
+                    © 2026 South East Development Commission.
+                    All rights reserved.
+                </p>
 
-            </p>
+                <div>
+
+                    <a
+                        href="#"
+                        class="text-white-50 text-decoration-none me-3"
+                    >
+                        Privacy Policy
+                    </a>
+
+                    <a
+                        href="#"
+                        class="text-white-50 text-decoration-none"
+                    >
+                        Freedom of Information
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
     </footer>
 
 
-    <!-- Bootstrap JavaScript -->
+    <!-- =========================
+         BOOTSTRAP JAVASCRIPT
+    ========================== -->
 
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     ></script>
 
 
+    <!-- =========================
+         PAGE JAVASCRIPT
+    ========================== -->
+
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
 
-            const animatedElements = document.querySelectorAll(
-                ".reveal, .reveal-left, .reveal-right, .scale-in, .timeline-item"
-            );
 
-            const observer = new IntersectionObserver(
-                (entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("active");
-                            obs.unobserve(entry.target);
-                        }
-                    });
-                },
-                { threshold: 0.12 }
-            );
+            /* =========================
+               NAVBAR SCROLL EFFECT
+            ========================== */
 
-            animatedElements.forEach(element => observer.observe(element));
+            const navbar =
+                document.getElementById("mainNavbar");
 
-            /* Add reveal classes automatically without changing page content */
-            document.querySelectorAll(".section").forEach((section, sectionIndex) => {
-                const container = section.querySelector(".container");
-                if (!container) return;
+            function handleNavbarScroll() {
 
-                const title = container.querySelector(".title");
-                if (title && !title.classList.contains("reveal")) {
-                    title.classList.add("reveal");
-                }
-
-                const paragraphs = container.querySelectorAll(":scope > p");
-                paragraphs.forEach((p, index) => {
-                    if (!p.classList.contains("reveal")) {
-                        p.classList.add("reveal", "stagger");
-                    }
-                });
-
-                const cards = container.querySelectorAll(".cardx");
-                cards.forEach((card, index) => {
-                    card.classList.add("reveal", "stagger");
-                });
-
-                const placeholders = container.querySelectorAll(".placeholder");
-                placeholders.forEach((placeholder, index) => {
-                    placeholder.classList.add(
-                        index % 2 === 0 ? "reveal-left" : "reveal-right"
-                    );
-                });
-            });
-
-            /* Observe elements added by the automatic classes above */
-            document.querySelectorAll(
-                ".reveal, .reveal-left, .reveal-right, .scale-in"
-            ).forEach(element => {
-                observer.observe(element);
-            });
-
-            /* Subtle 3D card tilt on desktop */
-            if (window.matchMedia("(pointer: fine)").matches) {
-                document.querySelectorAll(".cardx").forEach(card => {
-                    card.addEventListener("mousemove", event => {
-                        const rect = card.getBoundingClientRect();
-                        const x = event.clientX - rect.left;
-                        const y = event.clientY - rect.top;
-
-                        const rotateX = ((y / rect.height) - .5) * -5;
-                        const rotateY = ((x / rect.width) - .5) * 5;
-
-                        card.style.transform =
-                            `translateY(-9px) scale(1.015) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-                    });
-
-                    card.addEventListener("mouseleave", () => {
-                        card.style.transform = "";
-                    });
-                });
-            }
-
-            /* Navbar becomes slightly stronger after scrolling */
-            const navbar = document.querySelector(".navbar");
-
-            window.addEventListener("scroll", () => {
                 if (!navbar) return;
 
-                if (window.scrollY > 40) {
-                    navbar.style.boxShadow =
-                        "0 8px 25px rgba(13, 69, 38, .18)";
-                    navbar.style.background = "rgba(255,255,255,.99)";
+                if (window.scrollY > 50) {
+
+                    navbar.classList.add("scrolled");
+
                 } else {
-                    navbar.style.boxShadow =
-                        "0 3px 18px rgba(13, 69, 38, .12)";
-                    navbar.style.background = "rgba(255,255,255,.97)";
+
+                    navbar.classList.remove("scrolled");
+
                 }
-            }, { passive: true });
+
+            }
+
+            handleNavbarScroll();
+
+            window.addEventListener(
+                "scroll",
+                handleNavbarScroll,
+                { passive: true }
+            );
+
+
+            /* =========================
+               SCROLL REVEAL
+            ========================== */
+
+            const animatedElements =
+                document.querySelectorAll(
+                    ".reveal, .reveal-left, .reveal-right, .scale-in, .timeline-item"
+                );
+
+
+            const observer =
+                new IntersectionObserver(
+                    (entries, obs) => {
+
+                        entries.forEach(entry => {
+
+                            if (entry.isIntersecting) {
+
+                                entry.target.classList.add("active");
+
+                                obs.unobserve(entry.target);
+
+                            }
+
+                        });
+
+                    },
+                    {
+                        threshold: 0.12
+                    }
+                );
+
+
+            animatedElements.forEach(element => {
+
+                observer.observe(element);
+
+            });
+
+
+            /* =========================
+               AUTOMATIC REVEAL CLASSES
+            ========================== */
+
+            document
+                .querySelectorAll(".section")
+                .forEach((section) => {
+
+                    const container =
+                        section.querySelector(".container");
+
+                    if (!container) return;
+
+
+                    const title =
+                        container.querySelector(".title");
+
+                    if (
+                        title &&
+                        !title.classList.contains("reveal")
+                    ) {
+
+                        title.classList.add("reveal");
+
+                    }
+
+
+                    const paragraphs =
+                        container.querySelectorAll(":scope > p");
+
+                    paragraphs.forEach((p) => {
+
+                        if (
+                            !p.classList.contains("reveal")
+                        ) {
+
+                            p.classList.add(
+                                "reveal",
+                                "stagger"
+                            );
+
+                        }
+
+                    });
+
+
+                    const cards =
+                        container.querySelectorAll(".cardx");
+
+                    cards.forEach((card) => {
+
+                        card.classList.add(
+                            "reveal",
+                            "stagger"
+                        );
+
+                    });
+
+
+                    const placeholders =
+                        container.querySelectorAll(".placeholder");
+
+                    placeholders.forEach(
+                        (placeholder, index) => {
+
+                            placeholder.classList.add(
+                                index % 2 === 0
+                                    ? "reveal-left"
+                                    : "reveal-right"
+                            );
+
+                        }
+                    );
+
+                });
+
+
+            /* =========================
+               OBSERVE NEW ELEMENTS
+            ========================== */
+
+            document
+                .querySelectorAll(
+                    ".reveal, .reveal-left, .reveal-right, .scale-in"
+                )
+                .forEach(element => {
+
+                    observer.observe(element);
+
+                });
+
+
+            /* =========================
+               SUBTLE 3D CARD TILT
+            ========================== */
+
+            if (
+                window.matchMedia("(pointer: fine)").matches
+            ) {
+
+                document
+                    .querySelectorAll(".cardx")
+                    .forEach(card => {
+
+                        card.addEventListener(
+                            "mousemove",
+                            event => {
+
+                                const rect =
+                                    card.getBoundingClientRect();
+
+                                const x =
+                                    event.clientX -
+                                    rect.left;
+
+                                const y =
+                                    event.clientY -
+                                    rect.top;
+
+                                const rotateX =
+                                    ((y / rect.height) - .5) * -5;
+
+                                const rotateY =
+                                    ((x / rect.width) - .5) * 5;
+
+                                card.style.transform =
+                                    `translateY(-9px) scale(1.015) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+                            }
+                        );
+
+
+                        card.addEventListener(
+                            "mouseleave",
+                            () => {
+
+                                card.style.transform = "";
+
+                            }
+                        );
+
+                    });
+
+            }
 
         });
+
     </script>
 
 </body>

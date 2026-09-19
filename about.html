@@ -9,84 +9,255 @@
 
     <title>About Us | NRARD SEDC</title>
 
-
-    <!-- =====================================================
-         BOOTSTRAP CSS
-    ====================================================== -->
-
+    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
-
-    <!-- =====================================================
-         BOOTSTRAP ICONS
-    ====================================================== -->
-
+    <!-- Bootstrap Icons -->
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     >
 
-
     <style>
 
-        /* =====================================================
-           GLOBAL
-        ====================================================== */
-
         :root {
-
             --sedc-green: #198754;
-
             --sedc-dark: #123524;
-
             --sedc-light: #f4f8f5;
-
             --sedc-soft: #e8f2eb;
-
             --sedc-text: #444;
-
             --sedc-border: #e1e9e4;
-
         }
-
 
         * {
-
             box-sizing: border-box;
-
         }
-
 
         html {
-
             scroll-behavior: smooth;
-
+            scroll-padding-top: 85px;
         }
-
 
         body {
-
             margin: 0;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            font-family: Arial, Helvetica, sans-serif;
             color: var(--sedc-text);
-
             background: white;
+        }
 
+        img {
+            max-width: 100%;
         }
 
 
-        img {
+        /* =====================================================
+           GOVERNMENT BAR
+        ====================================================== */
 
-            max-width: 100%;
+        .government-bar {
+            position: relative;
+            z-index: 10000;
+        }
 
+
+        /* =====================================================
+           NAVBAR FROM INDEX.HTML
+        ====================================================== */
+
+        #mainNavbar {
+            padding: 18px 0;
+            background: transparent;
+            transition:
+                background-color 0.45s ease,
+                padding 0.45s ease,
+                box-shadow 0.45s ease,
+                backdrop-filter 0.45s ease;
+            z-index: 9999;
+        }
+
+        .navbar-logo {
+            height: 55px;
+            width: auto;
+            transition:
+                height 0.4s ease,
+                transform 0.4s ease;
+        }
+
+        .navbar-brand:hover .navbar-logo {
+            transform: scale(1.04);
+        }
+
+        #mainNavbar .nav-link {
+            position: relative;
+            color: #ffffff;
+            font-weight: 500;
+            padding: 10px 16px !important;
+            margin: 0 2px;
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        #mainNavbar .nav-link:hover {
+            color: #f5c542;
+            transform: translateY(-2px);
+        }
+
+        #mainNavbar .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 3px;
+            height: 2px;
+            background: #f5c542;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        #mainNavbar .nav-link:hover::after,
+        #mainNavbar .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        /* Dropdown */
+
+        #mainNavbar .dropdown-menu {
+            border: none;
+            border-radius: 12px;
+            padding: 10px;
+            margin-top: 12px;
+            background: #ffffff;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease,
+                visibility 0.3s ease;
+        }
+
+        #mainNavbar .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #mainNavbar .dropdown-item {
+            position: relative;
+            padding: 11px 16px;
+            border-radius: 8px;
+            color: #176b3a;
+            font-weight: 500;
+
+            transition:
+                background-color 0.25s ease,
+                color 0.25s ease,
+                padding-left 0.25s ease;
+        }
+
+        #mainNavbar .dropdown-item:hover {
+            background: #176b3a;
+            color: #ffffff;
+            padding-left: 21px;
+        }
+
+        /* Scrolled Navbar */
+
+        #mainNavbar.scrolled {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 9px 0;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        #mainNavbar.scrolled .navbar-logo {
+            height: 45px;
+        }
+
+        #mainNavbar.scrolled .nav-link {
+            color: #176b3a;
+        }
+
+        #mainNavbar.scrolled .nav-link:hover {
+            color: #e0a900;
+        }
+
+        /* Mobile */
+
+        .navbar-toggler {
+            border: none;
+            padding: 8px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        @media (max-width: 991.98px) {
+
+            #mainNavbar {
+                background: #ffffff;
+                padding: 10px 0;
+            }
+
+            #mainNavbar .nav-link {
+                color: #176b3a;
+                padding: 12px 10px !important;
+            }
+
+            #mainNavbar .nav-link::after {
+                display: none;
+            }
+
+            #mainNavbar .navbar-collapse {
+                margin-top: 15px;
+                padding: 10px 0;
+            }
+
+            #mainNavbar .dropdown-menu {
+                box-shadow: none;
+                border-left: 3px solid #176b3a;
+                border-radius: 0;
+                margin-top: 0;
+                padding-left: 10px;
+
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+
+            #mainNavbar .dropdown-item {
+                color: #176b3a;
+            }
+
+            #mainNavbar .dropdown-item:hover {
+                background: #176b3a;
+                color: #ffffff;
+            }
+
+            #mainNavbar.scrolled {
+                padding: 8px 0;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+
+            .navbar-logo {
+                height: 45px;
+            }
+
+            #mainNavbar.scrolled .navbar-logo {
+                height: 40px;
+            }
         }
 
 
@@ -95,82 +266,49 @@
         ====================================================== */
 
         .about-hero {
-
             min-height: 520px;
-
             display: flex;
-
             align-items: center;
-
             text-align: center;
-
             color: white;
 
             background:
-
                 linear-gradient(
                     rgba(10, 60, 34, 0.88),
                     rgba(10, 60, 34, 0.88)
                 ),
-
                 url("assets/images/about/about-hero.jpg");
 
             background-size: cover;
-
             background-position: center;
-
         }
-
 
         .hero-content {
-
             max-width: 900px;
-
             margin: auto;
-
         }
-
 
         .hero-small {
-
             color: #bde2cb;
-
             font-weight: 700;
-
             font-size: 14px;
-
             letter-spacing: 2px;
-
             text-transform: uppercase;
-
             margin-bottom: 15px;
-
         }
-
 
         .about-hero h1 {
-
             font-size: clamp(42px, 6vw, 72px);
-
             font-weight: 800;
-
             margin-bottom: 20px;
-
         }
 
-
         .about-hero p {
-
             max-width: 760px;
-
             margin: auto;
-
             font-size: 17px;
-
             line-height: 1.8;
-
             color: #e5f0e8;
-
         }
 
 
@@ -179,57 +317,33 @@
         ====================================================== */
 
         .about-section {
-
             padding: 90px 0;
-
         }
-
 
         .about-section.light {
-
             background: var(--sedc-light);
-
         }
-
 
         .section-label {
-
             color: var(--sedc-green);
-
             font-size: 13px;
-
             font-weight: 800;
-
             text-transform: uppercase;
-
             letter-spacing: 1.7px;
-
             margin-bottom: 10px;
-
         }
-
 
         .section-title {
-
             color: var(--sedc-dark);
-
             font-size: clamp(32px, 4vw, 48px);
-
             font-weight: 800;
-
             margin-bottom: 20px;
-
         }
 
-
         .section-text {
-
             font-size: 16px;
-
             line-height: 1.9;
-
             color: #666;
-
         }
 
 
@@ -238,17 +352,12 @@
         ====================================================== */
 
         .image-space {
-
             height: 420px;
-
             border-radius: 18px;
-
             overflow: hidden;
-
             position: relative;
 
             background:
-
                 linear-gradient(
                     135deg,
                     #dcebe1,
@@ -257,57 +366,33 @@
 
             box-shadow:
                 0 12px 35px rgba(0, 0, 0, 0.08);
-
         }
-
 
         .image-space img {
-
             width: 100%;
-
             height: 100%;
-
             object-fit: cover;
-
         }
-
 
         .image-placeholder {
-
             position: absolute;
-
             inset: 0;
-
             display: flex;
-
             flex-direction: column;
-
             align-items: center;
-
             justify-content: center;
-
             text-align: center;
-
             color: var(--sedc-green);
-
         }
-
 
         .image-placeholder i {
-
             font-size: 55px;
-
             margin-bottom: 12px;
-
         }
 
-
         .image-placeholder span {
-
             font-size: 14px;
-
             font-weight: 700;
-
         }
 
 
@@ -316,78 +401,44 @@
         ====================================================== */
 
         .vision-box {
-
             background: white;
-
             border-left: 5px solid var(--sedc-green);
-
             padding: 25px;
-
             margin-top: 30px;
-
             box-shadow:
                 0 8px 25px rgba(0, 0, 0, 0.05);
-
         }
-
 
         .vision-box h4 {
-
             color: var(--sedc-dark);
-
             font-weight: 800;
-
             margin-bottom: 10px;
-
         }
-
 
         .people-card {
-
             background: white;
-
             border: 1px solid var(--sedc-border);
-
             border-radius: 15px;
-
             padding: 25px;
-
             margin-top: 30px;
-
         }
-
 
         .people-icon {
-
             width: 55px;
-
             height: 55px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             border-radius: 50%;
-
             background: var(--sedc-soft);
-
             color: var(--sedc-green);
-
             font-size: 25px;
-
             margin-bottom: 15px;
-
         }
 
-
         .people-card h4 {
-
             font-weight: 800;
-
             color: var(--sedc-dark);
-
         }
 
 
@@ -396,152 +447,91 @@
         ====================================================== */
 
         .service-card {
-
             height: 100%;
-
             padding: 30px;
-
             background: white;
-
             border: 1px solid var(--sedc-border);
-
             border-radius: 16px;
 
             transition:
                 transform 0.35s ease,
                 box-shadow 0.35s ease;
-
         }
-
 
         .service-card:hover {
-
             transform: translateY(-8px);
-
             box-shadow:
                 0 15px 35px rgba(0, 0, 0, 0.09);
-
         }
-
 
         .service-icon {
-
             width: 60px;
-
             height: 60px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             border-radius: 14px;
-
             background: var(--sedc-soft);
-
             color: var(--sedc-green);
-
             font-size: 28px;
-
             margin-bottom: 20px;
-
         }
-
 
         .service-card h4 {
-
             color: var(--sedc-dark);
-
             font-weight: 800;
-
             margin-bottom: 12px;
-
         }
 
-
         .service-card p {
-
             line-height: 1.7;
-
             color: #6b6b6b;
-
             font-size: 15px;
-
         }
 
 
         /* =====================================================
-           PROGRAMME FEATURE
+           PROGRAMME
         ====================================================== */
 
         .programme-box {
-
             background:
-
                 linear-gradient(
                     rgba(10, 65, 36, 0.94),
                     rgba(10, 65, 36, 0.94)
                 ),
-
                 url("assets/images/about/agro-programme.jpg");
 
             background-size: cover;
-
             background-position: center;
-
             color: white;
-
             padding: 60px;
-
             border-radius: 20px;
-
             margin-top: 50px;
-
         }
-
 
         .programme-box h3 {
-
             font-size: 34px;
-
             font-weight: 800;
-
             margin-bottom: 18px;
-
         }
-
 
         .programme-box p {
-
             color: #e0ece4;
-
             line-height: 1.8;
-
         }
-
 
         .programme-list {
-
             margin-top: 25px;
-
         }
 
-
         .programme-list span {
-
             display: inline-block;
-
             border: 1px solid rgba(255,255,255,0.25);
-
             padding: 9px 15px;
-
             border-radius: 50px;
-
             margin: 5px;
-
             font-size: 13px;
-
         }
 
 
@@ -550,98 +540,56 @@
         ====================================================== */
 
         .state-card {
-
             height: 100%;
-
             background: white;
-
             border-radius: 16px;
-
             overflow: hidden;
-
             border: 1px solid var(--sedc-border);
-
             box-shadow:
                 0 7px 25px rgba(0,0,0,0.05);
 
             transition:
                 transform 0.3s ease,
                 box-shadow 0.3s ease;
-
         }
-
 
         .state-card:hover {
-
             transform: translateY(-7px);
-
             box-shadow:
                 0 15px 35px rgba(0,0,0,0.10);
-
         }
 
-
         .state-image {
-
             height: 200px;
-
             background:
-
                 linear-gradient(
                     135deg,
                     #dcebe1,
                     #eef5f0
                 );
-
             position: relative;
-
         }
-
 
         .state-image img {
-
             width: 100%;
-
             height: 100%;
-
             object-fit: cover;
-
         }
-
-
-        .state-image .image-placeholder {
-
-            display: flex;
-
-        }
-
 
         .state-body {
-
             padding: 25px;
-
         }
-
 
         .state-body h4 {
-
             color: var(--sedc-dark);
-
             font-weight: 800;
-
             margin-bottom: 12px;
-
         }
 
-
         .state-body p {
-
             color: #666;
-
             font-size: 14px;
-
             line-height: 1.7;
-
         }
 
 
@@ -650,71 +598,42 @@
         ====================================================== */
 
         .resource-card {
-
             height: 100%;
-
             background: white;
-
             border: 1px solid var(--sedc-border);
-
             border-radius: 16px;
-
             padding: 30px;
-
             text-align: center;
 
             transition:
                 transform 0.3s ease;
-
         }
-
 
         .resource-card:hover {
-
             transform: translateY(-7px);
-
         }
-
 
         .resource-icon {
-
             font-size: 42px;
-
             color: var(--sedc-green);
-
             margin-bottom: 18px;
-
         }
-
 
         .resource-card h4 {
-
             color: var(--sedc-dark);
-
             font-weight: 800;
-
         }
-
 
         .resource-card p {
-
             color: #666;
-
             line-height: 1.7;
-
             font-size: 14px;
-
         }
 
-
         .resource-btn {
-
             color: var(--sedc-green);
-
             text-decoration: none;
-
             font-weight: 700;
-
         }
 
 
@@ -723,97 +642,54 @@
         ====================================================== */
 
         .involved-card {
-
             height: 100%;
-
             padding: 35px;
-
             border-radius: 18px;
-
             background: white;
-
             border: 1px solid var(--sedc-border);
-
             box-shadow:
                 0 7px 25px rgba(0,0,0,0.04);
-
         }
-
 
         .involved-card h4 {
-
             color: var(--sedc-dark);
-
             font-weight: 800;
-
             margin-bottom: 15px;
-
         }
-
 
         .involved-card p {
-
             color: #666;
-
             line-height: 1.8;
-
         }
-
 
         .involved-icon {
-
             width: 65px;
-
             height: 65px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             background: var(--sedc-soft);
-
             color: var(--sedc-green);
-
             border-radius: 15px;
-
             font-size: 30px;
-
             margin-bottom: 20px;
-
         }
-
 
         .join-btn {
-
             display: inline-block;
-
             background: var(--sedc-green);
-
             color: white;
-
             text-decoration: none;
-
             padding: 11px 20px;
-
             border-radius: 8px;
-
             font-size: 14px;
-
             font-weight: 700;
-
             margin-top: 10px;
-
         }
 
-
         .join-btn:hover {
-
             background: #146c43;
-
             color: white;
-
         }
 
 
@@ -822,129 +698,74 @@
         ====================================================== */
 
         .contact-section {
-
             background:
-
                 linear-gradient(
                     rgba(10, 60, 34, 0.96),
                     rgba(10, 60, 34, 0.96)
                 ),
-
                 url("assets/images/about/contact-bg.jpg");
 
             background-size: cover;
-
             background-position: center;
-
             color: white;
-
             padding: 90px 0;
-
         }
-
 
         .contact-section .section-title {
-
             color: white;
-
         }
-
 
         .contact-intro {
-
             color: #d9e8de;
-
             line-height: 1.8;
-
             max-width: 700px;
-
         }
-
 
         .contact-card {
-
             height: 100%;
-
             padding: 30px;
-
             background: rgba(255,255,255,0.09);
-
             border: 1px solid rgba(255,255,255,0.15);
-
             border-radius: 15px;
-
         }
-
 
         .contact-icon {
-
             font-size: 30px;
-
             color: #bfe5cb;
-
             margin-bottom: 15px;
-
         }
-
 
         .contact-card h5 {
-
             font-weight: 800;
-
         }
-
 
         .contact-card p {
-
             color: #dbe8df;
-
             margin: 0;
-
         }
-
 
         .social-links {
-
             display: flex;
-
             gap: 10px;
-
             margin-top: 20px;
-
         }
-
 
         .social-links a {
-
             width: 42px;
-
             height: 42px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             color: white;
-
             border: 1px solid rgba(255,255,255,0.3);
-
             border-radius: 50%;
-
             text-decoration: none;
-
             transition: all 0.3s ease;
-
         }
 
-
         .social-links a:hover {
-
             background: white;
-
             color: var(--sedc-green);
-
         }
 
 
@@ -953,48 +774,43 @@
         ====================================================== */
 
         footer {
-
             background: #0d2518;
-
             color: #cddbd2;
-
             padding: 25px 0;
-
         }
 
-
         footer p {
-
             margin: 0;
-
             font-size: 14px;
+        }
 
+        .footer-link {
+            transition:
+                color .25s ease,
+                padding-left .25s ease;
+        }
+
+        .footer-link:hover {
+            color: #fff !important;
+            padding-left: 4px;
         }
 
 
         /* =====================================================
-           ANIMATION
+           REVEAL ANIMATION
         ====================================================== */
 
         .reveal {
-
             opacity: 0;
-
             transform: translateY(35px);
-
             transition:
                 opacity 0.8s ease,
                 transform 0.8s ease;
-
         }
 
-
         .reveal.show {
-
             opacity: 1;
-
             transform: translateY(0);
-
         }
 
 
@@ -1005,59 +821,30 @@
         @media (max-width: 767px) {
 
             .about-hero {
-
                 min-height: 440px;
-
                 padding: 70px 0;
-
             }
-
 
             .about-section {
-
                 padding: 65px 0;
-
             }
-
 
             .image-space {
-
                 height: 300px;
-
                 margin-bottom: 30px;
-
             }
-
 
             .programme-box {
-
                 padding: 35px 25px;
-
             }
-
 
             .programme-box h3 {
-
                 font-size: 28px;
-
             }
-
 
             .state-image {
-
                 height: 220px;
-
             }
-
-
-            .nav-link {
-
-                margin-left: 0;
-
-                padding: 10px 0 !important;
-
-            }
-
         }
 
     </style>
@@ -1065,7 +852,7 @@
 </head>
 
 
-<body id="top" class="bg-light">
+<body id="top">
 
 
 <!-- =====================================================
@@ -1078,7 +865,7 @@
 
         <div class="d-flex justify-content-between align-items-center small">
 
-            <div class="d-flex align-items-center ">
+            <div class="d-flex align-items-center">
 
                 <i class="bi bi-building me-2"></i>
 
@@ -1103,38 +890,35 @@
 
 
 <!-- =====================================================
-     NAVIGATION
+     EXACT NAVIGATION FROM INDEX.HTML
 ===================================================== -->
 
-<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
 
     <div class="container">
 
-
-        <!-- LOGO -->
+        <!-- Logo -->
 
         <a
             class="navbar-brand d-flex align-items-center"
-            href="#top">
+            href="index.html">
 
             <img
-                src="assets/images/sedc-logo.jpg"
-                alt="SEDC Logo"
-                height="55"
-                class="me-2">
+                src="images/logo.png"
+                alt="Logo"
+                class="navbar-logo">
 
         </a>
 
 
-
-        <!-- MOBILE MENU BUTTON -->
+        <!-- Mobile Toggle -->
 
         <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#mainNavbar"
-            aria-controls="mainNavbar"
+            data-bs-target="#navbarContent"
+            aria-controls="navbarContent"
             aria-expanded="false"
             aria-label="Toggle navigation">
 
@@ -1143,22 +927,22 @@
         </button>
 
 
-
-        <!-- NAVIGATION -->
+        <!-- Navigation -->
 
         <div
             class="collapse navbar-collapse"
-            id="mainNavbar">
+            id="navbarContent">
 
             <ul class="navbar-nav ms-auto align-items-lg-center">
 
 
+                <!-- Home -->
+
                 <li class="nav-item">
 
                     <a
-                        class="nav-link active"
-                        href="index.html"
-                        data-section="top">
+                        class="nav-link"
+                        href="index.html">
 
                         Home
 
@@ -1167,53 +951,125 @@
                 </li>
 
 
-                <li class="nav-item">
+                <!-- Who We Are -->
+
+                <li class="nav-item dropdown">
 
                     <a
-                        class="nav-link"
-                        href="about.html"
-                        data-section="about">
+                        class="nav-link dropdown-toggle active"
+                        href="#"
+                        id="whoWeAreDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
 
-                        About
+                        Who we are
 
                     </a>
+
+
+                    <ul
+                        class="dropdown-menu"
+                        aria-labelledby="whoWeAreDropdown">
+
+                        <li>
+
+                            <a
+                                class="dropdown-item"
+                                href="vision.html">
+
+                                Our Vision
+
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a
+                                class="dropdown-item"
+                                href="people.html">
+
+                                Our People
+
+                            </a>
+
+                        </li>
+
+                    </ul>
 
                 </li>
 
 
-                <li class="nav-item">
+                <!-- What We Do -->
+
+                <li class="nav-item dropdown">
 
                     <a
-                        class="nav-link"
-                        href="#programmes"
-                        data-section="programmes">
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="whatWeDoDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
 
-                        Programmes
+                        What we do
 
                     </a>
 
+
+                    <ul
+                        class="dropdown-menu"
+                        aria-labelledby="whatWeDoDropdown">
+
+                        <li>
+
+                            <a
+                                class="dropdown-item"
+                                href="natural-resources.html">
+
+                                Natural Resources
+
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a
+                                class="dropdown-item"
+                                href="agriculture.html">
+
+                                Agriculture
+
+                            </a>
+
+                        </li>
+
+                        <li>
+
+                            <a
+                                class="dropdown-item"
+                                href="rural-development.html">
+
+                                Rural Development
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
                 </li>
+
+
+                <!-- Activities -->
 
                 <li class="nav-item">
 
                     <a
                         class="nav-link"
-                        href="#blog"
-                        data-section="blog">
-
-                        Blog
-
-                    </a>
-
-                </li>
-
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="activities.html"
-                        data-section="activities">
+                        href="activities.html">
 
                         Activities
 
@@ -1222,42 +1078,30 @@
                 </li>
 
 
+                <!-- Blog -->
+
                 <li class="nav-item">
 
                     <a
                         class="nav-link"
-                        href="#opportunities"
-                        data-section="opportunities">
+                        href="blog.html">
 
-                        Opportunities
+                        Blog
 
                     </a>
 
                 </li>
 
 
+                <!-- Contact -->
+
                 <li class="nav-item">
 
                     <a
                         class="nav-link"
-                        href="#resources"
-                        data-section="resources">
+                        href="contact.html">
 
-                        Resources
-
-                    </a>
-
-                </li>
-
-
-                <li class="nav-item ms-lg-3">
-
-                    <a
-                        href="#contact"
-                        data-section="contact"
-                        class="btn btn-success px-4">
-
-                        Contact Us
+                        Contact
 
                     </a>
 
@@ -1271,7 +1115,6 @@
     </div>
 
 </nav>
-
 
 
 
@@ -1289,11 +1132,9 @@
                 NRARD • South East Development Commission
             </div>
 
-
             <h1>
                 About NRARD SEDC
             </h1>
-
 
             <p>
                 The Directorate of Natural Resources, Agriculture and
@@ -1310,56 +1151,30 @@
 
 
 <!-- =========================================================
-     1. WHO WE ARE
+     WHO WE ARE
 ========================================================= -->
 
 <section
     id="who-we-are"
-    class="about-section"
->
+    class="about-section">
 
     <div class="container">
 
-
         <div class="row align-items-center g-5">
-
-
-            <!-- IMAGE -->
 
             <div class="col-lg-6 reveal">
 
                 <div class="image-space">
 
-                    <!--
-                        ADD IMAGE HERE
-
-                        Example:
-                        assets/images/about/who-we-are.jpg
-                    -->
-
                     <img
                         src="assets/images/about/who-we-are.jpg"
                         alt="NRARD SEDC"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                    >
-
-
-                    <!-- <div class="image-placeholder">
-
-                        <i class="bi bi-people"></i>
-
-                        <span>
-                            Who We Are Image
-                        </span>
-
-                    </div> -->
+                        onerror="this.style.display='none';">
 
                 </div>
 
             </div>
 
-
-            <!-- CONTENT -->
 
             <div class="col-lg-6 reveal">
 
@@ -1367,11 +1182,9 @@
                     01 • Who We Are
                 </div>
 
-
                 <h2 class="section-title">
                     Building a Sustainable South East
                 </h2>
-
 
                 <p class="section-text">
 
@@ -1380,7 +1193,6 @@
                     the South East Development Commission.
 
                 </p>
-
 
                 <p class="section-text">
 
@@ -1391,7 +1203,6 @@
                     transformation of rural communities.
 
                 </p>
-
 
                 <div class="vision-box">
 
@@ -1410,7 +1221,6 @@
 
                 </div>
 
-
                 <div class="people-card">
 
                     <div class="people-icon">
@@ -1419,11 +1229,9 @@
 
                     </div>
 
-
                     <h4>
                         Our People
                     </h4>
-
 
                     <p class="mb-0">
 
@@ -1446,16 +1254,14 @@
 
 
 <!-- =========================================================
-     2. WHAT WE DO
+     WHAT WE DO
 ========================================================= -->
 
 <section
     id="what-we-do"
-    class="about-section light"
->
+    class="about-section light">
 
     <div class="container">
-
 
         <div class="text-center reveal">
 
@@ -1463,13 +1269,13 @@
                 02 • What We Do
             </div>
 
-
             <h2 class="section-title">
                 Our Core Areas of Work
             </h2>
 
-
-            <p class="section-text mx-auto" style="max-width: 750px;">
+            <p
+                class="section-text mx-auto"
+                style="max-width: 750px;">
 
                 Our work combines natural resource management,
                 agricultural transformation and rural development
@@ -1484,23 +1290,17 @@
         <div class="row g-4 mt-4">
 
 
-            <!-- NATURAL RESOURCES -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="service-card">
 
                     <div class="service-icon">
-
                         <i class="bi bi-tree"></i>
-
                     </div>
-
 
                     <h4>
                         Natural Resources
                     </h4>
-
 
                     <p>
 
@@ -1516,23 +1316,17 @@
             </div>
 
 
-            <!-- AGRICULTURE -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="service-card">
 
                     <div class="service-icon">
-
                         <i class="bi bi-flower1"></i>
-
                     </div>
-
 
                     <h4>
                         Agriculture
                     </h4>
-
 
                     <p>
 
@@ -1548,23 +1342,17 @@
             </div>
 
 
-            <!-- RURAL DEVELOPMENT -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="service-card">
 
                     <div class="service-icon">
-
                         <i class="bi bi-buildings"></i>
-
                     </div>
-
 
                     <h4>
                         Rural Development
                     </h4>
-
 
                     <p>
 
@@ -1579,23 +1367,17 @@
             </div>
 
 
-            <!-- VALUE CHAINS -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="service-card">
 
                     <div class="service-icon">
-
                         <i class="bi bi-bar-chart-line"></i>
-
                     </div>
-
 
                     <h4>
                         Economic Value
                     </h4>
-
 
                     <p>
 
@@ -1612,16 +1394,11 @@
         </div>
 
 
-
-        <!-- PROGRAMME -->
-
         <div class="programme-box reveal">
-
 
             <h3>
                 South East Agro-Transformation Programme
             </h3>
-
 
             <p>
 
@@ -1631,7 +1408,6 @@
 
             </p>
 
-
             <p>
 
                 Key areas include Farm Estates, Livestock Hubs,
@@ -1640,32 +1416,14 @@
 
             </p>
 
-
             <div class="programme-list">
 
-                <span>
-                    Farm Estates
-                </span>
-
-                <span>
-                    Livestock Hubs
-                </span>
-
-                <span>
-                    Poultry
-                </span>
-
-                <span>
-                    Storage
-                </span>
-
-                <span>
-                    Agribusiness
-                </span>
-
-                <span>
-                    Youth Employment
-                </span>
+                <span>Farm Estates</span>
+                <span>Livestock Hubs</span>
+                <span>Poultry</span>
+                <span>Storage</span>
+                <span>Agribusiness</span>
+                <span>Youth Employment</span>
 
             </div>
 
@@ -1678,16 +1436,14 @@
 
 
 <!-- =========================================================
-     3. WHERE WE WORK
+     WHERE WE WORK
 ========================================================= -->
 
 <section
     id="where-we-work"
-    class="about-section"
->
+    class="about-section">
 
     <div class="container">
-
 
         <div class="text-center reveal">
 
@@ -1695,16 +1451,13 @@
                 03 • Where We Work
             </div>
 
-
             <h2 class="section-title">
                 Across the South East
             </h2>
 
-
             <p
                 class="section-text mx-auto"
-                style="max-width: 750px;"
-            >
+                style="max-width: 750px;">
 
                 The Directorate operates across all five South East
                 states, with priority communities and project sites
@@ -1719,8 +1472,6 @@
         <div class="row g-4 mt-4">
 
 
-            <!-- ABIA -->
-
             <div class="col-md-6 col-lg-4 reveal">
 
                 <div class="state-card">
@@ -1730,28 +1481,13 @@
                         <img
                             src="assets/images/about/abia.jpg"
                             alt="Abia State"
-                            onerror="this.style.display='none';"
-                        >
-
-                        <!-- <div class="image-placeholder">
-
-                            <i class="bi bi-geo-alt"></i>
-
-                            <span>
-                                Abia Image
-                            </span>
-
-                        </div> -->
+                            onerror="this.style.display='none';">
 
                     </div>
 
-
                     <div class="state-body">
 
-                        <h4>
-                            Abia
-                        </h4>
-
+                        <h4>Abia</h4>
 
                         <p>
 
@@ -1769,9 +1505,6 @@
             </div>
 
 
-
-            <!-- ANAMBRA -->
-
             <div class="col-md-6 col-lg-4 reveal">
 
                 <div class="state-card">
@@ -1781,28 +1514,13 @@
                         <img
                             src="assets/images/about/anambra.jpg"
                             alt="Anambra State"
-                            onerror="this.style.display='none';"
-                        >
-
-                        <!-- <div class="image-placeholder">
-
-                            <i class="bi bi-geo-alt"></i>
-
-                            <span>
-                                Anambra Image
-                            </span>
-
-                        </div> -->
+                            onerror="this.style.display='none';">
 
                     </div>
 
-
                     <div class="state-body">
 
-                        <h4>
-                            Anambra
-                        </h4>
-
+                        <h4>Anambra</h4>
 
                         <p>
 
@@ -1820,9 +1538,6 @@
             </div>
 
 
-
-            <!-- EBONYI -->
-
             <div class="col-md-6 col-lg-4 reveal">
 
                 <div class="state-card">
@@ -1832,28 +1547,13 @@
                         <img
                             src="assets/images/about/ebonyi.jpg"
                             alt="Ebonyi State"
-                            onerror="this.style.display='none';"
-                        >
-
-                        <!-- <div class="image-placeholder">
-
-                            <i class="bi bi-geo-alt"></i>
-
-                            <span>
-                                Ebonyi Image
-                            </span>
-
-                        </div> -->
+                            onerror="this.style.display='none';">
 
                     </div>
 
-
                     <div class="state-body">
 
-                        <h4>
-                            Ebonyi
-                        </h4>
-
+                        <h4>Ebonyi</h4>
 
                         <p>
 
@@ -1871,9 +1571,6 @@
             </div>
 
 
-
-            <!-- ENUGU -->
-
             <div class="col-md-6 col-lg-6 reveal">
 
                 <div class="state-card">
@@ -1883,28 +1580,13 @@
                         <img
                             src="assets/images/about/enugu.jpg"
                             alt="Enugu State"
-                            onerror="this.style.display='none';"
-                        >
-
-                        <div class="image-placeholder">
-
-                            <i class="bi bi-geo-alt"></i>
-
-                            <span>
-                                Enugu Image
-                            </span>
-
-                        </div>
+                            onerror="this.style.display='none';">
 
                     </div>
 
-
                     <div class="state-body">
 
-                        <h4>
-                            Enugu
-                        </h4>
-
+                        <h4>Enugu</h4>
 
                         <p>
 
@@ -1923,9 +1605,6 @@
             </div>
 
 
-
-            <!-- IMO -->
-
             <div class="col-md-6 col-lg-6 reveal">
 
                 <div class="state-card">
@@ -1935,28 +1614,13 @@
                         <img
                             src="assets/images/about/imo.jpg"
                             alt="Imo State"
-                            onerror="this.style.display='none';"
-                        >
-
-                        <!-- <div class="image-placeholder">
-
-                            <i class="bi bi-geo-alt"></i>
-
-                            <span>
-                                Imo Image
-                            </span>
-
-                        </div> -->
+                            onerror="this.style.display='none';">
 
                     </div>
 
-
                     <div class="state-body">
 
-                        <h4>
-                            Imo
-                        </h4>
-
+                        <h4>Imo</h4>
 
                         <p>
 
@@ -1983,16 +1647,14 @@
 
 
 <!-- =========================================================
-     4. MEDIA & RESOURCES
+     MEDIA & RESOURCES
 ========================================================= -->
 
 <section
     id="media"
-    class="about-section light"
->
+    class="about-section light">
 
     <div class="container">
-
 
         <div class="text-center reveal">
 
@@ -2000,16 +1662,13 @@
                 04 • Media & Resources
             </div>
 
-
             <h2 class="section-title">
                 Stay Informed
             </h2>
 
-
             <p
                 class="section-text mx-auto"
-                style="max-width: 750px;"
-            >
+                style="max-width: 750px;">
 
                 Explore our stories, publications, multimedia content
                 and other resources documenting the work and activities
@@ -2023,36 +1682,26 @@
         <div class="row g-4 mt-4">
 
 
-            <!-- MEDIA CENTRE -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="resource-card">
 
                     <div class="resource-icon">
-
                         <i class="bi bi-newspaper"></i>
-
                     </div>
-
 
                     <h4>
                         Media Centre
                     </h4>
 
-
                     <p>
-
                         Follow public engagements, activities and
                         institutional developments.
-
                     </p>
-
 
                     <a
                         href="blog.html"
-                        class="resource-btn"
-                    >
+                        class="resource-btn">
 
                         View Stories
                         <i class="bi bi-arrow-right"></i>
@@ -2064,37 +1713,26 @@
             </div>
 
 
-
-            <!-- MULTIMEDIA -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="resource-card">
 
                     <div class="resource-icon">
-
                         <i class="bi bi-camera-reels"></i>
-
                     </div>
-
 
                     <h4>
                         Multimedia
                     </h4>
 
-
                     <p>
-
                         A space for photographs, videos and visual
                         documentation of Directorate activities.
-
                     </p>
-
 
                     <a
                         href="#"
-                        class="resource-btn"
-                    >
+                        class="resource-btn">
 
                         Explore
                         <i class="bi bi-arrow-right"></i>
@@ -2106,37 +1744,26 @@
             </div>
 
 
-
-            <!-- GALLERY -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="resource-card">
 
                     <div class="resource-icon">
-
                         <i class="bi bi-images"></i>
-
                     </div>
-
 
                     <h4>
                         Gallery
                     </h4>
 
-
                     <p>
-
                         Browse visual highlights from projects,
                         engagements and field activities.
-
                     </p>
-
 
                     <a
                         href="gallery.html"
-                        class="resource-btn"
-                    >
+                        class="resource-btn">
 
                         View Gallery
                         <i class="bi bi-arrow-right"></i>
@@ -2148,37 +1775,26 @@
             </div>
 
 
-
-            <!-- PUBLICATIONS -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="resource-card">
 
                     <div class="resource-icon">
-
                         <i class="bi bi-file-earmark-text"></i>
-
                     </div>
-
 
                     <h4>
                         Publications
                     </h4>
 
-
                     <p>
-
                         Access stories, reports and resources supporting
                         understanding of regional development.
-
                     </p>
-
 
                     <a
                         href="#"
-                        class="resource-btn"
-                    >
+                        class="resource-btn">
 
                         Resources
                         <i class="bi bi-arrow-right"></i>
@@ -2198,16 +1814,14 @@
 
 
 <!-- =========================================================
-     5. GET INVOLVED
+     GET INVOLVED
 ========================================================= -->
 
 <section
     id="get-involved"
-    class="about-section"
->
+    class="about-section">
 
     <div class="container">
-
 
         <div class="text-center reveal">
 
@@ -2215,16 +1829,13 @@
                 05 • Get Involved
             </div>
 
-
             <h2 class="section-title">
                 Be Part of the Transformation
             </h2>
 
-
             <p
                 class="section-text mx-auto"
-                style="max-width: 750px;"
-            >
+                style="max-width: 750px;">
 
                 NRARD SEDC creates opportunities for farmers, young
                 people, agribusinesses and communities to participate
@@ -2238,23 +1849,17 @@
         <div class="row g-4 mt-4">
 
 
-            <!-- SEYAF -->
-
             <div class="col-lg-6 reveal">
 
                 <div class="involved-card">
 
                     <div class="involved-icon">
-
                         <i class="bi bi-people"></i>
-
                     </div>
-
 
                     <h4>
                         SEYAF – South East Youth in Agribusiness Forum
                     </h4>
-
 
                     <p>
 
@@ -2265,11 +1870,9 @@
 
                     </p>
 
-
                     <a
                         href="#"
-                        class="join-btn"
-                    >
+                        class="join-btn">
 
                         Join the Community
 
@@ -2280,24 +1883,17 @@
             </div>
 
 
-
-            <!-- SEAGCS -->
-
             <div class="col-lg-6 reveal">
 
                 <div class="involved-card">
 
                     <div class="involved-icon">
-
                         <i class="bi bi-diagram-3"></i>
-
                     </div>
-
 
                     <h4>
                         SEAGCS – South East Agro Geo-Cooperative Societies
                     </h4>
-
 
                     <p>
 
@@ -2308,11 +1904,9 @@
 
                     </p>
 
-
                     <a
                         href="#"
-                        class="join-btn"
-                    >
+                        class="join-btn">
 
                         Learn More
 
@@ -2325,10 +1919,7 @@
         </div>
 
 
-        <!-- IMAGE SPACE -->
-
         <div class="row mt-5 align-items-center g-5">
-
 
             <div class="col-lg-6 reveal">
 
@@ -2337,18 +1928,7 @@
                     <img
                         src="assets/images/about/get-involved.jpg"
                         alt="Get involved with NRARD SEDC"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                    >
-
-                    <div class="image-placeholder">
-
-                        <i class="bi bi-handshake"></i>
-
-                        <span>
-                            Get Involved Image
-                        </span>
-
-                    </div>
+                        onerror="this.style.display='none';">
 
                 </div>
 
@@ -2361,11 +1941,9 @@
                     Community Participation
                 </div>
 
-
                 <h2 class="section-title">
                     Stronger Communities, Shared Opportunities
                 </h2>
-
 
                 <p class="section-text">
 
@@ -2377,11 +1955,9 @@
 
                 </p>
 
-
                 <a
                     href="#contact"
-                    class="join-btn"
-                >
+                    class="join-btn">
 
                     Get In Touch
 
@@ -2398,16 +1974,14 @@
 
 
 <!-- =========================================================
-     6. CONTACT US
+     CONTACT
 ========================================================= -->
 
 <section
     id="contact"
-    class="contact-section"
->
+    class="contact-section">
 
     <div class="container">
-
 
         <div class="text-center reveal">
 
@@ -2415,11 +1989,9 @@
                 06 • Contact Us
             </div>
 
-
             <h2 class="section-title">
                 Connect With NRARD SEDC
             </h2>
-
 
             <p class="contact-intro mx-auto">
 
@@ -2435,23 +2007,17 @@
         <div class="row g-4 mt-4">
 
 
-            <!-- EMAIL -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="contact-card">
 
                     <div class="contact-icon">
-
                         <i class="bi bi-envelope"></i>
-
                     </div>
-
 
                     <h5>
                         Email
                     </h5>
-
 
                     <p>
                         Official Email
@@ -2462,24 +2028,17 @@
             </div>
 
 
-
-            <!-- FACEBOOK -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="contact-card">
 
                     <div class="contact-icon">
-
                         <i class="bi bi-facebook"></i>
-
                     </div>
-
 
                     <h5>
                         Facebook
                     </h5>
-
 
                     <p>
                         Official Facebook Page
@@ -2490,24 +2049,17 @@
             </div>
 
 
-
-            <!-- X -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="contact-card">
 
                     <div class="contact-icon">
-
                         <i class="bi bi-twitter-x"></i>
-
                     </div>
-
 
                     <h5>
                         Twitter / X
                     </h5>
-
 
                     <p>
                         Official X Account
@@ -2518,24 +2070,17 @@
             </div>
 
 
-
-            <!-- INSTAGRAM -->
-
             <div class="col-md-6 col-lg-3 reveal">
 
                 <div class="contact-card">
 
                     <div class="contact-icon">
-
                         <i class="bi bi-instagram"></i>
-
                     </div>
-
 
                     <h5>
                         Instagram
                     </h5>
-
 
                     <p>
                         Official Instagram Page
@@ -2553,30 +2098,19 @@
             <div class="social-links justify-content-center">
 
                 <a href="#">
-
                     <i class="bi bi-facebook"></i>
-
                 </a>
 
-
                 <a href="#">
-
                     <i class="bi bi-twitter-x"></i>
-
                 </a>
 
-
                 <a href="#">
-
                     <i class="bi bi-instagram"></i>
-
                 </a>
 
-
                 <a href="#">
-
                     <i class="bi bi-envelope"></i>
-
                 </a>
 
             </div>
@@ -2589,9 +2123,9 @@
 
 
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
+<!-- =====================================================
+     EXACT FOOTER FROM INDEX.HTML
+===================================================== -->
 
 <footer class="bg-dark text-white pt-5 pb-3">
 
@@ -2600,11 +2134,15 @@
         <div class="row g-4">
 
 
+            <!-- BRAND -->
+
             <div class="col-lg-5">
 
-                <h4 class="fw-bold">
-                    SEDC
-                </h4>
+                <img
+                    src="assets/images/sedc-logo.jpg"
+                    alt="SEDC Logo"
+                    height="55"
+                    class="me-2">
 
                 <p class="text-white-50">
 
@@ -2624,6 +2162,7 @@
             </div>
 
 
+            <!-- NAVIGATION -->
 
             <div class="col-6 col-lg-2">
 
@@ -2636,7 +2175,7 @@
                     <li class="mb-2">
 
                         <a
-                            href="#top"
+                            href="index.html"
                             class="text-white-50 text-decoration-none footer-link">
 
                             Home
@@ -2648,7 +2187,7 @@
                     <li class="mb-2">
 
                         <a
-                            href="#about"
+                            href="about.html"
                             class="text-white-50 text-decoration-none footer-link">
 
                             About
@@ -2660,10 +2199,10 @@
                     <li class="mb-2">
 
                         <a
-                            href="#programmes"
+                            href="agriculture.html"
                             class="text-white-50 text-decoration-none footer-link">
 
-                            Programmes
+                            Agriculture
 
                         </a>
 
@@ -2672,7 +2211,7 @@
                     <li class="mb-2">
 
                         <a
-                            href="#blog"
+                            href="blog.html"
                             class="text-white-50 text-decoration-none footer-link">
 
                             Blog
@@ -2684,7 +2223,7 @@
                     <li>
 
                         <a
-                            href="#activities"
+                            href="activities.html"
                             class="text-white-50 text-decoration-none footer-link">
 
                             Activities
@@ -2698,6 +2237,7 @@
             </div>
 
 
+            <!-- RESOURCES -->
 
             <div class="col-6 col-lg-2">
 
@@ -2710,7 +2250,7 @@
                     <li class="mb-2">
 
                         <a
-                            href="#resources"
+                            href="natural-resources.html"
                             class="text-white-50 text-decoration-none footer-link">
 
                             Reports
@@ -2722,7 +2262,7 @@
                     <li class="mb-2">
 
                         <a
-                            href="#opportunities"
+                            href="rural-development.html"
                             class="text-white-50 text-decoration-none footer-link">
 
                             Opportunities
@@ -2734,7 +2274,7 @@
                     <li class="mb-2">
 
                         <a
-                            href="#"
+                            href="gallery.html"
                             class="text-white-50 text-decoration-none footer-link">
 
                             Gallery
@@ -2746,7 +2286,7 @@
                     <li>
 
                         <a
-                            href="#"
+                            href="contact.html"
                             class="text-white-50 text-decoration-none footer-link">
 
                             FAQs
@@ -2760,6 +2300,7 @@
             </div>
 
 
+            <!-- SOCIAL -->
 
             <div class="col-lg-3">
 
@@ -2796,7 +2337,6 @@
                 </div>
 
             </div>
-
 
         </div>
 
@@ -2842,9 +2382,9 @@
 
 
 
-<!-- =========================================================
+<!-- =====================================================
      BOOTSTRAP JAVASCRIPT
-========================================================= -->
+===================================================== -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
@@ -2852,15 +2392,55 @@
 
 
 
-<!-- =========================================================
-     SCROLL REVEAL JAVASCRIPT
-========================================================= -->
+<!-- =====================================================
+     NAVBAR SCROLL JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const navbar =
+            document.getElementById("mainNavbar");
+
+        function handleNavbarScroll() {
+
+            if (window.scrollY > 50) {
+
+                navbar.classList.add("scrolled");
+
+            } else {
+
+                navbar.classList.remove("scrolled");
+
+            }
+
+        }
+
+        handleNavbarScroll();
+
+        window.addEventListener(
+            "scroll",
+            handleNavbarScroll,
+            {
+                passive: true
+            }
+        );
+
+    });
+
+</script>
+
+
+
+<!-- =====================================================
+     SCROLL REVEAL
+===================================================== -->
 
 <script>
 
     const revealElements =
         document.querySelectorAll(".reveal");
-
 
     const revealObserver =
         new IntersectionObserver(
