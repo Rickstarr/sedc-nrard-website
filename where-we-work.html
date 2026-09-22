@@ -217,104 +217,106 @@
            STATE CARDS
         ========================= */
 
-        .states-section {
-            background: var(--cream);
-            padding: 80px 0 100px;
-        }
+        /* =========================================
+        STATE CARD IMAGE
+        ========================================= */
 
         .state-card {
-            height: 100%;
-            background: #fff;
-            border: none;
-            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 8px 30px rgba(23, 107, 58, 0.08);
-            transition:
-                transform 0.4s ease,
-                box-shadow 0.4s ease;
-            position: relative;
+            height: 100%;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(13, 69, 38, 0.10);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .state-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 18px 45px rgba(23, 107, 58, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(13, 69, 38, 0.16);
         }
 
-        .state-header {
-            background: linear-gradient(
-                135deg,
-                var(--dark-green),
-                var(--green)
-            );
-            color: #fff;
-            padding: 25px;
+
+        /* IMAGE CONTAINER */
+
+        .state-image {
             position: relative;
+            width: 100%;
+            height: 250px;
             overflow: hidden;
+            background: var(--soft);
         }
 
-        .state-header::after {
+
+        /* IMAGE */
+
+        .state-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+
+            transition:
+                transform 0.6s ease,
+                filter 0.4s ease;
+        }
+
+
+        /* IMAGE ZOOM ON CARD HOVER */
+
+        .state-card:hover .state-image img {
+            transform: scale(1.06);
+        }
+
+
+        /* SUBTLE IMAGE OVERLAY */
+
+        .state-image::after {
             content: "";
             position: absolute;
-            width: 100px;
-            height: 100px;
-            border: 1px solid rgba(255,255,255,0.18);
-            border-radius: 50%;
-            right: -30px;
-            top: -40px;
+            inset: 0;
+
+            background: linear-gradient(
+                to bottom,
+                rgba(13, 69, 38, 0.02),
+                rgba(13, 69, 38, 0.35)
+            );
+
+            pointer-events: none;
         }
 
-        .state-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(255,255,255,0.14);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            font-size: 22px;
+
+        /* STATE HEADER */
+
+        .state-header {
+            padding: 24px 26px 10px;
+            background-color: #092F1A;
+            color: white;
         }
 
-        .state-header h3 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 750;
-        }
 
-        .state-location {
-            font-size: 14px;
-            color: #D9A441;
-            margin-top: 6px;
-            font-weight: 600;
-        }
+        /* STATE BODY */
 
         .state-body {
-            padding: 27px;
+            padding: 10px 26px 28px;
         }
 
-        .state-body p {
-            color: #59675F;
-            line-height: 1.75;
-            margin-bottom: 0;
-        }
 
-        .state-body strong {
-            color: var(--dark-green);
-        }
+        /* MOBILE */
 
-        .state-body ul {
-            padding-left: 20px;
-            margin: 0;
-        }
+        @media (max-width: 767px) {
 
-        .state-body li {
-            margin-bottom: 13px;
-            color: #59675F;
-            line-height: 1.7;
-        }
+            .state-image {
+                height: 220px;
+            }
 
-        .state-body li::marker {
-            color: var(--green);
+            .state-header {
+                padding: 20px 20px 8px;
+            }
+
+            .state-body {
+                padding: 8px 20px 24px;
+            }
+
         }
 
         /* =========================
@@ -654,20 +656,15 @@
 
     <div class="container hero-content">
 
-        <div class="row">
+        <div>
 
-            <div class="col-lg-10">
-
-                <span class="hero-label">
-                    <i class="bi bi-geo-alt-fill me-2"></i>
-                    Our Geographic Reach
-                </span>
+            <div class=" text-white text-center">
 
                 <h1>
                     Where We Work
                 </h1>
 
-                <p>
+                <p class="text-align">
                     The Directorate operates across all five South East
                     states, with priority communities and project sites
                     identified for strategic agricultural, agro-industrial,
@@ -744,12 +741,19 @@
 
         <div class="row g-4">
 
-
-            <!-- ABIA -->
-
+            <!-- =========================
+                ABIA
+            ========================== -->
             <div class="col-lg-6 reveal reveal-delay-1">
 
                 <div class="state-card">
+
+                    <!-- STATE IMAGE -->
+                    <div class="state-image">
+                        <img src="assets/images/states/abia.jpg"
+                            alt="NRARD SEDC activities in Abia State"
+                            loading="lazy">
+                    </div>
 
                     <div class="state-header">
 
@@ -795,11 +799,19 @@
             </div>
 
 
-            <!-- ANAMBRA -->
-
+            <!-- =========================
+                ANAMBRA
+            ========================== -->
             <div class="col-lg-6 reveal reveal-delay-2">
 
                 <div class="state-card">
+
+                    <!-- STATE IMAGE -->
+                    <div class="state-image">
+                        <img src="assets/images/states/anambra.jpg"
+                            alt="NRARD SEDC activities in Anambra State"
+                            loading="lazy">
+                    </div>
 
                     <div class="state-header">
 
@@ -850,11 +862,19 @@
             </div>
 
 
-            <!-- EBONYI -->
-
+            <!-- =========================
+                EBONYI
+            ========================== -->
             <div class="col-lg-6 reveal reveal-delay-1">
 
                 <div class="state-card">
+
+                    <!-- STATE IMAGE -->
+                    <div class="state-image">
+                        <img src="assets/images/states/ebonyi.jpg"
+                            alt="NRARD SEDC activities in Ebonyi State"
+                            loading="lazy">
+                    </div>
 
                     <div class="state-header">
 
@@ -900,11 +920,19 @@
             </div>
 
 
-            <!-- ENUGU -->
-
+            <!-- =========================
+                ENUGU
+            ========================== -->
             <div class="col-lg-6 reveal reveal-delay-2">
 
                 <div class="state-card">
+
+                    <!-- STATE IMAGE -->
+                    <div class="state-image">
+                        <img src="assets/images/states/enugu.jpg"
+                            alt="NRARD SEDC activities in Enugu State"
+                            loading="lazy">
+                    </div>
 
                     <div class="state-header">
 
@@ -955,11 +983,19 @@
             </div>
 
 
-            <!-- IMO -->
-
+            <!-- =========================
+                IMO
+            ========================== -->
             <div class="col-lg-6 mx-lg-auto reveal reveal-delay-3">
 
                 <div class="state-card">
+
+                    <!-- STATE IMAGE -->
+                    <div class="state-image">
+                        <img src="assets/images/states/imo.jpg"
+                            alt="NRARD SEDC activities in Imo State"
+                            loading="lazy">
+                    </div>
 
                     <div class="state-header">
 
@@ -1008,7 +1044,6 @@
             </div>
 
         </div>
-
     </div>
 
 </section>
