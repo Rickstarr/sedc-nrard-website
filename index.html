@@ -1064,6 +1064,7 @@ RESPONSIVE
                                 Our Vision
                             </a>
                         </li>
+
                         <li>
                             <a class="dropdown-item" href="people.html">
                                 Our People
@@ -1089,11 +1090,13 @@ RESPONSIVE
                                 Natural Resources
                             </a>
                         </li>
+
                         <li>
                             <a class="dropdown-item" href="agriculture.html">
                                 Agriculture
                             </a>
                         </li>
+
                         <li>
                             <a class="dropdown-item" href="rural-development.html">
                                 Rural Development
@@ -1102,24 +1105,32 @@ RESPONSIVE
                     </ul>
                 </li>
 
-                <!-- Activities -->
+                <!-- Where We Work -->
                 <li class="nav-item">
-                    <a class="nav-link" href="where-we-work.html">Where We Work</a>
+                    <a class="nav-link" href="where-we-work.html">
+                        Where We Work
+                    </a>
                 </li>
 
                 <!-- Activities -->
                 <li class="nav-item">
-                    <a class="nav-link" href="activities.html">Activities</a>
+                    <a class="nav-link" href="activities.html">
+                        Activities
+                    </a>
                 </li>
 
                 <!-- Blog -->
                 <li class="nav-item">
-                    <a class="nav-link" href="blog.html">Blog</a>
+                    <a class="nav-link" href="blog.html">
+                        Blog
+                    </a>
                 </li>
 
                 <!-- Contact -->
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="contact.html">
+                        Contact
+                    </a>
                 </li>
 
             </ul>
@@ -1127,25 +1138,39 @@ RESPONSIVE
     </div>
 </nav>
 
+
 <!-- =====================================================
      MODERN NAVBAR STYLES
 ===================================================== -->
 
 <style>
+
+    /* =====================================================
+       MAIN NAVBAR
+    ===================================================== */
+
     #mainNavbar {
         padding: 18px 0;
         background: transparent;
+
         transition:
             background-color 0.45s ease,
             padding 0.45s ease,
             box-shadow 0.45s ease,
             backdrop-filter 0.45s ease;
+
         z-index: 9999;
     }
+
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
 
     .navbar-logo {
         height: 55px;
         width: auto;
+
         transition:
             height 0.4s ease,
             transform 0.4s ease;
@@ -1155,12 +1180,20 @@ RESPONSIVE
         transform: scale(1.04);
     }
 
+
+    /* =====================================================
+       DESKTOP NAV LINKS
+    ===================================================== */
+
     #mainNavbar .nav-link {
         position: relative;
+
         color: #ffffff;
         font-weight: 500;
+
         padding: 10px 16px !important;
         margin: 0 2px;
+
         transition:
             color 0.3s ease,
             transform 0.3s ease;
@@ -1171,16 +1204,27 @@ RESPONSIVE
         transform: translateY(-2px);
     }
 
+
+    /* =====================================================
+       NAV LINK UNDERLINE
+    ===================================================== */
+
     #mainNavbar .nav-link::after {
         content: "";
+
         position: absolute;
+
         left: 16px;
         right: 16px;
         bottom: 3px;
+
         height: 2px;
+
         background: #f5c542;
+
         transform: scaleX(0);
         transform-origin: center;
+
         transition: transform 0.3s ease;
     }
 
@@ -1189,17 +1233,26 @@ RESPONSIVE
         transform: scaleX(1);
     }
 
-    /* Dropdown */
+
+    /* =====================================================
+       DROPDOWN
+    ===================================================== */
+
     #mainNavbar .dropdown-menu {
         border: none;
         border-radius: 12px;
+
         padding: 10px;
         margin-top: 12px;
+
         background: #ffffff;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+
+        box-shadow:
+            0 15px 35px rgba(0, 0, 0, 0.15);
 
         opacity: 0;
         visibility: hidden;
+
         transform: translateY(12px);
 
         transition:
@@ -1211,13 +1264,22 @@ RESPONSIVE
     #mainNavbar .dropdown-menu.show {
         opacity: 1;
         visibility: visible;
+
         transform: translateY(0);
     }
 
+
+    /* =====================================================
+       DROPDOWN ITEMS
+    ===================================================== */
+
     #mainNavbar .dropdown-item {
         position: relative;
+
         padding: 11px 16px;
+
         border-radius: 8px;
+
         color: #176b3a;
         font-weight: 500;
 
@@ -1230,16 +1292,25 @@ RESPONSIVE
     #mainNavbar .dropdown-item:hover {
         background: #176b3a;
         color: #ffffff;
+
         padding-left: 21px;
     }
 
-    /* Scrolled Navbar */
+
+    /* =====================================================
+       SCROLLED NAVBAR
+    ===================================================== */
+
     #mainNavbar.scrolled {
         background: rgba(255, 255, 255, 0.96);
+
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
+
         padding: 9px 0;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+
+        box-shadow:
+            0 5px 25px rgba(0, 0, 0, 0.12);
     }
 
     #mainNavbar.scrolled .navbar-logo {
@@ -1254,63 +1325,278 @@ RESPONSIVE
         color: #e0a900;
     }
 
-    /* Mobile */
+
+    /* =====================================================
+       MOBILE TOGGLER
+    ===================================================== */
+
     .navbar-toggler {
         border: none;
         padding: 8px;
+
+        transition:
+            transform 0.3s ease;
+    }
+
+    .navbar-toggler:hover {
+        transform: scale(1.05);
     }
 
     .navbar-toggler:focus {
         box-shadow: none;
     }
 
+
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
+
     @media (max-width: 991.98px) {
+
         #mainNavbar {
             background: #ffffff;
             padding: 10px 0;
         }
 
-        #mainNavbar .nav-link {
-            color: #176b3a;
-            padding: 12px 10px !important;
+
+        /* -----------------------------------------------
+           MOBILE COLLAPSE
+        ------------------------------------------------ */
+
+        #mainNavbar .navbar-collapse {
+
+            margin-top: 15px;
+
+            padding: 12px 0 18px;
+
+            /*
+             * Makes the menu appear from the top
+             * with a smooth animation.
+             */
+            max-height: 0;
+            overflow: hidden;
+
+            opacity: 0;
+
+            transform: translateY(-12px);
+
+            transition:
+                max-height 0.5s ease,
+                opacity 0.35s ease,
+                transform 0.45s ease;
         }
+
+
+        /* When Bootstrap opens the menu */
+
+        #mainNavbar .navbar-collapse.show {
+
+            max-height: 600px;
+
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        /* -----------------------------------------------
+           MOBILE NAV LIST
+        ------------------------------------------------ */
+
+        #mainNavbar .navbar-nav {
+
+            width: 100%;
+
+            align-items: flex-end !important;
+
+            text-align: right;
+
+            padding-right: 5px;
+        }
+
+
+        /* -----------------------------------------------
+           MOBILE NAV ITEMS
+        ------------------------------------------------ */
+
+        #mainNavbar .navbar-nav .nav-item {
+
+            opacity: 0;
+
+            transform: translateY(-10px);
+
+            transition:
+                opacity 0.35s ease,
+                transform 0.35s ease;
+        }
+
+
+        /* Animate items after menu opens */
+
+        #mainNavbar .navbar-collapse.show
+        .navbar-nav .nav-item {
+
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        /* Staggered animation */
+
+        #mainNavbar .navbar-collapse.show
+        .navbar-nav .nav-item:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        #mainNavbar .navbar-collapse.show
+        .navbar-nav .nav-item:nth-child(2) {
+            transition-delay: 0.10s;
+        }
+
+        #mainNavbar .navbar-collapse.show
+        .navbar-nav .nav-item:nth-child(3) {
+            transition-delay: 0.15s;
+        }
+
+        #mainNavbar .navbar-collapse.show
+        .navbar-nav .nav-item:nth-child(4) {
+            transition-delay: 0.20s;
+        }
+
+        #mainNavbar .navbar-collapse.show
+        .navbar-nav .nav-item:nth-child(5) {
+            transition-delay: 0.25s;
+        }
+
+        #mainNavbar .navbar-collapse.show
+        .navbar-nav .nav-item:nth-child(6) {
+            transition-delay: 0.30s;
+        }
+
+        #mainNavbar .navbar-collapse.show
+        .navbar-nav .nav-item:nth-child(7) {
+            transition-delay: 0.35s;
+        }
+
+
+        /* -----------------------------------------------
+           MOBILE LINKS
+        ------------------------------------------------ */
+
+        #mainNavbar .nav-link {
+
+            display: inline-block;
+
+            color: #176b3a;
+
+            padding: 12px 10px !important;
+
+            margin: 2px 0;
+
+            text-align: right;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        #mainNavbar .nav-link:hover {
+
+            color: #e0a900;
+
+            transform: translateX(-4px);
+        }
+
+
+        /* Remove desktop underline */
 
         #mainNavbar .nav-link::after {
             display: none;
         }
 
-        #mainNavbar .navbar-collapse {
-            margin-top: 15px;
-            padding: 10px 0;
-        }
+
+        /* -----------------------------------------------
+           MOBILE DROPDOWNS
+        ------------------------------------------------ */
 
         #mainNavbar .dropdown-menu {
-            box-shadow: none;
+
+            position: static !important;
+
+            width: auto;
+
+            min-width: 220px;
+
+            margin: 0 0 5px auto;
+
+            padding: 8px 0 8px 10px;
+
             border-left: 3px solid #176b3a;
+
             border-radius: 0;
-            margin-top: 0;
-            padding-left: 10px;
+
+            box-shadow: none;
+
+            background: #f8faf8;
+
+            text-align: right;
 
             opacity: 1;
             visibility: visible;
+
             transform: none;
         }
 
+
         #mainNavbar .dropdown-item {
+
             color: #176b3a;
+
+            text-align: right;
+
+            padding: 10px 16px;
+
+            border-radius: 6px;
+
+            transition:
+                background-color 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease;
         }
+
 
         #mainNavbar .dropdown-item:hover {
+
             background: #176b3a;
+
             color: #ffffff;
+
+            transform: translateX(-4px);
+
+            padding-left: 16px;
         }
+
+
+        /* -----------------------------------------------
+           SCROLLED MOBILE NAVBAR
+        ------------------------------------------------ */
 
         #mainNavbar.scrolled {
+
             padding: 8px 0;
         }
+
     }
 
+
+    /* =====================================================
+       SMALL MOBILE DEVICES
+    ===================================================== */
+
     @media (max-width: 575.98px) {
+
         .navbar-logo {
             height: 45px;
         }
@@ -1318,7 +1604,36 @@ RESPONSIVE
         #mainNavbar.scrolled .navbar-logo {
             height: 40px;
         }
+
+
+        #mainNavbar .navbar-collapse {
+
+            margin-top: 10px;
+
+            padding-right: 2px;
+        }
+
+
+        #mainNavbar .navbar-nav {
+
+            padding-right: 2px;
+        }
+
+
+        #mainNavbar .nav-link {
+
+            padding: 11px 8px !important;
+
+            font-size: 15px;
+        }
+
+
+        #mainNavbar .dropdown-menu {
+
+            min-width: 200px;
+        }
     }
+
 </style>
 
 <!-- =====================================================
@@ -1387,11 +1702,11 @@ RESPONSIVE
                 </p>
 
                 <div class="d-flex flex-wrap gap-3">
-                    <a href="#programmes" class="btn btn-warning btn-lg px-4">
+                    <a href="#programmes" class="btn btn-warning btn-md px-4">
                         Explore Our Programmes
                     </a>
 
-                    <a href="#about" class="btn btn-outline-light btn-lg px-4">
+                    <a href="#about" class="btn btn-outline-light btn-md px-4">
                         Learn More
                     </a>
                 </div>
